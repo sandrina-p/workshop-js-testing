@@ -1,0 +1,26 @@
+.shell {
+  display: flex;
+  --sidebar-width: 30rem;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  background-color: var(--brand-light);
+  height: 100vh;
+  padding: 2.4rem;
+}
+
+.area {
+  margin-left: var(--sidebar-width);
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 52rem;
+  padding: 4rem 1.6rem 1.6rem;
+}

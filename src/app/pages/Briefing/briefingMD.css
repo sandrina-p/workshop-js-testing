@@ -1,0 +1,76 @@
+:global {
+  .briefingMD {
+    a {
+      display: inline-block;
+      padding: 0.1rem 0.2rem;
+      color: inherit;
+      text-decoration-color: var(--brand-strong);
+      transform: translateX(-0.1em);
+      margin-right: -0.1em;
+    }
+
+    ul a {
+      display: inline;
+    }
+
+    a:hover {
+      color: var(--brand-strong);
+    }
+
+    a:focus {
+      outline: none;
+      background-color: var(--brand-light);
+    }
+
+    pre {
+      background: var(--blank);
+      display: block;
+      padding: 1.6rem;
+      color: inherit;
+      border-left: 3px solid var(--brand);
+    }
+
+    code[class*='language-'],
+    pre[class*='language-'] {
+      font-size: 1.2rem; /* override prims */
+    }
+
+    pre code {
+      background: var(--blank);
+    }
+
+    code {
+      background: #e7e1dc;
+      padding: 0.1rem 0.3rem;
+      font-weight: 100;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--brand);
+      margin: 0 0 1.6rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin: 3.2rem 0 1.6rem;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 3.2rem 0 1.6rem;
+      line-height: 1.2;
+    }
+
+    hr {
+      margin: 3.2rem 0 0;
+      border: none;
+      border-bottom: 0.1rem solid var(--brand-strong);
+    }
+  }
+}

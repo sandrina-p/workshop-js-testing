@@ -1,0 +1,36 @@
+:root {
+  --bg: #f8f3ef;
+  --blank: #fff;
+  --text: #343434;
+  --brand: #9b78de;
+  --brand-strong: #8c00ff;
+  --brand-light: #e9e1f8;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--text);
+  box-sizing: border-box;
+  margin: 0;
+  overflow-x: hidden;
+
+  * {
+    box-sizing: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+ul,
+ol {
+  padding: 0 10px;
+  margin: 0 10px;
+}

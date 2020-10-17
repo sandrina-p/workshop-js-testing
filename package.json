@@ -5,16 +5,19 @@
   "title": "Workshop Javascript Testing",
   "description": "In this workshop, we'll learn testing principles and how to test React applications",
   "scripts": {
+    "checkup": "jest src/_checkup && eslint src/_checkup",
     "start": "parcel src/app/index.html",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "checkup": "jest src/checkup && eslint src/checkup"
+    "test:challenges": "jest --watch src/challenges/${npm_config_ex}",
+    "test:solutions": "jest --watch src/challenges/${npm_config_ex}"
   },
   "author": "@sandrina-p",
   "license": "GPL-3.0-only",
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "wouter": "^2.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -22,6 +25,7 @@
     "@babel/preset-react": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "autoprefixer": "^9.8.6",
     "babel-jest": "^26.5.2",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
@@ -30,8 +34,14 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-testing-library": "^3.9.2",
     "jest": "^26.5.3",
+    "marked": "^1.2.0",
+    "nesting": "^0.1.0",
     "parcel": "^1.12.4",
     "parcel-bundler": "^1.12.4",
+    "postcss": "^7.0.35",
+    "postcss-modules": "^3.2.2",
+    "postcss-nested": "^4.2.3",
+    "postcss-nesting": "^7.0.1",
     "prettier": "^2.1.2",
     "standard": "^14.3.4"
   }

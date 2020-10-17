@@ -41,8 +41,8 @@ npm install
 To ensure all's fine, please verify the following three things:
 
 1. **App running:** Run `npm start`. The workshop app should start at http://localhost:1234
-2. **Testing tooling:** Run `npm run checkup` and verify the [output matches this example](src/checkup/checkup_output.png?raw=true).
-3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Restart your editor, open `src/checkup/index.test.js` and follow the notes given with the ligh bulb 💡 emoji.
+2. **Testing tooling:** Run `npm run checkup` and verify the [output matches this example](src/_checkup/checkup_output.png?raw=true).
+3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Restart your editor, open `src/_checkup/index.test.js` and follow the notes given with the ligh bulb 💡 emoji.
 
 - Did everything work? _Ah-wesome!_ That's all, see you soon! 🤓
 - Having troubles? [Open an issue](https://github.com/sandrina-p/workshop-js-testing/issues/new) or reach me at a.sandrina.p@gmail.com.
