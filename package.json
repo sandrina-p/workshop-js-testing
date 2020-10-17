@@ -1,0 +1,38 @@
+{
+  "name": "workshop-js-testing",
+  "private": true,
+  "version": "1.0.0",
+  "title": "Workshop Javascript Testing",
+  "description": "In this workshop, we'll learn testing principles and how to test React applications",
+  "scripts": {
+    "start": "parcel src/app/index.html",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "checkup": "jest src/checkup && eslint src/checkup"
+  },
+  "author": "@sandrina-p",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "babel-jest": "^26.5.2",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-testing-library": "^3.9.2",
+    "jest": "^26.5.3",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.1.2",
+    "standard": "^14.3.4"
+  }
+}
