@@ -1,26 +1,29 @@
 .shell {
   display: flex;
-  --sidebar-width: 30rem;
+  align-items: stretch;
+  --content-max: 52rem;
+  --shell-topPadding: 4rem;
 }
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--sidebar-width);
+  width: calc(50vw - (var(--content-max) / 2));
   background-color: var(--brand-light);
-  height: 100vh;
-  padding: 2.4rem;
+  padding: 0 2.4rem;
+
+  &Inner {
+    position: sticky;
+    top: var(--shell-topPadding);
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .area {
-  margin-left: var(--sidebar-width);
   flex-grow: 1;
   min-height: 100vh;
+  padding: var(--shell-topPadding) 1.6rem var(--shell-topPadding) 4rem;
 }
 
 .content {
-  margin: 0 auto;
-  max-width: 52rem;
-  padding: 4rem 1.6rem 1.6rem;
+  max-width: var(--content-max);
 }

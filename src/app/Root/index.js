@@ -20,20 +20,22 @@ export default function Root() {
 
   return (
     <div className={Styles.shell}>
-      <header className={Styles.sidebar}>
-        <nav>
-          <ul>
-            <li>
-              <a {...linkTo(setLocation, '/')}>Home</a>
-            </li>
-            {Object.keys(briefings).map(id => (
-              <li key={id}>
-                <a {...linkTo(setLocation, `/briefings/${id}`)}>Briefing {id}</a>
+      <div className={Styles.sidebar}>
+        <header className={Styles.sidebarInner}>
+          <nav>
+            <ul>
+              <li>
+                <a {...linkTo(setLocation, '/')}>Home</a>
               </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+              {Object.keys(briefings).map(id => (
+                <li key={id}>
+                  <a {...linkTo(setLocation, `/briefings/${id}`)}>Briefing {id}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </header>
+      </div>
       <div className={Styles.area}>
         <main className={Styles.content}>
           {matchHome && <Home />}
