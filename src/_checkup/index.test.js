@@ -11,11 +11,11 @@ describe('Try Out', () => {
   })
 
   it('should do basic asserts correctly!', () => {
-    // 💡 2/3 Your editor lint should give an error about not using toBe().
+    // 💡 2/3 In the next line, your editor lint show a eslint error at "toBe".
     expect(['a', 'b', 'c'].length).toBe(3)
   })
 
-  // 💡 3/3 Your editor lint should warn about this test being skipped.
+  // 💡 3/3 In the next line, your editor should show a eslint warn about "skip" usage.
   it.skip('should skip this test', () => {
     expect(1 + 1).toBe(2)
   })
@@ -23,8 +23,11 @@ describe('Try Out', () => {
 
 /*
 Troubleshooting
+- Ensure you have both ESLint and Prettier installed.
 - Restart the editor and try again.
+- In VSCode, make sure the ESLint is enabled.
+- In VSCode, make sure the eslit configs are local
 - Do a quick Google search. (Stackoverflow helps!)
 - If in less than 10min you didn't make it work, try using VSCode editor.
-- Last resource... Reach out to me :D
+- Last resource... Reach out to me. A screenshot with the VSCode output logs panel is highly helpful.
 */
