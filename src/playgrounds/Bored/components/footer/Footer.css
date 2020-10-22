@@ -1,0 +1,49 @@
+/* The time was running out. TODO later - Improve this CSS */
+
+.footer {
+  width: 100%;
+  border-top: 1px dashed var(--text);
+  margin-top: 16px;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &:nth-child(2) {
+      text-align: right;
+    }
+
+    li {
+      height: 2.4rem;
+
+      &:not(:last-child)  {
+        margin: 0 0 12px;
+      }
+    }
+  }
+
+  a {
+    color: var(--text);
+
+    &:hover,
+    &:focus {
+      color: var(--brand-strong);
+    }
+
+    &.blocked {
+      cursor: not-allowed;
+    }
+
+    &[target='_blank'] {
+      cursor: alias;
+    }
+  }
+
+  button {
+    margin-left: 16px;
+  }
+}

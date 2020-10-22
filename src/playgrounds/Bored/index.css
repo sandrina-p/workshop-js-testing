@@ -1,0 +1,24 @@
+/* Theme (CSS variables) is inherited from main workshop App */
+
+.app {
+  position: relative;
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='8' stroke-dasharray='12%2c 10%2c 24%2c 15' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+  background-color: var(--blank);
+}
+
+.title {
+  font-size: 2.2rem;
+  margin: 0 0 2rem;
+}
+
+.menu {
+  position: absolute;
+  top: 45px;
+  right: 40px;
+}

@@ -1,0 +1,32 @@
+.field {
+  display: block;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  text-align: center;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.input {
+  position: relative;
+  width: 16rem;
+  height: 4rem;
+  font-size: inherit;
+  background-color: #fff;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.4rem;
+  padding: 0rem 0.8rem;
+
+  &[type='number'] {
+    width: 8rem;
+    text-align: center;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--blank) 0 0 0 0.2rem, var(--secondary) 0 0 0 0.4rem;
+  }
+}
