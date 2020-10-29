@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 27rem;
+}
+
+.feedback {
+  text-align: center;
+}
+
+.error {
+  color: #e23d3d;
+}
+
+.card {
+  align-self: stretch;
+}

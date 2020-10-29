@@ -72,5 +72,43 @@
       border: none;
       border-bottom: 0.1rem solid var(--brand-strong);
     }
+
+    blockquote {
+      margin: 0;
+      font-weight: 600;
+
+      p {
+        font-style: italic;
+      }
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-bottom: 1.6rem;
+
+      thead tr th {
+        text-align: left;
+        padding: 0.6rem;
+        border-bottom: 1px solid #aaa;
+        border-right: 1px solid #aaa;
+      }
+
+      tr {
+        th:first-child,
+        td:first-child {
+          border-left: none;
+        }
+
+        th:last-child,
+        td:last-child {
+          border-right: none;
+        }
+      }
+
+      td {
+        padding: 0.6rem;
+        border: 1px solid #ccc;
+      }
+    }
   }
 }

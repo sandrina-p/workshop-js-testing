@@ -18,7 +18,8 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "jest/no-commented-out-tests": "off"
   },
   "settings": {
     "react": {

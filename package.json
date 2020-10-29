@@ -3,13 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "title": "Workshop Javascript Testing",
-  "description": "In this workshop, we'll learn testing principles and how to test React applications",
+  "description": "In this workshop, we'll learn testing patterns and how to test React applications",
   "scripts": {
     "checkup": "jest src/_checkup && eslint src/_checkup",
     "start": "parcel src/app/index.html",
     "test": "jest",
     "test:challenges": "jest --watch src/challenges/${npm_config_at}",
-    "test:solutions": "jest --watch src/challenges/${npm_config_at}"
+    "test:solutions": "jest --watch src/solutions/${npm_config_at}"
   },
   "author": "@sandrina-p",
   "license": "GPL-3.0-only",
@@ -22,11 +22,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^3.4.2",
+    "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9.8.6",
     "babel-jest": "^26.5.2",
     "classnames": "^2.2.6",
@@ -37,7 +40,10 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-testing-library": "^3.9.2",
     "jest": "^26.5.3",
+    "jest-css-modules": "^2.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "marked": "^1.2.0",
+    "msw": "^0.21.3",
     "nesting": "^0.1.0",
     "parcel": "^1.12.4",
     "parcel-bundler": "^1.12.4",
@@ -47,7 +53,9 @@
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
-    "standard": "^14.3.4"
+    "react-test-renderer": "^16.14.0",
+    "standard": "^14.3.4",
+    "whatwg-fetch": "^3.4.1"
   },
   "browserslist": [
     "last 2 Chrome versions"

@@ -1,0 +1,86 @@
+.button {
+  display: inline-flex;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+
+  &[aria-pressed='true'] {
+    border-color: var(--brand);
+    background-color: var(--brand);
+    color: var(--blank);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--blank) 0 0 0 2px, var(--secondary) 0 0 0 4px;
+  }
+}
+
+.size-xs {
+  padding: 4px 12px;
+  font-size: 1.3rem;
+  font-family: inherit;
+}
+
+.size-sm {
+  padding: 8px;
+  font-size: 1.3rem;
+  font-family: inherit;
+}
+
+.size-md {
+  padding: 12px;
+  font-family: inherit;
+}
+
+.size-lg {
+  padding: 12px 16px;
+  font-size: 1.8rem;
+}
+
+.variant-solid {
+  border-radius: 3px;
+  color: var(--blank);
+  background-color: var(--brand);
+
+  &:hover {
+    background-color: var(--brand-strong);
+  }
+}
+
+.variant-outline {
+  border-radius: 3px;
+  color: var(--text);
+  background: var(--blank);
+  border: 2px solid var(--brand);
+
+  &:hover {
+    border-color: var(--brand-solid);
+  }
+}
+
+.variant-reset {
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+}
+
+.icon {
+  font-size: 2.5rem;
+  padding: 5px;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

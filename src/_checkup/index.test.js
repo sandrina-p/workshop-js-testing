@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 
 // 💡 1/3 Follow these 3 lamps to ensure your editor lint is working as expected!
 
@@ -22,11 +21,12 @@ describe('Try Out', () => {
 })
 
 /*
-Troubleshooting
+# TROUBLESHOOTING
 - Ensure you have both ESLint and Prettier installed.
 - Restart the editor and try again.
 - In VSCode, make sure the ESLint is enabled.
 - In VSCode, make sure the eslit configs are local
+- Check the logs output panel for any error.
 - Do a quick Google search. (Stackoverflow helps!)
 - If in less than 10min you didn't make it work, try using VSCode editor.
 - Last resource... Reach out to me. A screenshot with the VSCode output logs panel is highly helpful.

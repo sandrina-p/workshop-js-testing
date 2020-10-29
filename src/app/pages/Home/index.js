@@ -1,11 +1,21 @@
 import React from 'react'
-// import { useLocation } from 'wouter'
-// import { linkTo } from '../../utils'
+import { useRoute } from 'wouter'
 
-// import briefings from '../../utils/briefingsMd'
+import zero from '../../../challenges/0.md'
 
 export default function Root() {
-  // const [, setLocation] = useLocation()
+  const [, params] = useRoute('/briefings/:id')
+  const refMD = React.useRef()
 
-  return <h1>Welcome!</h1>
+  React.useLayoutEffect(() => {
+    if (typeof Prism !== undefined) Prism.highlightAllUnder(refMD.current) // eslint-disable-line
+  }, [params])
+
+  return (
+    <div
+      ref={refMD}
+      className="briefingMD"
+      dangerouslySetInnerHTML={{ __html: zero }}
+    ></div>
+  )
 }

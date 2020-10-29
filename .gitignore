@@ -6,6 +6,8 @@
 # build
 .cache
 dist
+coverage
+history
 
 # misc
 .DS_Store
