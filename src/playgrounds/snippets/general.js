@@ -1,4 +1,15 @@
 /**
+ * Returns the sum of all given values
+ * @param  {...Number} numbers
+ * @retun {Number}
+ * @example
+ * (3, 5, 2) ->  10
+ */
+export function sumAll(...numbers) {
+  return numbers.reduce((acc, cur) => acc + cur, 0)
+}
+
+/**
  * Given a number, it returns the respective singular or plural word
  * @param {Number} count
  * @param {String} singular
@@ -48,15 +59,4 @@ export function removeNullish(obj) {
   }
 
   return result
-}
-
-/**
- * Returns the sum of all given values
- * @param  {...Number} numbers
- * @retun {Number}
- * @example
- * (3, 5, 2) ->  10
- */
-export function sumAll(...numbers) {
-  return numbers.reduce((acc, cur) => acc + cur, 0)
 }

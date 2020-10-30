@@ -8,8 +8,9 @@
     "checkup": "jest src/_checkup && eslint src/_checkup",
     "start": "parcel src/app/index.html",
     "test": "jest",
-    "test:challenges": "jest --watch src/challenges/${npm_config_at}",
-    "test:solutions": "jest --watch src/solutions/${npm_config_at}"
+    "test:challenge": "jest --watch ${npm_config_at}.test.js",
+    "test:solution": "jest --watch ${npm_config_at}.solution.test.js",
+    "test:both": "jest --watch ${npm_config_at}.*.test.js"
   },
   "author": "@sandrina-p",
   "license": "GPL-3.0-only",

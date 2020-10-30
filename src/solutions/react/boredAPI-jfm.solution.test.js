@@ -1,14 +1,11 @@
-// 💡 Possible solutions to mock fetch:
-// msw (Mock Service Worker) - https://github.com/mswjs/msw
-// jest-fetch-mock - https://github.com/jefflau/jest-fetch-mock
-
 import fetchMock from 'jest-fetch-mock'
 
 import {
   getActivity,
   getNewActivity,
 } from '../../playgrounds/snippets/boredAPI'
-import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
+
+import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 const activityStubbed = activityStub.basic
 
@@ -18,7 +15,7 @@ beforeAll(() => {
   // Mock console.debug to remove it from test logs
   jest.spyOn(global.console, 'debug').mockImplementation()
 
-  // Mock a "happy response" for all coming fetchs
+  // Mock a "happy response" for all coming fetchs.
   global.fetch.mockResponse(JSON.stringify(activityStubbed))
 })
 
@@ -31,6 +28,7 @@ afterAll(() => {
 describe('boredAPI (jest-fetch-mock)', () => {
   describe('getActivity()', () => {
     it('returns a random activity by default', async () => {
+      // Act
       const result = await getActivity()
 
       // Assert that
@@ -141,7 +139,7 @@ describe('boredAPI (jest-fetch-mock)', () => {
       expect(result).toEqual(activityStub3)
     })
 
-    it('throwns an errors, when it exceeds the maximum nr of attempts', async () => {
+    it('throwns an error, when it exceeds the maximum nr of attempts', async () => {
       const activityStubbed = activityStub.basic
       const exclude = [activityStubbed.key]
       const attemptsMax = 5

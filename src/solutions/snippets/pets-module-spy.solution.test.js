@@ -6,15 +6,15 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
   describe('saveAsFavorite()', () => {
     // 💡 The sendTrack is still the original, so the warn
     // message will show in the logs. Let's keep them clean...
-    const originalWarn = global.console.warn
-    const warnMock = jest.fn()
+    const originalLog = global.console.log
+    const logMock = jest.fn()
 
     beforeEach(() => {
-      global.console.warn = warnMock
+      global.console.log = logMock
     })
 
     afterEach(() => {
-      global.console.warn = originalWarn
+      global.console.log = originalLog
     })
 
     it('calls sendTrack special given a type of snake', () => {
@@ -30,7 +30,7 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
 
       // 🍀 We might be tempted to verify the log was called too.
       // But isn't that too much? Implementation details here.
-      // expect(warnMock).toHaveBeenCalledTimes(1)
+      expect(logMock).toHaveBeenCalledTimes(1)
     })
   })
 })

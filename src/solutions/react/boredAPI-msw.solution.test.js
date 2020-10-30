@@ -9,7 +9,7 @@ import {
   // getNewActivity,
 } from '../../playgrounds/snippets/boredAPI'
 
-import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
+import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 // ----
 // 💡 Configure msw for this file. It can be done globally at jest.setup.js
@@ -131,6 +131,6 @@ describe('boredAPI (msw)', () => {
 
     it.todo('returns an activity after X attempts, given a matching exclude')
 
-    it.todo('throwns an errors, when it exceeds the maximum nr of attempts')
+    it.todo('throwns an error, when it exceeds the maximum nr of attempts')
   })
 })

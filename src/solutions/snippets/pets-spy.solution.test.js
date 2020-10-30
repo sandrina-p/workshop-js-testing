@@ -1,4 +1,7 @@
-import { verifyPetBeforeAdopt, searchPet } from '../playgrounds/snippets/1.3'
+import {
+  verifyPetBeforeAdopt,
+  searchPet,
+} from '../../playgrounds/snippets/pets'
 
 describe('1.3 methods', () => {
   beforeEach(jest.clearAllMocks)
@@ -110,6 +113,8 @@ describe('1.3 methods', () => {
       it('logs the search', () => {
         const result = searchPet('john', 5)
 
+        // console.dev('This shows in the console!')
+
         expect(global.console.log).toHaveBeenCalledWith(
           ':: searchPet - Searching john...'
         )
@@ -129,9 +134,12 @@ describe('1.3 methods', () => {
     })
 
     describe('Option B: Spying console', () => {
-      // We can spy the console, but the logs will still apear in the tests output
+      // We can spy the console, but the logs will still
+      // apear in the tests output
       it('logs the search', () => {
-        const consoleLogSpy = jest.spyOn(global.console, 'log')
+        const consoleLogSpy = jest
+          .spyOn(global.console, 'log')
+          .mockImplementation() // 💡 This keeps the logs clean
         const result = searchPet('john', 5)
 
         expect(consoleLogSpy).toHaveBeenCalledWith(
@@ -142,7 +150,9 @@ describe('1.3 methods', () => {
       })
 
       it('warns when the age is not a number', () => {
-        const consoleWarnSpy = jest.spyOn(global.console, 'warn')
+        const consoleWarnSpy = jest
+          .spyOn(global.console, 'warn')
+          .mockImplementation() // 💡 This keeps the logs clean
         const result = searchPet('john', 'five')
 
         expect(consoleWarnSpy).toHaveBeenCalledWith(

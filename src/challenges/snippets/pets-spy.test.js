@@ -7,7 +7,6 @@ describe('Pets - (1.3 Spy)', () => {
   describe('verifyPetBeforeAdopt()', () => {
     // 🍀 A little help: In Jest, window.location is not implemented
     // so we need to "mock" it, before spying it. This is how it's done:
-
     // Save a backup of original implementation
     const locationOriginal = window.location
 
@@ -37,7 +36,7 @@ describe('Pets - (1.3 Spy)', () => {
   describe('searchPet()', () => {
     describe('Option A: Mocking console', () => {
       // 🍀 Write globals beforeAll and afterAll inside
-      // this describe to mock the console,
+      // this describe() to mock the console,
       // similar how it was done with window.location
       it.todo('logs the search')
 

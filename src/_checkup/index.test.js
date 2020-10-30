@@ -14,8 +14,8 @@ describe('Try Out', () => {
     expect(['a', 'b', 'c'].length).toBe(3)
   })
 
-  // 💡 3/3 In the next line, your editor should show a eslint warn about "skip" usage.
-  it.skip('should skip this test', () => {
+  // 💡 3/3 In the next line, your editor should show a eslint error about "only" usage.
+  it.only('should skip this test', () => {
     expect(1 + 1).toBe(2)
   })
 })

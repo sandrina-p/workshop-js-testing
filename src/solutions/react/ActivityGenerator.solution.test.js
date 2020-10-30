@@ -12,7 +12,7 @@ import ActivityGenerator from '../../playgrounds/react/components/activity-gener
 
 import * as BoredContext from '../../playgrounds/react/state/BoredContext'
 import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
-import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
+import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredProviderFake.js'
 
 jest.mock('../../playgrounds/snippets/boredAPI')

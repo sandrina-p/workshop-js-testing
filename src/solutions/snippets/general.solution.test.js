@@ -1,10 +1,25 @@
 import {
+  sumAll,
   getSinguralOrPlural,
   filterBiggestNumbers,
   removeNullish,
 } from '../../playgrounds/snippets/general'
 
 describe('general - (1.1 Initial)', () => {
+  describe('sumAll()', () => {
+    it('sums correctly all given numbers #demo', () => {
+      // Arrange
+      const a = 1
+      const b = 2
+      const c = 3
+
+      // Act
+      const result = sumAll(a, b, c)
+
+      // Assert
+      expect(result).toBe(6)
+    })
+  })
   describe('getSinguralOrPlural()', () => {
     it('returns first word, given Number 1', () => {
       const nr = 1

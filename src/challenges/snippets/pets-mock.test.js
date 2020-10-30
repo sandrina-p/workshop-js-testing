@@ -3,6 +3,8 @@ import { petsGuard } from '../../playgrounds/snippets/pets'
 describe('pets - (1.2 Mock)', () => {
   describe('petsGuard()', () => {
     it('returns the response of given API callback and value', () => {
+      expect.assertions(3)
+
       // Arrange
       // 🍀 Create the mock where it returns something
       // const APIMock = jest.fn().....
@@ -30,6 +32,5 @@ describe('pets - (1.2 Mock)', () => {
 
 /*
 eslint
-  jest/no-disabled-tests: "off",
   jest/expect-expect: "off"
 */

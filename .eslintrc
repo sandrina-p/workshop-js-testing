@@ -19,7 +19,8 @@
         "endOfLine": "auto"
       }
     ],
-    "jest/no-commented-out-tests": "off"
+    "jest/no-commented-out-tests": "off",
+    "jest/no-disabled-tests": "off"
   },
   "settings": {
     "react": {

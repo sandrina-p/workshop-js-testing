@@ -6,9 +6,9 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { sendTrack } from '../playgrounds/snippets/metrics'
+import { sendTrack } from '../../playgrounds/snippets/metrics'
 
-jest.mock('../playgrounds/snippets/metrics')
+jest.mock('../../playgrounds/snippets/metrics')
 jest.mock('../../playgrounds/react/state/BoredContext')
 
 describe('useBoredList', () => {
@@ -60,7 +60,9 @@ describe('useBoredList', () => {
     })
   })
 
-  it('calls "sendTrack", given a type with a list length multiple of 5', () => {
+  // 💡 This test only works after useBoredList hook is updated.
+  // Go there and change "especial" to "special"
+  it.skip('calls "sendTrack", given a type with a list length multiple of 5', () => {
     useBoredState.mockReturnValue({
       skipped: [],
     })
@@ -84,8 +86,10 @@ describe('useBoredList', () => {
     expect(result.current.countLabel).toEqual(5)
     expect(sendTrack).toHaveBeenCalledTimes(1)
     expect(sendTrack).toHaveBeenCalledWith('skipped', {
-      count: 5,
-      special: true,
+      especial: true,
+      meta: {
+        count: 5,
+      },
     })
   })
 })

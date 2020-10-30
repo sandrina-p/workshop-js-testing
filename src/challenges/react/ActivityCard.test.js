@@ -40,8 +40,3 @@ describe('<ActivityCard />', () => {
 })
 
 // ------------
-
-/*
-eslint
-  jest/no-disabled-tests: "off",
-*/

@@ -8,10 +8,10 @@ import {
 } from '@testing-library/react'
 
 import { BoredProvider } from '../../playgrounds/react/state/BoredContext'
-import Root from '../../playgrounds/Bored'
+import Root from '../../playgrounds/react'
 
 import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
-import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
+import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 jest.mock('../../playgrounds/snippets/boredAPI')
 
@@ -78,7 +78,9 @@ describe('<Root />', () => {
 
       // Act + Assert - Clearning the Skipped links resets its count
       const linkItem = screen.getByText('Skipped (2)').parentElement
-      const linkClear = within(linkItem).getByRole('button', { name: 'Clear' })
+      const linkClear = within(linkItem).getByRole('button', {
+        name: 'Clear skipped',
+      })
 
       fireEvent.click(linkClear)
 

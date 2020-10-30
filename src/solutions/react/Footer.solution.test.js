@@ -25,7 +25,6 @@ describe('<Footer />', () => {
         useBoredListFake({
           countLabel: 4,
           clear: doneClearMock,
-          hum: [1, 2, 3],
         })
       )
 
