@@ -1,11 +1,11 @@
-import { APIshell } from '../playgrounds/snippets/1.2'
+import { petsGuard } from '../../playgrounds/snippets/pets'
 
-describe('1.2 methods', () => {
-  describe('APIshell()', () => {
+describe('pets - (1.2 mocks)', () => {
+  describe('petsGuard()', () => {
     it('calls the API with given arg, and returns its value', () => {
       const APIMock = jest.fn().mockReturnValue('OK!')
 
-      const result = APIshell('category', APIMock)
+      const result = petsGuard('category', APIMock)
 
       expect(APIMock).toHaveBeenCalledTimes(1)
       expect(APIMock).toHaveBeenCalledWith('category')
@@ -13,17 +13,17 @@ describe('1.2 methods', () => {
     })
 
     describe('given an array', () => {
-      it('calls the API multiple times with param type: list', () => {
+      it('calls the API multiple times with param type: family', () => {
         const APIMock = jest
           .fn()
           .mockImplementationOnce(() => 'okay 1')
           .mockImplementationOnce(() => 'okay 2')
 
-        const result = APIshell(['color', 'size'], APIMock)
+        const result = petsGuard(['color', 'size'], APIMock)
 
         expect(APIMock).toHaveBeenCalledTimes(2)
-        expect(APIMock).toHaveBeenNthCalledWith(1, 'color', { type: 'list' })
-        expect(APIMock).toHaveBeenNthCalledWith(2, 'size', { type: 'list' })
+        expect(APIMock).toHaveBeenNthCalledWith(1, 'color', { type: 'family' })
+        expect(APIMock).toHaveBeenNthCalledWith(2, 'size', { type: 'family' })
         expect(result).toEqual(['okay 1', 'okay 2'])
       })
 
@@ -40,17 +40,17 @@ describe('1.2 methods', () => {
           .fn()
           .mockImplementation(item => (item === 'category' ? false : 'Okay!'))
 
-        const result = APIshell(['color', 'category', 'size'], APIMock)
+        const result = petsGuard(['color', 'category', 'size'], APIMock)
 
         expect(APIMock).toHaveBeenCalledTimes(2)
-        expect(result).toBe(`APIshell: "category" failed!`)
+        expect(result).toBe(`petsGuard: "category" failed!`)
       })
     })
   })
 
   it('throws Error when APICallback argument is not a function', () => {
     expect(() => {
-      APIshell()
+      petsGuard()
     }).toThrow(Error('2nd parameter is required as a function'))
   })
 })

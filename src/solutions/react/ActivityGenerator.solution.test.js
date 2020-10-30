@@ -11,11 +11,11 @@ import {
 import ActivityGenerator from '../../playgrounds/react/components/activity-generator'
 
 import * as BoredContext from '../../playgrounds/react/state/BoredContext'
-import { getNewActivity } from '../../playgrounds/react/state/boredAPI'
+import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
 import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredProviderFake.js'
 
-jest.mock('../../playgrounds/react/state/boredAPI')
+jest.mock('../../playgrounds/snippets/boredAPI')
 
 const BoredProvider = BoredContext.BoredProvider
 const BoredStateContext = BoredContext.BoredStateContext

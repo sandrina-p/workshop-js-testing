@@ -5,7 +5,7 @@
  * @param {String} plural
  * @return {String}
  * @example
- * (1, 'woman', 'women') -> fruit
+ * (1, 'woman', 'women') -> woman
  * (2, 'person', 'people') -> people
  */
 export function getSinguralOrPlural(count, singular, plural) {
@@ -13,6 +13,24 @@ export function getSinguralOrPlural(count, singular, plural) {
 }
 
 /**
+ * Given an array it returns the numbers bigger than a given minimum
+ * @param {Array} numbers
+ * @param {Number} min
+ * @return {Array}
+ * @example
+ * ([1, -3, 8, 7]) -> [1, 8, 7]
+ * ([3, 5, 9], 4) -> [5, 9]
+ */
+export function filterBiggestNumbers(numbers = [], min = 0) {
+  if (!Array.isArray(numbers)) {
+    throw Error('The first argument must be an array')
+  }
+
+  return numbers.filter(val => val > min)
+}
+
+/**
+ * 1.1 BONUS #2 - Asserting dynamic results
  * Gets an object and returns a new similar one without nullish values
  * @param {Object} obj - Object to be analyzed
  * @returns {Object}
@@ -30,4 +48,15 @@ export function removeNullish(obj) {
   }
 
   return result
+}
+
+/**
+ * Returns the sum of all given values
+ * @param  {...Number} numbers
+ * @retun {Number}
+ * @example
+ * (3, 5, 2) ->  10
+ */
+export function sumAll(...numbers) {
+  return numbers.reduce((acc, cur) => acc + cur, 0)
 }

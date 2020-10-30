@@ -8,9 +8,9 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { getNewActivity } from '../../playgrounds/react/state/boredAPI'
+import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 
-jest.mock('../../playgrounds/react/state/boredAPI')
+jest.mock('../../playgrounds/snippets/boredAPI')
 
 describe('BoredContext', () => {
   describe('<BoredProvider />', () => {

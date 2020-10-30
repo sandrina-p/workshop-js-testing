@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`1.1 Math methods asserting data objects using snapshots 1`] = `
+exports[`general - (1.1 Initial) asserting data objects using snapshots 1`] = `
 Object {
   "age": 25,
   "country": "Portugal",

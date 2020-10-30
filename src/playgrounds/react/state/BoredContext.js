@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getNewActivity } from './boredAPI'
+import { getNewActivity } from '../../snippets/boredAPI'
 
 const BoredStateContext = React.createContext()
 const BoredDispatchContext = React.createContext()

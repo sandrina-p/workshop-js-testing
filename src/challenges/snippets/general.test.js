@@ -1,22 +1,33 @@
-/* eslint-disable jest/no-commented-out-tests */
 import {
-  getCube,
-  isBiggerThan10,
+  sumAll,
+  getSinguralOrPlural,
   filterBiggestNumbers,
   removeNullish,
-} from '../playgrounds/snippets/1.1.js'
+} from '../../playgrounds/snippets/general'
 
-describe('1.1 Math Methods', () => {
+describe('general - (1.1 Initial)', () => {
+  describe('sumAll()', () => {
+    it('sums correctly all given numbers #demo', () => {
+      // Arrange
+      const a = 1
+      const b = 2
+      const c = 3
+
+      // Act
+      const result = sumAll(a, b, c)
+
+      // Assert
+      expect(result).toBe(6)
+    })
+  })
+
   // 🍀 Suggestion: Group each method into a describe().
 
-  // 🍀 getCube - 1 test needed
-  // describe(...)
-
-  // 🍀 isBiggerThan10 - 2 tests needed
+  // 🍀 getSinguralOrPlural - 2 tests needed
   // describe(...)
 
   // 🍀 filterBiggestNumbers - 3 tests needed
-  // 💡 When asserting arrays, toBe() won't work. Try .toEqual() instead.
+  // 💡 When asserting arrays, toBe() won't work. Try .toEqual()
   // describe(...)
 
   // ...
@@ -41,15 +52,14 @@ describe('1.1 Math Methods', () => {
       const expected = {
         name: 'Sandrina',
         country: 'Portugal',
-        city: 'Porto',
         age: 25,
         hobbie: 'piano',
-        siblings: undefined, // Hum... does it passes?
+        siblings: undefined, // uh!
       }
 
-      // - doesn't work
+      // 💡 doesn't work
       // expect(result).toBe(expected)
-      // - Ups! It passes, but is a false positive. "siblings"
+      // 💡 Ups! It passes, but is a false positive. "siblings"
       // was removed but it's on expected object.
       expect(result).toEqual(expected)
     })

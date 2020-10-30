@@ -1,6 +1,4 @@
-// TODO move to snippets/boredAPI
-
-import { removeNullish } from '../../utils/general'
+import { removeNullish } from './general'
 
 /**
  * Convert object to query string

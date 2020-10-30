@@ -7,7 +7,7 @@ import fetchMock from 'jest-fetch-mock'
 import {
   getActivity,
   getNewActivity,
-} from '../../playgrounds/react/state/boredAPI'
+} from '../../playgrounds/snippets/boredAPI'
 import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
 
 const activityStubbed = activityStub.basic

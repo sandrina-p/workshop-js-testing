@@ -1,46 +1,43 @@
 import {
-  getCube,
-  isBiggerThan10,
+  getSinguralOrPlural,
   filterBiggestNumbers,
   removeNullish,
-} from '../playgrounds/snippets/1.1.js'
+} from '../../playgrounds/snippets/general'
 
-describe('1.1 Math methods', () => {
-  describe('getCube', () => {
-    it('given 5, it returns 125', () => {
-      // Arrange
-      const expected = 125
+describe('general - (1.1 Initial)', () => {
+  describe('getSinguralOrPlural()', () => {
+    it('returns first word, given Number 1', () => {
+      const nr = 1
+      const singular = 'wolf'
+      const plural = 'wolves'
 
-      // Act
-      const result = getCube(5)
+      const result = getSinguralOrPlural(nr, singular, plural)
 
-      // Assert
-      expect(result).toBe(expected)
+      expect(result).toBe(singular)
+    })
+
+    it('returns second word, given Number bigger than 1', () => {
+      const nr = 2
+      const singular = 'wolf'
+      const plural = 'wolves'
+
+      const result = getSinguralOrPlural(nr, singular, plural)
+
+      expect(result).toBe(plural)
     })
   })
 
-  describe('isBiggerThan10()', () => {
-    it('given the number 12, it returns "sure!"', () => {
-      const number = 12
-      const expected = 'sure!'
-
-      expect(isBiggerThan10(number)).toBe(expected)
-    })
-
-    it('given the number 7, it returns "not really..."', () => {
-      const number = 7
-      const expected = 'not really...'
-      expect(isBiggerThan10(number)).toBe(expected)
-    })
-  })
-
-  describe('isBiggerThan10() - each', () => {
+  describe('getSinguralOrPlural() - each', () => {
     it.each([
-      [12, 'sure!'],
-      [7, 'not really...'],
-    ])('given the number %i, it returns %s', (number, expected) => {
-      expect(isBiggerThan10(number)).toBe(expected)
-    })
+      [1, 'wolf', 'wolves', 'wolf'],
+      [2, 'wolf', 'wolves', 'wolves'],
+    ])(
+      'given the number %i, it returns %s',
+      (nr, singular, plural, expected) => {
+        const result = getSinguralOrPlural(nr, singular, plural)
+        expect(result).toBe(expected)
+      }
+    )
   })
 
   describe('filterBiggestNumbers()', () => {

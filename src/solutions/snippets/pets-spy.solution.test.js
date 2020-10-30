@@ -1,12 +1,9 @@
-import {
-  verifyMovieBeforeNavigate,
-  createProfile,
-} from '../playgrounds/snippets/1.3'
+import { verifyPetBeforeAdopt, searchPet } from '../playgrounds/snippets/1.3'
 
 describe('1.3 methods', () => {
   beforeEach(jest.clearAllMocks)
 
-  describe('verifyMovieBeforeNavigate()', () => {
+  describe('verifyPetBeforeAdopt()', () => {
     // Reassigning window in JSDOM +14
     // Ref: https://remarkablemark.org/blog/2018/11/17/mock-window-location/
     const locationOriginal = window.location
@@ -37,7 +34,7 @@ describe('1.3 methods', () => {
       )
 
       // Act
-      verifyMovieBeforeNavigate(mockEvent, 10)
+      verifyPetBeforeAdopt(mockEvent, 10)
 
       // Assert
       // Assert preventDefault was called
@@ -49,7 +46,7 @@ describe('1.3 methods', () => {
       // Assert window usage
       expect(spyWindowLocationAssign).toHaveBeenCalledTimes(1)
       expect(spyWindowLocationAssign).toHaveBeenCalledWith(
-        '//movies-page.com/movies/10'
+        '//animals.com/pets/10'
       )
     })
 
@@ -65,7 +62,7 @@ describe('1.3 methods', () => {
       )
 
       // Act
-      verifyMovieBeforeNavigate(mockEvent, 101)
+      verifyPetBeforeAdopt(mockEvent, 101)
 
       // Assert
 
@@ -76,13 +73,13 @@ describe('1.3 methods', () => {
       expect(spyStorageSetItem).toHaveBeenCalledTimes(1)
       // Option A: With direct string:
       expect(spyStorageSetItem).toHaveBeenCalledWith(
-        'superMovie',
+        'superPet',
         '{"id":101,"timestamp":"time_123456"}'
       )
       // Option B: Using inline snapshot
       expect(spyStorageSetItem.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
-          "superMovie",
+          "superPet",
           "{\\"id\\":101,\\"timestamp\\":\\"time_123456\\"}",
         ]
       `)
@@ -90,12 +87,12 @@ describe('1.3 methods', () => {
       // Assert window usage
       expect(spyWindowLocationAssign).toHaveBeenCalledTimes(1)
       expect(spyWindowLocationAssign).toHaveBeenCalledWith(
-        '//movies-page.com/movies/101'
+        '//animals.com/pets/101'
       )
     })
   })
 
-  describe('createProfile()', () => {
+  describe('searchPet()', () => {
     describe('Option A: Mocking console', () => {
       const consoleOriginal = global.console
       beforeAll(() => {
@@ -110,21 +107,21 @@ describe('1.3 methods', () => {
         global.console = consoleOriginal
       })
 
-      it('logs the creation', () => {
-        const result = createProfile('john', 5)
+      it('logs the search', () => {
+        const result = searchPet('john', 5)
 
         expect(global.console.log).toHaveBeenCalledWith(
-          ':: createProfile - Creating profile john...'
+          ':: searchPet - Searching john...'
         )
 
-        expect(result).toEqual({ name: 'john', age: 5 })
+        expect(result).toBe('not found!')
       })
 
       it('warns when the age is not a number', () => {
-        const result = createProfile('john', '5')
+        const result = searchPet('john', '5')
 
         expect(global.console.warn).toHaveBeenCalledWith(
-          ':: createProfile - Age must be a number'
+          ':: searchPet - Age must be a number'
         )
 
         expect(result).toBeUndefined()
@@ -133,23 +130,23 @@ describe('1.3 methods', () => {
 
     describe('Option B: Spying console', () => {
       // We can spy the console, but the logs will still apear in the tests output
-      it('logs the creation', () => {
+      it('logs the search', () => {
         const consoleLogSpy = jest.spyOn(global.console, 'log')
-        const result = createProfile('john', 5)
+        const result = searchPet('john', 5)
 
         expect(consoleLogSpy).toHaveBeenCalledWith(
-          ':: createProfile - Creating profile john...'
+          ':: searchPet - Searching john...'
         )
 
-        expect(result).toEqual({ name: 'john', age: 5 })
+        expect(result).toBe('not found!')
       })
 
       it('warns when the age is not a number', () => {
         const consoleWarnSpy = jest.spyOn(global.console, 'warn')
-        const result = createProfile('john', 'five')
+        const result = searchPet('john', 'five')
 
         expect(consoleWarnSpy).toHaveBeenCalledWith(
-          ':: createProfile - Age must be a number'
+          ':: searchPet - Age must be a number'
         )
 
         expect(result).toBeUndefined()
@@ -160,16 +157,16 @@ describe('1.3 methods', () => {
     describe.skip('Option C: Globally mocking the console', () => {
       // Go to jest.setup.js and uncomment the global.console
 
-      it('logs the creation', () => {
-        const result = createProfile('john', 5)
+      it('logs the search', () => {
+        const result = searchPet('john', 5)
 
         expect(global.console.log).toHaveBeenCalledWith(
-          ':: createProfile - Creating profile john...'
+          ':: searchPet - Searching john...'
         )
 
         console.dev('debuggin result:', result)
 
-        expect(result).toEqual({ name: 'john', age: 5 })
+        expect(result).toBe('not found!')
       })
     })
   })

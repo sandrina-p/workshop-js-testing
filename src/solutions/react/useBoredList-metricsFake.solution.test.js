@@ -6,13 +6,13 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { sendTrack } from '../playgrounds/utils/metrics'
-import { sendTrakeFake } from '../playgrounds/utils/__doubles__/metricsFake'
+import { sendTrack } from '../playgrounds/snippets/metrics'
+import { sendTrackFake } from '../playgrounds/snippets/__doubles__/metricsFake'
 
-jest.mock('../playgrounds/utils/metrics')
+jest.mock('../playgrounds/snippets/metrics')
 jest.mock('../../playgrounds/react/state/BoredContext')
 
-sendTrack.mockImplementation(sendTrakeFake)
+sendTrack.mockImplementation(sendTrackFake)
 
 describe('useBoredList', () => {
   it('calls "sendTrack" immediately, given a listType with a length multiple of 5', () => {

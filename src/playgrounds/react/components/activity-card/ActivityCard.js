@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-import { getSinguralOrPlural } from '../../../utils/general'
+import { getSinguralOrPlural } from '../../../snippets/general'
 import Button from '../form/button'
 
 import Styles from './ActivityCard.css'

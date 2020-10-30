@@ -7,7 +7,7 @@ import 'whatwg-fetch'
 import {
   getActivity,
   // getNewActivity,
-} from '../../playgrounds/react/state/boredAPI'
+} from '../../playgrounds/snippets/boredAPI'
 
 import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
 

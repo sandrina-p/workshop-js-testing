@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { sendTrack } from '../../utils/metrics'
+import { sendTrack } from '../../snippets/metrics'
 import { useBoredDispatch, useBoredState } from './BoredContext'
 
 const listFnMap = {

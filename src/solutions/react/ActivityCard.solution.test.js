@@ -1,7 +1,7 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import { hasTextNode } from '../../playgrounds/utils/testing'
+import { hasTextNode } from '../../playgrounds/snippets/testing'
 
 import ActivityCard from '../../playgrounds/react/components/activity-card'
 

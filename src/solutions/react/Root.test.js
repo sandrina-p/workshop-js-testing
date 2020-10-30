@@ -10,10 +10,10 @@ import {
 import { BoredProvider } from '../../playgrounds/react/state/BoredContext'
 import Root from '../../playgrounds/Bored'
 
-import { getNewActivity } from '../../playgrounds/react/state/boredAPI'
+import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 import { activityStub } from '../../playgrounds/react/state/__doubles__/boredAPIStubs'
 
-jest.mock('../../playgrounds/react/state/boredAPI')
+jest.mock('../../playgrounds/snippets/boredAPI')
 
 async function doGetAnotherActivity({ btnName }) {
   const btnDone = screen.getByRole('button', {

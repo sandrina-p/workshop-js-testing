@@ -6,9 +6,9 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { sendTrack } from '../playgrounds/utils/metrics'
+import { sendTrack } from '../playgrounds/snippets/metrics'
 
-jest.mock('../playgrounds/utils/metrics')
+jest.mock('../playgrounds/snippets/metrics')
 jest.mock('../../playgrounds/react/state/BoredContext')
 
 describe('useBoredList', () => {

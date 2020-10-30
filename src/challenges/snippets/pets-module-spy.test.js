@@ -1,9 +1,9 @@
-import { getAnimal } from '../playgrounds/snippets/1.4'
+import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
 // 🍀 Refactor the import to get all the exports as one.
-import { captureError } from '../playgrounds/snippets/catcher'
+import { sendTrack } from '../../playgrounds/snippets/metrics'
 
-describe('1.4 - Imported modules (Spy)', () => {
+describe('1.4 - (1.4 - Imported modules: Spy)', () => {
   const originalWarn = global.console.warn
   const warnMock = jest.fn()
 
@@ -22,12 +22,12 @@ describe('1.4 - Imported modules (Spy)', () => {
     // 🍀 Spy the captureError to assert it after
 
     // Act
-    expect(() => {
-      getAnimal()
-    }).toThrow(Error('type is required as string'))
+    const result = saveAsFavorite(678, 'snake')
 
     // Assert
-    // 🍀 verify that captureError was called correctly
+    expect(result).toBe('pet-678-saved')
+
+    // 🍀 Verify sendTrack was called correctly
 
     // 💡 The captureError is still the original, so the warn
     // message is shown in the logs. You can mock them too

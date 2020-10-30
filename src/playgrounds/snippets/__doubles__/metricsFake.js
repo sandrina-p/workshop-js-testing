@@ -1,7 +1,7 @@
 // A fake is a simplified version of a original function.
 // The main goal of this fake is to validate the arguments passed to the method.
 
-export function sendTrakeFake(id, opts = {}) {
+export function sendTrackFake(id, opts = {}) {
   // Validate the required id is a string.
   if (typeof id !== 'string') {
     throw Error(`metricsFake sendTrack · id ${id} must be a String`)

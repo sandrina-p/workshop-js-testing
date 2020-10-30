@@ -6,11 +6,11 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { sendTrack } from '../playgrounds/utils/metrics'
+import { sendTrack } from '../playgrounds/snippets/metrics'
 // 🍀 Import the metrics modules
-// import { sendTrakeFake } from '../playgrounds/utils/__doubles__/metricsFake'
+// import { sendTrackFake } from '../playgrounds/snippets/__doubles__/metricsFake'
 
-jest.mock('../playgrounds/utils/metrics')
+jest.mock('../playgrounds/snippets/metrics')
 jest.mock('../../playgrounds/react/state/BoredContext')
 
 // 🍀 Use sendTrackFake as mocked implementation of sendTrack.

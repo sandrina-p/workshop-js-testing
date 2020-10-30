@@ -6,11 +6,11 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { sendTrack } from '../playgrounds/utils/metrics'
+import { sendTrack } from '../playgrounds/snippets/metrics'
 
 // 🍀 This hook has some dependencies:
 // - First, the metric "sendTrack": It's irrelevant, so we can just mock them:
-// jest.mock('../playgrounds/utils/metrics')
+// jest.mock('../playgrounds/snippets/metrics')
 // - Then, the BoredContext. For the purpose of this challenge we'll mock it too.
 //   Don't worry, later on we'll discuss other approaches. For now, let's just
 //   focus on learning how to use testing-librar/react-hooks.
