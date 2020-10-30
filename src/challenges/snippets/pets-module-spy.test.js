@@ -3,7 +3,7 @@ import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 // 🍀 Refactor the import to get all the exports as one.
 import { sendTrack } from '../../playgrounds/snippets/metrics'
 
-describe('1.4 - (1.4 - Imported modules: Spy)', () => {
+describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
   const originalWarn = global.console.warn
   const warnMock = jest.fn()
 

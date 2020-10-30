@@ -1,12 +1,12 @@
-# Javascript Testing with Jest + React Testing Library
+# Javascript Testing Fundamentals
 
-_WIP_
+Learn testing principles and how to apply them to React applications using **Jest** and **Testing Library**.
 
 ---
 
-Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/).
+Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love to refactor code with the confidence that the final result won't break. <!-- copyreview please. make it short. make it sweet -->
 
-These are the material resources for my [Javascript Testing Workshop](https://www.sandrina-p.net/workshop-js-testing/).
+These are the material resources for my **JS Testing Workshop** <!-- TODO LINK -->
 
 ## Pre-Workshop requirements
 
@@ -16,10 +16,11 @@ To get the most out of the workshop, please do the following things in advance:
   - Turn on your video if possible, so we don't feel alone.
   - Keep your microphone muted to avoid background noises.
 - **Install a modern browser**. Chrome or Firefox are recommended.
+- **Setup the project** prior to the workshop to avoid unexpected installation issues.
 
 The better prepared you are for the workshop, the more you will learn from it!
 
-## Setup the workshop
+## Setup the project
 
 ### Installing
 
@@ -47,30 +48,24 @@ To ensure all's fine, please verify the following three things:
 - Did everything work? _Ah-wesome!_ That's all, see you soon! 🤓
 - Having troubles? [Open an issue](https://github.com/sandrina-p/workshop-js-testing/issues/new) or reach me at a.sandrina.p@gmail.com.
 
-### Project structure
-
-```bash
-WIP
-```
+### Workshop Dynamic
 
 - In each exercise you'll find the lucky clover emoji 🍀 to guide you. I don't expected you to complete all the exercises on time. The goal is to introduce you to new things and **make you think about it and ask me questions** as we go though the content.
 - Learning Tip: **Check the solutions only as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning proccess. :)
 
+<!--
+
 ## Workshop Outline
 
-- 📡 Syncing...
-- 🧠 **#0: ...**
-- 🎯 **#1: ...**
-- 🏖 15 minutes break
-- 🎯 **#2: ...**
-- 🏖 Day break
-- 🎯 **#3: ...**
+- WIP
 
 ---
 
 ## Workshop Feedback
 
 Please take a couple of minutes to [give me your feedback](TODO-LINK), as it will help me improving the next editions of this workshop 🤗
+
+-->
 
 ## License
 

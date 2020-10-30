@@ -4,7 +4,7 @@ import { sendTrack } from '../../playgrounds/snippets/metrics'
 
 jest.mock('../../playgrounds/snippets/metrics')
 
-describe('pets - (1.4 - Imported modules: Mock)', () => {
+describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
   describe('saveAsFavorite()', () => {
     it('calls sendTrack special given a type of snake', () => {
       const result = saveAsFavorite(678, 'snake')

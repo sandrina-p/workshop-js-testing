@@ -14,7 +14,7 @@ export default function Root() {
   return (
     <div
       ref={refMD}
-      className="briefingMD"
+      className="briefingMD home"
       dangerouslySetInnerHTML={{ __html: zero }}
     ></div>
   )

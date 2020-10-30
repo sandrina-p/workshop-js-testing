@@ -2,6 +2,7 @@
   --bg: #f8f3ef;
   --blank: #fff;
   --text: #343434;
+  --text-light: #6f6f6f;
   --brand: #9b78de;
   --brand-strong: #8c00ff;
   --brand-light: #e9e1f8;
@@ -34,4 +35,21 @@ ul,
 ol {
   padding: 0 10px;
   margin: 0 10px;
+}
+
+p {
+  margin: 0;
+}
+
+:global {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0px, 0px, 0px, 0px);
+    border: 0px;
+  }
 }

@@ -2,7 +2,7 @@ import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
 import * as metrics from '../../playgrounds/snippets/metrics'
 
-describe('1.4 - (1.4 - Imported modules: Spy)', () => {
+describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
   describe('saveAsFavorite()', () => {
     // 💡 The sendTrack is still the original, so the warn
     // message will show in the logs. Let's keep them clean...
