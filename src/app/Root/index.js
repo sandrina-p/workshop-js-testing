@@ -63,7 +63,7 @@ export default function Root() {
             {navigation.map(section => (
               <div className={Styles.navSection} key={section.title}>
                 <p className={Styles.navTitle}>{section.title}</p>
-                <ul key={section.title}>
+                <ol key={section.title}>
                   {section.briefings.map(id => (
                     <li key={id}>
                       <Link href={`/briefings/${id}`}>
@@ -71,7 +71,7 @@ export default function Root() {
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
             ))}
 

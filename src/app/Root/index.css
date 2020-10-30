@@ -27,7 +27,7 @@
     display: block;
     text-decoration: none;
     padding: 0.6rem 1.2rem;
-    margin: 3px 0;
+    margin: 3px 0 0 0;
     color: var(--text);
     border-radius: 2px;
     transition: background 150ms ease;
@@ -50,10 +50,19 @@
     }
   }
 
-  ul {
-    list-style: none;
-    margin: 0 0 0 0;
+  ol {
+    margin: 0;
     padding: 0;
+
+    ::marker {
+      color: var(--brand);
+      /* margin-right: 0.8rem; */
+    }
+
+    li {
+      margin: 0rem;
+      padding: 0rem;
+    }
   }
 
   &Title {
@@ -92,7 +101,7 @@
   max-width: 17rem;
   padding-right: 1rem;
   margin-top: 2.4rem;
-
+  font-size: 1.4rem;
   text-align: center;
 
   span {

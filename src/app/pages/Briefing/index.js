@@ -15,7 +15,6 @@ export default function Root() {
 
   return (
     <>
-      <p>Brienfing {params.id}</p>
       <div
         ref={refMD}
         className="briefingMD"
