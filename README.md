@@ -30,7 +30,7 @@ The better prepared you are for the workshop, the more you will learn from it!
 # Clone the repository
 git clone https://github.com/sandrina-p/workshop-js-testing.git
 
-# Go to workshop folder
+# Go to the workshop folder
 cd workshop-js-testing
 
 # Install the dependencies
@@ -39,10 +39,10 @@ npm install
 
 ### Quick Check-up
 
-To ensure all's fine, please verify the following three things:
+To ensure all is fine, please verify the three following things:
 
 1. **App running:** Run `npm start`. The workshop app should start at http://localhost:1234
-2. **Testing tooling:** Run `npm run checkup` and verify the [output matches this example](src/_checkup/checkup_output.png?raw=true).
+2. **Testing tool:** Run `npm run checkup` and verify the [output matches this example](src/_checkup/checkup_output.png?raw=true).
 3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Then, restart your editor, open `src/_checkup/index.test.js` and follow the notes given with the ligh bulb emoji 💡 .
 
 - Did everything work? _Ah-wesome!_ That's all, see you soon! 🤓
@@ -50,7 +50,7 @@ To ensure all's fine, please verify the following three things:
 
 ### Workshop Dynamic
 
-The workshop consists in a set of challenges. Each one introduces a new topic, followed with a code exercise for you to apply the concepts learned.
+The workshop consists of a set of challenges. Each introduces a new topic, followed with a code exercise for you to apply the concepts learned.
 
 ```bash
 src/
@@ -61,11 +61,11 @@ src/
   solutions/   # The final solutions for each challenge
 ```
 
-In each exercise you'll find the lucky clover emoji 🍀 to guide you. I don't expected you to complete the entire code challenge on time. The goal is to introduce you to new things, **make you think about it and ask me questions** as we go through the content.
+In each exercise you'll find the lucky clover emoji 🍀 to guide you. I don't expect you to complete the entire code challenge on time. The goal is to introduce you to new things, **to make you think about them and ask me questions** as we go through the content.
 
-Here's a learning tip: **Check the solutions only as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning proccess. :)
+Here's a learning tip: **Check the solutions only as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
 
-After each exercise we'll go through the solution together and clarify any question that might appear on the way.
+After each exercise we'll go through the solution together and clarify any questions that might appear on the way.
 
 <!--
 ## Workshop Feedback
