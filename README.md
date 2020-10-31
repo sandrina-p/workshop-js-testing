@@ -6,7 +6,7 @@ Learn testing principles and how to apply them to React applications using **Jes
 
 Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence that the app won't break. <!-- copyreview please. make it short. make it sweet -->
 
-These are the material resources for my **JS Testing Workshop** <!-- TODO LINK -->
+These are the material resources for my **JS Testing Workshop**. <!-- TODO LINK -->
 
 ## Pre-Workshop requirements
 
