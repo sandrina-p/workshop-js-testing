@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 
 import ActivityCard from '../../playgrounds/react/components/activity-card'
 
-describe('<ActivityCard />', () => {
+describe('<ActivityCard /> - (2.1 components)', () => {
   it('renders with minimum props', () => {
     expect.assertions(4) // it might be more than 4!
 

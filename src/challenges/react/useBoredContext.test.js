@@ -16,7 +16,7 @@ import { sendTrack } from '../../playgrounds/snippets/metrics'
 //   focus on learning how to use testing-librar/react-hooks.
 // jest.mock('../../playgrounds/react/state/BoredContext')
 
-describe('useBoredList', () => {
+describe('useBoredList - (2.3 hooks)', () => {
   it('returns "countLabel" and "clear", given a "skipped" lisType', () => {
     // Arrange
     const listType = 'skipped'

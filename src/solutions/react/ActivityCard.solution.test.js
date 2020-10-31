@@ -5,7 +5,7 @@ import { hasTextNode } from '../../playgrounds/snippets/testing'
 
 import ActivityCard from '../../playgrounds/react/components/activity-card'
 
-describe('<ActivityCard />', () => {
+describe('<ActivityCard /> - (2.1 components)', () => {
   it('renders with minimum props', () => {
     render(
       <ActivityCard

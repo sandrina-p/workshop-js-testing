@@ -18,6 +18,7 @@ function updateList(name, prevValue, newKey) {
 function BoredProvider({ children, value }) {
   const [state, setState] = React.useState(() => ({
     // latest suggested activity
+    // rename latest to activity
     latest: null, // : @Activity
     // List with activities already done, by keyId
     done: [],

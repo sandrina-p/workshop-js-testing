@@ -4,7 +4,9 @@
 // test would still pass).
 // One solution is to log an error and return immediately
 
-export default function useBoredListFake(resultStub) {
+// This fake validates both the arguments passed (listType)
+// And the mocked result (returnMock)
+export default function useBoredListFake(returnMock) {
   return listType => {
     // 🍀 Validate the listType passsed is "skipped" or "done"
 
@@ -13,7 +15,7 @@ export default function useBoredListFake(resultStub) {
     //   return
     // }
 
-    // 🍀 Validate the resultStub does not contain any key
+    // 🍀 Validate the returnMock does not contain any key
     // besides "countLabel" and "clear"
 
     // if (...) {
@@ -23,6 +25,6 @@ export default function useBoredListFake(resultStub) {
     //   return
     // }
 
-    return resultStub
+    return returnMock
   }
 }

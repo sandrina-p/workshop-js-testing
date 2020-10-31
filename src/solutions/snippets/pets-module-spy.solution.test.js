@@ -18,7 +18,7 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
       const id = 678
 
       jest.spyOn(metrics, 'sendTrack')
-      jest.spyOn(metrics, 'getMetricsSettings').mockReturnValue({
+      jest.spyOn(metrics, 'getPreferences').mockReturnValue({
         markting: true,
       })
 

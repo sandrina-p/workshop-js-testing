@@ -23,16 +23,17 @@ describe('general - (1.1 Initial)', () => {
 
   // 🍀 Suggestion: Group each method into a describe().
 
-  // 🍀 getSinguralOrPlural - 2 tests needed
-  // describe(...)
+  // 🍀 getSinguralOrPlural
+  expect.assertions(2)
 
-  // 🍀 filterBiggestNumbers - 3 tests needed
+  // 🍀 filterBiggestNumbers
+  expect.assertions(3)
   // 💡 When asserting arrays, toBe() won't work. Try .toEqual()
   // describe(...)
 
   // ...
 
-  // 🍀 Done? Go make bonus #1!
+  // 🍀 Done? Go to Bonus #1!
 
   // ...
 
@@ -49,23 +50,30 @@ describe('general - (1.1 Initial)', () => {
     const result = removeNullish(profile)
 
     it('toBe vs toEqual', () => {
+      expect.assertions(1)
+
       const expected = {
         name: 'Sandrina',
         country: 'Portugal',
         age: 25,
         hobbie: 'piano',
-        siblings: undefined, // uh!
+        siblings: undefined, // uh?!
       }
 
-      // 💡 doesn't work
+      // 🍀 doesn't work
       // expect(result).toBe(expected)
+
       // 💡 Ups! It passes, but is a false positive. "siblings"
       // was removed but it's on expected object.
-      expect(result).toEqual(expected)
+      // expect(result).toEqual(expected)
     })
 
-    it.todo('using snapshots')
+    it('using snapshots', () => {
+      expect.assertions(1)
+    })
 
-    it.todo('using schemas')
+    it('using schemas', () => {
+      expect.assertions(1)
+    })
   })
 })

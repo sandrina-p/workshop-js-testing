@@ -1,9 +1,6 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
-import {
-  sendTrack,
-  getMetricsSettings,
-} from '../../playgrounds/snippets/metrics'
+import { sendTrack, getPreferences } from '../../playgrounds/snippets/metrics'
 // 🍀 Mock the entire metrics module
 
 describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
@@ -14,7 +11,7 @@ describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
       expect.assertions(3)
 
       // Arrange
-      // Mock getMetricsSettings
+      // Mock getPreferences
 
       // Act
       const result = saveAsFavorite(102)

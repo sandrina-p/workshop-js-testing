@@ -11,7 +11,7 @@ describe('pets - (1.2 Mock)', () => {
 
       // Act
       // 🍀 Pass the mock as 2nd paratemer to APISheel
-      const result = petsGuard('category')
+      // const result = petsGuard('category')
 
       // Assert
       // 💡 Remember to assert both arguments and how many times a
@@ -19,15 +19,22 @@ describe('pets - (1.2 Mock)', () => {
     })
 
     describe('given an array', () => {
-      it.todo('calls the API multiple times with param type: family')
+      it('calls the API multiple times with param type: family', () => {
+        expect.assertions(3)
+      })
 
-      // 🍀 For this one you'll need .mockReturnValueOnce
-      // or to create a custom .mockImplementation
-      it.todo('when the API fails it returns the error with API index')
+      it('when the API fails it returns the error with API index', () => {
+        // 🍀 For this one you'll need .mockReturnValueOnce
+        // or to create a custom .mockImplementation
+        expect.assertions(2)
+      })
     })
   })
 
-  it.todo('throws Error when APICallback argument is not a function')
+  it('throws Error when APICallback argument is not a function', () => {
+    expect.assertions(1)
+    // ...
+  })
 })
 
 /*

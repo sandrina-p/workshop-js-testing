@@ -1,9 +1,6 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
-import {
-  sendTrack,
-  getMetricsSettings,
-} from '../../playgrounds/snippets/metrics'
+import { sendTrack, getPreferences } from '../../playgrounds/snippets/metrics'
 
 jest.mock('../../playgrounds/snippets/metrics')
 
@@ -12,7 +9,7 @@ describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
     it('calls sendTrack if markting metric is enabled', () => {
       const id = 678
 
-      getMetricsSettings.mockReturnValue({
+      getPreferences.mockReturnValue({
         markting: true,
       })
 

@@ -24,10 +24,9 @@ describe('Try Out', () => {
 # TROUBLESHOOTING
 - Ensure you have both ESLint and Prettier installed.
 - Restart the editor and try again.
-- In VSCode, make sure the ESLint is enabled.
-- In VSCode, make sure the eslit configs are local
+- In VSCode, make sure the ESLint is enabled and its configs are local
 - Check the logs output panel for any error.
 - Do a quick Google search. (Stackoverflow helps!)
-- If in less than 10min you didn't make it work, try using VSCode editor.
+- If in less than 5min you didn't make it work, try using VSCode editor.
 - Last resource... Reach out to me. A screenshot with the VSCode output logs panel is highly helpful.
 */

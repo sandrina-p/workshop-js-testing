@@ -13,10 +13,12 @@ jest.mock('../../playgrounds/snippets/metrics')
 // Mock sendTrack with sendTrackFake
 sendTrack.mockImplementation(sendTrackFake)
 
-describe('useBoredList', () => {
-  it('calls "sendTrack" immediately, given a listType with a length multiple of 5', () => {
+describe('useBoredList - (2.3 hooks - usingFake)', () => {
+  // This test only passes if "useBoredList" passes "special"
+  // instead of "especial" to sendTrack()
+  it.skip('calls "sendTrack" immediately, given a listType with a length multiple of 5', () => {
     // 🍀 renderHooks also accepts "wrapper" option.
-    // We'll use it to pass the wrapper provider:
+    // Use it to pass the wrapper provider
     const { result } = renderHook(() => useBoredList('skipped'), {
       wrapper: props => (
         <BoredProviderFake

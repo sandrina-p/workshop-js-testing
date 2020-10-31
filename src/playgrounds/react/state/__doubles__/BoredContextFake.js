@@ -20,7 +20,6 @@ export function BoredProviderFake({ state, dispatch, children }) {
     getNew(params, opts) {
       const { saveLatestTo, ...rest } = opts
       validateKeys(rest, 'BoredProviderFake dispatch.getNew opts')
-
       return dispatch.getNew(params, opts)
     },
   }

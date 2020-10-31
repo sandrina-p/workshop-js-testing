@@ -4,7 +4,7 @@ Learn testing principles and how to apply them to React applications using **Jes
 
 ---
 
-Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence that the app won't break. <!-- copyreview please. make it short. make it sweet -->
+Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence of not breaking the app. <!-- copyreview please. make it short. make it sweet -->
 
 These are the material resources for my **JS Testing Workshop**. <!-- TODO LINK -->
 
@@ -50,7 +50,7 @@ To ensure all's fine, please verify the following three things:
 
 ### Workshop Dynamic
 
-The workshop consists in a set of challenges. Each one introduces a new topic, followed with a code challenges where you will have to apply the concepts learned.
+The workshop consists in a set of challenges. Each one introduces a new topic, followed with a code exercise for you to apply the concepts learned.
 
 ```bash
 src/

@@ -17,7 +17,7 @@ export function sendTrack(name, opts = {}) {
 /**
  * Returns an obj with tracking preferences
  */
-export function getMetricsSettings() {
+export function getPreferences() {
   // A dummy set of tracking preferences
   return {
     performance: true,

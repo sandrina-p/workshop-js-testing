@@ -12,10 +12,10 @@ import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 
 jest.mock('../../playgrounds/snippets/boredAPI')
 
-// TODO-LATER: Use activityStubs here
-// TODO-LATER: Mock fetch instead of boredAPI
+// MAYDO: Use activityStubs here
+// MAYDO: Mock fetch instead of boredAPI
 
-describe('BoredContext', () => {
+describe('BoredContext - (2.2 context)', () => {
   describe('<BoredProvider />', () => {
     function ConsumerCheckup({ getNewArgs = [] }) {
       const state = useBoredState()

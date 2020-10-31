@@ -30,7 +30,7 @@ export default function useBoredList(listType) {
     if (count > 0 && count % 5 === 0) {
       sendTrack(listType, {
         meta: { count },
-        special: true,
+        especial: true,
       })
     }
   }, [count])

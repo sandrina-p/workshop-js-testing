@@ -1,3 +1,5 @@
+import fetchMock from 'jest-fetch-mock'
+
 import React from 'react'
 import {
   fireEvent,
@@ -8,21 +10,29 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 
-import ActivityGenerator from '../../playgrounds/react/components/activity-generator'
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 import * as BoredContext from '../../playgrounds/react/state/BoredContext'
-import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
-import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredContextFake.js'
 
-jest.mock('../../playgrounds/snippets/boredAPI')
+import ActivityGenerator from '../../playgrounds/react/components/activity-generator'
 
 const BoredProvider = BoredContext.BoredProvider
 const BoredStateContext = BoredContext.BoredStateContext
 
-// https://github.com/kentcdodds/testing-react-apps/blob/main/src/__tests__/exercise/07.md
+beforeAll(() => {
+  fetchMock.enableMocks()
 
-describe('<ActivityCard />', () => {
+  jest.spyOn(global.console, 'debug').mockImplementation()
+})
+
+afterAll(() => {
+  fetchMock.mockRestore()
+
+  jest.spyOn(global.console, 'debug').mockRestore()
+})
+
+describe('<ActivityGenerator />', () => {
   it('renders a layout without an activity by default', () => {
     render(
       <BoredProvider>
@@ -40,7 +50,9 @@ describe('<ActivityCard />', () => {
   describe('clicking the main CTA', () => {
     it('renders a new random activity', async () => {
       const activityStubbed = activityStubs.withLink
-      getNewActivity.mockResolvedValueOnce(activityStubbed)
+
+      global.fetch.mockResponseOnce(JSON.stringify(activityStubbed))
+
       render(
         <BoredProvider>
           <ActivityGenerator />
@@ -78,9 +90,10 @@ describe('<ActivityCard />', () => {
     })
 
     it('renders an error, given a failure in the activity request', async () => {
-      const activityError = 'No activities!'
+      global.fetch.mockResponseOnce(null, {
+        status: 400,
+      })
 
-      getNewActivity.mockRejectedValueOnce(new Error(activityError))
       render(
         <BoredProvider>
           <ActivityGenerator />
@@ -93,11 +106,10 @@ describe('<ActivityCard />', () => {
       fireEvent.click(CTA)
 
       // Assert
-
       await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
       expect(screen.queryByRole('article')).not.toBeInTheDocument()
-      expect(screen.getByText(`Ups! ${activityError}`)).toBeInTheDocument()
+      expect(screen.getByText(/Ups! /i)).toBeInTheDocument()
       expect(
         screen.getByText('Reset the filters and try again.')
       ).toBeInTheDocument()
@@ -108,41 +120,44 @@ describe('<ActivityCard />', () => {
   })
 
   describe('within the Activity card', () => {
-    describe('clinking "😴" button, gets another activity and skips the latest', () => {
-      beforeEach(() => {
-        jest.restoreAllMocks()
-      })
-
-      it('Approach A: "Outsider pattern"', async () => {
-        // 💡  Render a "outsider" components to help asserting the side
+    describe('clinking "😴" button, adds the current to "skipped" and gets another activity', () => {
+      it('Approach A: "Checkup pattern"', async () => {
+        // 💡 Render a "Checkup" components to help asserting the side
         // effects made by the main component.
         // Pros: Uses the real context, no mocks needed, extra confidence.
-        // Cons: The "outsider" component can get a little verbose (not the case).
-        const activityStubbed = activityStubs.basic
+        // Cons: The "Checkup" component can get a little verbose (not the case).
+        const activityStubbed1 = activityStubs.basic
+        const activityStubbed2 = activityStubs.pricePaid
 
-        getNewActivity.mockResolvedValueOnce(activityStubbed)
+        global.fetch
+          .mockResponseOnce(JSON.stringify(activityStubbed1))
+          .mockResponseOnce(JSON.stringify(activityStubbed2))
 
         render(
           <BoredProvider>
             <ActivityGenerator />
-            {/* Outside component: */}
+            {/* Checkup component: */}
             <BoredStateContext.Consumer>
               {state => <p>Skipped list: {state.skipped.join(', ')}</p>}
             </BoredStateContext.Consumer>
           </BoredProvider>
         )
 
-        // Act
+        // Act + Assert - First activity works fine
         const CTA = screen.getByRole('button', { name: 'Get random activity' })
         fireEvent.click(CTA)
 
         // Assert
         await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-        const title = screen.getByText(activityStubbed.activity)
+        // The activity is in the document.
+        // 💡 To keep it simple, we assert the activity title only.
+        // If we feel our confidence in the code is low, we could assert other things too.
+        const title = screen.getByText(activityStubbed1.activity)
         expect(title).toBeInTheDocument()
 
-        getNewActivity.mockClear()
+        // Act + Assert #2 - The current activity is skipped
+        global.fetch.mockClear()
 
         const btnDone = screen.getByRole('button', {
           name: "Nah, that's boring",
@@ -152,14 +167,12 @@ describe('<ActivityCard />', () => {
 
         await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-        expect(getNewActivity).toHaveBeenCalledTimes(1)
-        expect(getNewActivity).toHaveBeenCalledWith(expect.anything(), [
-          activityStubbed.key, // latest key
-        ])
+        // Verify the 2nd activity is rendered
+        expect(screen.getByText(activityStubbed2.activity)).toBeInTheDocument()
 
-        // Use the Outsider to verify the side-effect 💡 💡 💡 💡
+        // 💡 Use the Checkup to verify the side-effect  💡
         expect(screen.getByText(/Skipped list/i).textContent).toBe(
-          `Skipped list: ${activityStubbed.key}`
+          `Skipped list: ${activityStubbed1.key}`
         )
       })
 
@@ -169,6 +182,7 @@ describe('<ActivityCard />', () => {
         //       before doing the final act + assertions
         // Cons: With all mocked, the false sense of security is high too.
         //       The real context might change and this test would still pass.
+        //       Also, we cannot assert the fetch call anymore
         const activityStubbed = activityStubs.basic
         const dispatchGetNewMocked = jest.fn()
 
@@ -182,7 +196,7 @@ describe('<ActivityCard />', () => {
         render(<ActivityGenerator />)
 
         // Act
-        // Because we are mocking the state with an activity right away,
+        // Because we are mocking the state with an latest activity by default,
         // there's no need to click "get new activiy" before asserting the "Skip" btn
         const btnDone = screen.getByRole('button', {
           name: "Nah, that's boring",
@@ -196,6 +210,10 @@ describe('<ActivityCard />', () => {
         expect(dispatchGetNewMocked).toHaveBeenCalledWith(expect.anything(), {
           saveLatestTo: 'skipped',
         })
+
+        // Restore mocks to not affect other tests
+        jest.spyOn(BoredContext, 'useBoredDispatch').mockRestore()
+        jest.spyOn(BoredContext, 'useBoredState').mockRestore()
       })
 
       it('Approach C: Using Fakes', async () => {
@@ -203,8 +221,9 @@ describe('<ActivityCard />', () => {
         // Pros: Higher confidence compared to direct mock, because it's a "fake".
         //       Might cut-off some "arrangement" steps before doing the act + assertions
         // Cons: Still doesn't get the full real behavior. E.g. No access to boredAPI.
+        const getNewMocked = jest.fn()
         const activityStubbed = activityStubs.basic
-        const dispatch = { getNew: jest.fn() }
+        const dispatch = { getNew: getNewMocked }
         const state = { latest: activityStubbed }
 
         render(
@@ -214,7 +233,7 @@ describe('<ActivityCard />', () => {
         )
 
         // Act
-        // Because we are mocking the state with an activity right away,
+        // Because we are mocking the state with an latest activity by default,
         // there's no need to click "get new activiy" before asserting the "Skip" btn
         const btnDone = screen.getByRole('button', {
           name: "Nah, that's boring",
@@ -224,21 +243,24 @@ describe('<ActivityCard />', () => {
 
         await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-        expect(dispatch.getNew).toHaveBeenCalledTimes(1)
-        expect(dispatch.getNew).toHaveBeenCalledWith(expect.anything(), {
+        expect(getNewMocked).toHaveBeenCalledTimes(1)
+        expect(getNewMocked).toHaveBeenCalledWith(expect.anything(), {
           saveLatestTo: 'skipped',
         })
       })
 
-      // it.todo('Approach D: Dont test it. Go a level higher or do E2E')
+      // it.skip('Approach D: Do not test this. Go a level higher or do E2E')
     })
 
-    it('clinking "✅" button, gets another activity and adds the latest do done', async () => {
-      const activityStubbed = activityStubs.basic
+    it('clinking "✅" button, adds the current to "done" and gets a new activity', async () => {
+      const activityStubbed1 = activityStubs.basic
+      const activityStubbed2 = activityStubs.pricePaid
 
-      getNewActivity.mockResolvedValueOnce(activityStubbed)
+      global.fetch
+        .mockResponseOnce(JSON.stringify(activityStubbed1))
+        .mockResponseOnce(JSON.stringify(activityStubbed2))
 
-      // Using "Outside pattern"
+      // Using "Checkup pattern"
       render(
         <BoredProvider>
           <ActivityGenerator />
@@ -255,10 +277,10 @@ describe('<ActivityCard />', () => {
       // Assert
       await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-      const title = screen.getByText(activityStubbed.activity)
+      const title = screen.getByText(activityStubbed1.activity)
       expect(title).toBeInTheDocument()
 
-      getNewActivity.mockClear()
+      global.fetch.mockClear()
 
       const btnDone = screen.getByRole('button', { name: 'Done, what else?' })
 
@@ -266,10 +288,8 @@ describe('<ActivityCard />', () => {
 
       await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-      expect(getNewActivity).toHaveBeenCalledTimes(1)
-      expect(getNewActivity).toHaveBeenCalledWith(expect.anything(), [
-        activityStubbed.key, // latest
-      ])
+      // Verify the 2nd activity is rendered
+      expect(screen.getByText(activityStubbed2.activity)).toBeInTheDocument()
 
       expect(screen.getByText(/Done list:/i).textContent).toBe(
         'Done list: 1770521'
@@ -278,10 +298,13 @@ describe('<ActivityCard />', () => {
   })
 
   describe('setting filters', () => {
-    it('renders an activity that match given specific filters', async () => {
-      const activityStubbed = activityStubs.withLink
+    it('renders an activity that matches given specific filters', async () => {
+      const activityStubbed1 = activityStubs.basic
+      const activityStubbed2 = activityStubs.pricePaid
 
-      getNewActivity.mockResolvedValue(activityStubbed)
+      global.fetch
+        .mockResponseOnce(JSON.stringify(activityStubbed1))
+        .mockResponseOnce(JSON.stringify(activityStubbed2))
 
       render(
         <BoredProvider>
@@ -289,56 +312,54 @@ describe('<ActivityCard />', () => {
         </BoredProvider>
       )
 
-      const CTA = screen.getByRole('button', { name: 'Get random activity' })
-
       // Arrange - Fill all filters fields
       const filtersForm = within(screen.getByText('Filters').parentElement)
-      // ... fill category
+
+      // 1/3 fill category
       const categoryField = filtersForm.getByLabelText('Category')
       fireEvent.change(categoryField, { target: { value: 'social' } })
 
-      // ... fill number of participants
+      // 2/3 fill number of participants
       const participantsField = filtersForm.getByLabelText('People nr')
-      // 💡 We can also do sanity asserts between each change
+      // 💡 Sanity asserts may also be done
       expect(participantsField.value).toBe('')
       fireEvent.change(participantsField, { target: { value: '2' } })
       expect(participantsField.value).toBe('2')
 
-      // ... fill price
+      // 3/3 fill price
       const priceField = filtersForm.getByLabelText('Free')
       fireEvent.click(priceField)
 
       // Act
-      fireEvent.click(CTA)
+      const CTAbtn = screen.getByRole('button', { name: 'Get random activity' })
+      fireEvent.click(CTAbtn)
 
       // Assert
       await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-      expect(screen.getByText(activityStubbed.activity)).toBeInTheDocument()
+      expect(screen.getByText(activityStubbed1.activity)).toBeInTheDocument()
 
       // 💡 This is an example where asserting the DOM isn't enough
-      //    because the BoredAPI is mocked. So we must assert the API call itself.
-      expect(getNewActivity).toHaveBeenCalledTimes(1)
-      expect(getNewActivity).toHaveBeenCalledWith(
-        { participants: '2', price: 'free', type: 'social' },
-        []
+      //    because the fetch response is mocked. So we must assert the request query.
+      expect(global.fetch).toHaveBeenCalledTimes(1)
+      expect(global.fetch).toHaveBeenCalledWith(
+        'https://www.boredapi.com/api/activity/?type=social&participants=2&price=0',
+        expect.anything()
       )
 
       // ============================
       // Reseting filters
-      // - it clears the fields and the API params
-
-      // 💡 Write fewer, longer tests.
-      // Why: https://kentcdodds.com/blog/write-fewer-longer-tests
+      // it clears the fields and the fetch request query
+      // 💡 _Write fewer, longer tests._
 
       // Arrange
 
       // clear the mocks call, so next assertion is "1" again
-      getNewActivity.mockClear()
+      global.fetch.mockClear()
 
       const resetBtn = filtersForm.getByRole('button', { name: 'Reset' })
       fireEvent.click(resetBtn)
-      // Sanity check one of the fields.
+      // Sanity check one of the fields was cleared.
       expect(participantsField.value).toBe('')
 
       // Act
@@ -348,13 +369,13 @@ describe('<ActivityCard />', () => {
       await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
       // Assert
-      expect(getNewActivity).toHaveBeenCalledTimes(1)
-      expect(getNewActivity).toHaveBeenCalledWith(
-        { participants: undefined, price: undefined, type: undefined },
-        [activityStubbed.key]
+      expect(global.fetch).toHaveBeenCalledTimes(1)
+      expect(global.fetch).toHaveBeenCalledWith(
+        'https://www.boredapi.com/api/activity/?',
+        expect.anything()
       )
 
-      expect(screen.getByText(activityStubbed.activity)).toBeInTheDocument()
+      expect(screen.getByText(activityStubbed2.activity)).toBeInTheDocument()
     })
   })
 })

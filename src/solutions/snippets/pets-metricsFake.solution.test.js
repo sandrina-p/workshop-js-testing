@@ -1,12 +1,9 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
-import {
-  sendTrack,
-  getMetricsSettings,
-} from '../../playgrounds/snippets/metrics'
+import { sendTrack, getPreferences } from '../../playgrounds/snippets/metrics'
 import {
   sendTrackFake,
-  getMetricsSettingsFakeReturn,
+  getPreferencesFakeReturn,
 } from '../../playgrounds/snippets/__doubles__/metricsFake'
 
 jest.mock('../../playgrounds/snippets/metrics')
@@ -20,8 +17,8 @@ describe('pets - (1.5 - MetricsFake)', () => {
     it.skip('calls sendTrack if marketing metric is enabled', () => {
       const id = 678
 
-      getMetricsSettings.mockReturnValue(
-        getMetricsSettingsFakeReturn({
+      getPreferences.mockReturnValue(
+        getPreferencesFakeReturn({
           markting: true,
         })
       )

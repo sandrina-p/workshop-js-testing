@@ -11,7 +11,7 @@ import { sendTrack } from '../../playgrounds/snippets/metrics'
 jest.mock('../../playgrounds/snippets/metrics')
 jest.mock('../../playgrounds/react/state/BoredContext')
 
-describe('useBoredList', () => {
+describe('useBoredList - (2.3 hooks)', () => {
   it('returns "countLabel" and "clear", given a "skipped" lisType', () => {
     expect.assertions(1)
     const listType = 'skipped'
@@ -41,7 +41,7 @@ describe('useBoredList', () => {
     // ...
   })
 
-  it('calls "sendTrack", after list length updates to a amultiple of 5', () => {
+  it('calls "sendTrack", after list length updates to a multiple of 5', () => {
     expect.assertions(5)
     // Arrange
     // 🍀 Mock an initial empty list for "skipped"

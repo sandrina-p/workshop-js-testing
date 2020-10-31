@@ -24,7 +24,7 @@ import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPISt
 //   fetchMock.mockRestore()
 // })
 
-describe('BoredContext', () => {
+describe('BoredContext - (2.2 context)', () => {
   describe('<BoredProvider />', () => {
     function ConsumerCheckup({ getNewArgs = [] }) {
       const state = useBoredState()

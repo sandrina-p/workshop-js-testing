@@ -1,6 +1,7 @@
 // A fake is a simplified version of a original function.
 // The main goal of this fake is to validate the arguments passed to the method.
 
+// Fake to be used as mockImplementation
 export function sendTrackFake(id, opts = {}) {
   // Validate the required id is a string.
   if (typeof id !== 'string') {
@@ -19,7 +20,8 @@ export function sendTrackFake(id, opts = {}) {
   }
 }
 
-export function getMetricsSettingsFakeReturn(mockedResult) {
+// Fake to be used as mockReturnValue
+export function getPreferencesFakeReturn(mockedResult) {
   // Extract all the expected keys from arg opts
   // and thrown an error if some unexpected key was received
   const { performance, marketing, functional, ...rest } = mockedResult
@@ -27,7 +29,7 @@ export function getMetricsSettingsFakeReturn(mockedResult) {
 
   if (unexpectedKeys.length > 0) {
     throw Error(
-      `metricsFake getMetricsSettingsFakeResult · The returned keys "${unexpectedKeys}" are unexpected.`
+      `metricsFake getPreferencesFakeResult · The returned keys "${unexpectedKeys}" are unexpected.`
     )
   }
 

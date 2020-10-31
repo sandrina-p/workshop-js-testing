@@ -1,10 +1,7 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
 // 🍀 Refactor the import to get all the exports as one.
-import {
-  sendTrack,
-  getMetricsSettings,
-} from '../../playgrounds/snippets/metrics'
+import { sendTrack, getPreferences } from '../../playgrounds/snippets/metrics'
 
 describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
   describe('saveAsFavorite()', () => {

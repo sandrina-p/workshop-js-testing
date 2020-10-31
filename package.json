@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "title": "Workshop Javascript Testing",
-  "description": "In this workshop, we'll learn testing patterns and how to test React applications",
+  "description": "Learn testing principles and how to apply them to React applications using Jest and Testing Library",
   "scripts": {
     "checkup": "jest src/_checkup && eslint src/_checkup",
     "start": "parcel src/app/index.html",

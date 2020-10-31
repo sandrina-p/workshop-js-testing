@@ -1,4 +1,4 @@
-import { sendTrack, getMetricsSettings } from './metrics'
+import { sendTrack, getPreferences } from './metrics'
 
 /**
  * Calls an API with the given values. When values is an array
@@ -72,7 +72,7 @@ export function searchPet(type, age) {
  * @param {String} id - Pet id (eg 221)
  */
 export function saveAsFavorite(petId) {
-  const { markting } = getMetricsSettings()
+  const { markting } = getPreferences()
 
   if (markting) {
     sendTrack('favorite', petId)
