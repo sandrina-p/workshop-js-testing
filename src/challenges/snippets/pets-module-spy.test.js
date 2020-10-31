@@ -1,36 +1,36 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
 // 🍀 Refactor the import to get all the exports as one.
-import { sendTrack } from '../../playgrounds/snippets/metrics'
+import {
+  sendTrack,
+  getMetricsSettings,
+} from '../../playgrounds/snippets/metrics'
 
 describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
-  const originalWarn = global.console.warn
-  const warnMock = jest.fn()
+  describe('saveAsFavorite()', () => {
+    it('calls sendTrack if markting metric is enabled', () => {
+      const id = 101
+      expect.assertions(3)
 
-  beforeEach(() => {
-    global.console.warn = warnMock
-  })
+      // Arrange
+      // 🍀 Spy the captureError to assert it after
 
-  afterEach(() => {
-    global.console.warn = originalWarn
-  })
+      // Act
+      // 🍀 Call saveAsFavorite
 
-  it('calls captureError given invalid animal type', () => {
-    expect.assertions(3)
+      // Assert
+      // 🍀 Verify the assert is as expected
 
-    // Arrange
-    // 🍀 Spy the captureError to assert it after
+      // 🍀 Verify sendTrack was called correctly
 
-    // Act
-    const result = saveAsFavorite(678, 'snake')
-
-    // Assert
-    expect(result).toBe('pet-678-saved')
-
-    // 🍀 Verify sendTrack was called correctly
-
-    // 💡 The captureError is still the original, so the warn
-    // message is shown in the logs. You can mock them too
-    // to keep the logs clean!
+      // 💡 The captureError is still the original, so the warn
+      // message is shown in the logs. You can mock them too
+      // to keep the logs clean!
+      // 💡 When mocking just one of the console methods, you can
+      // also use spy + mockImplementation:
+      // jest.spyOn(global.console, 'log').mockImplementation()
+      // 💡 And here's how to restore debug mock after all tests.
+      // jest.spyOn(global.console, 'log').mockRestore()
+    })
   })
 })

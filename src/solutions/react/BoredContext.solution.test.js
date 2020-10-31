@@ -12,8 +12,8 @@ import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 
 jest.mock('../../playgrounds/snippets/boredAPI')
 
-// RFE: Use activityStubs here
-// RFE: Mock fetch instead of boredAPI
+// TODO-LATER: Use activityStubs here
+// TODO-LATER: Mock fetch instead of boredAPI
 
 describe('BoredContext', () => {
   describe('<BoredProvider />', () => {

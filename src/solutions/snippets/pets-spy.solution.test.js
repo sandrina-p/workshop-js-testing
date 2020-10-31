@@ -3,26 +3,25 @@ import {
   searchPet,
 } from '../../playgrounds/snippets/pets'
 
-describe('1.3 methods', () => {
+describe('pets - (1.3 spy)', () => {
   beforeEach(jest.clearAllMocks)
 
   describe('verifyPetBeforeAdopt()', () => {
     // Reassigning window in JSDOM +14
     // Ref: https://remarkablemark.org/blog/2018/11/17/mock-window-location/
     const locationOriginal = window.location
-    const dateOriginal = Date
 
     beforeAll(() => {
       delete window.location
       global.window.location = { assign: jest.fn() }
-      global.Date = {
-        now: jest.fn().mockReturnValue('time_123456'),
-      }
+
+      jest.spyOn(global.Date, 'now').mockReturnValue('time_123456')
     })
 
     afterAll(() => {
       window.location = locationOriginal
-      global.Date = dateOriginal
+
+      jest.spyOn(global.Date, 'now').mockRestore()
     })
 
     it('given a id smaller than 100, it prevents the default event and goes to movies page', () => {
@@ -63,6 +62,8 @@ describe('1.3 methods', () => {
         global.window.location,
         'assign'
       )
+      // Created the Date mock at beforeAll for
+      // better visibility between mock itself and restor
 
       // Act
       verifyPetBeforeAdopt(mockEvent, 101)

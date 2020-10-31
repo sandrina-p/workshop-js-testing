@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Styles from './TextField.css'
 
 export default function TextField({ label, errorMsg, ...props }) {
-  // RFE Add aria-required and aria-invalid based on props
+  // TODO-LATER Add aria-required and aria-invalid based on props
   return (
     <label className={Styles.field}>
       <span className={Styles.label}>{label}</span>

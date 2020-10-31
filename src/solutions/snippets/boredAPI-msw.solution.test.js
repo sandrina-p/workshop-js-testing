@@ -33,7 +33,7 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 // ----
 
-describe('boredAPI (msw)', () => {
+describe('boredAPI - (1.6 - msw)', () => {
   describe('getActivity', () => {
     const consoleOriginal = global.console
     const activityStubbed = activityStubs.basic

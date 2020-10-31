@@ -1,22 +1,37 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
-import { sendTrack } from '../../playgrounds/snippets/metrics'
+import {
+  sendTrack,
+  getMetricsSettings,
+} from '../../playgrounds/snippets/metrics'
 // 🍀 Import the metrics fake module
-// import { sendTrackFake } from '../../playgrounds/snippets/__doubles__/metricsFake'
+import {
+  sendTrackFake,
+  getMetricsSettingsFakeReturn,
+} from '../../playgrounds/snippets/__doubles__/metricsFake'
 
 jest.mock('../../playgrounds/snippets/metrics')
 
 // 🍀 Use sendTrackFake as mocked implementation of sendTrack.
+sendTrack.mockImplementation(sendTrackFake)
 
-describe('pets - (1.6 - MetricsFake)', () => {
-  // 🍀 Once that's done, the test will fail. Go ahead and fix the bug!
+describe('pets - (1.5 - MetricsFake)', () => {
   describe('saveAsFavorite()', () => {
-    it('calls sendTrack special given a type of snake', () => {
-      const result = saveAsFavorite(678, 'snake')
+    it('calls sendTrack if marketing metric is enabled', () => {
+      const id = 678
 
-      expect(result).toBe('pet-678-saved')
+      // 🍀 Pass getMetricsSettingsFakeReturn to the mocked return
+      getMetricsSettings.mockReturnValue({
+        markting: true,
+      })
+
+      // 🍀 Once that's done, the test will fail. Go ahead and fix the bug!
+      const result = saveAsFavorite(id)
+
+      expect(result).toBe(`pet-${id}-saved`)
+
       expect(sendTrack).toHaveBeenCalledTimes(1)
-      expect(sendTrack).toHaveBeenCalledWith('favorite', { especial: true })
+      expect(sendTrack).toHaveBeenCalledWith('favorite', id)
     })
   })
 })

@@ -3,33 +3,77 @@ import {
   searchPet, // BONUS #1
 } from '../../playgrounds/snippets/pets'
 
-describe('Pets - (1.3 Spy)', () => {
+describe('pets - (1.3 spy)', () => {
   describe('verifyPetBeforeAdopt()', () => {
-    // 🍀 A little help: In Jest, window.location is not implemented
+    // 💡 A little help: In Jest, window.location is not implemented
     // so we need to "mock" it, before spying it. This is how it's done:
-    // Save a backup of original implementation
+    // 1/3 Save a backup of original implementation
     const locationOriginal = window.location
 
-    // Mock it before all tests in this group (describe)
+    // 2/3 Mock it before all tests in this group (describe)
     beforeAll(() => {
       delete window.location
       global.window.location = { assign: jest.fn() }
     })
 
-    // Before moving on, restore window.location
+    // 3/3 Restore window.location after all tests
     afterAll(() => {
       window.location = locationOriginal
     })
-    // Works with JSDOM +14. Learn more at: https://remarkablemark.org/blog/2018/11/17/mock-window-location/
+    // Learn more at: https://remarkablemark.org/blog/2018/11/17/mock-window-location/
     // ------
 
     // 💡 Some hints:
-    // - How to spy localStorage: jest.spyOn(global.Storage.prototype, 'setItem')
-    // - How to spy window: jest.spyOn(global.window.location, 'assign')
     // - You need a test double for Date.now(). It can be a mock jest.fn() or a spy
-    it.todo('...')
+    it('given a id smaller than 100, it prevents the default event and goes to movies page', () => {
+      expect.assertions(4)
 
-    it.todo('....')
+      // Arrange
+      // 🍀 Create a mock for the event with preventDefault
+
+      // 🍀 Spy both the Localstorage and window
+      // 💡 How to spy localStorage: jest.spyOn(global.Storage.prototype, 'setItem')
+      // 💡 How to spy window: jest.spyOn(global.window.location, 'assign')
+
+      // Act
+      // 🍀 Call verifyPetBeforeAdopt
+      // verifyPetBeforeAdopt(mockEvent, 10)
+
+      // Assert
+      // 🍀 Verity preventDefault was called
+      // ...
+
+      // 🍀 Verity window was called correctly
+      // ...
+
+      // 🍀 Sanity check: Verity localStorage was not called
+      // ...
+    })
+
+    it('given an id bigger than 100, it also stores the movie as "super-movie"', () => {
+      expect.assertions(4)
+      // Arrange
+      // 🍀 Similar mocks as the previous test
+
+      // 🍀 This time we need to mock Date too. A spy can also mock!
+      // jest.spyOn(/*...*/).mockReturnValueOnce('123')
+      // 💡 Don't forget to restore the mock at afterAll()
+
+      // Act
+      // 🍀 Call verifyPetBeforeAdopt
+      // verifyPetBeforeAdopt(mockEvent, 101)
+
+      // Assert
+
+      // 🍀 Assert preventDefault was called
+      // ...
+
+      // 🍀  Assert localStorage usage
+      // ...
+
+      // 🍀  Assert window usage
+      // ...
+    })
   })
 
   // 🍀 BONUS #1

@@ -14,9 +14,14 @@ export function sendTrack(name, opts = {}) {
   window.trackIt?.sendEvent(name, opts.meta)
 }
 
-export function catcher(message, log) {
-  console.warn('TrackIt sendError()', message, log)
-
-  // Just a dummy possible integrated tracker
-  window.trackIt?.sendError(message, log)
+/**
+ * Returns an obj with tracking preferences
+ */
+export function getMetricsSettings() {
+  // A dummy set of tracking preferences
+  return {
+    performance: true,
+    marketing: false,
+    functional: false,
+  }
 }

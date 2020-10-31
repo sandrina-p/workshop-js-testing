@@ -18,3 +18,18 @@ export function sendTrackFake(id, opts = {}) {
     )
   }
 }
+
+export function getMetricsSettingsFakeReturn(mockedResult) {
+  // Extract all the expected keys from arg opts
+  // and thrown an error if some unexpected key was received
+  const { performance, marketing, functional, ...rest } = mockedResult
+  const unexpectedKeys = Object.keys(rest)
+
+  if (unexpectedKeys.length > 0) {
+    throw Error(
+      `metricsFake getMetricsSettingsFakeResult · The returned keys "${unexpectedKeys}" are unexpected.`
+    )
+  }
+
+  return mockedResult
+}

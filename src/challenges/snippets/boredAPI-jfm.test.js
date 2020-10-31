@@ -28,7 +28,7 @@ afterAll(() => {
   // jest.spyOn(global.console, 'debug').mockRestore()
 })
 
-describe('boredAPI (jest-fetch-mock)', () => {
+describe('boredAPI - (1.6 - jest-fetch-mock)', () => {
   describe('getActivity()', () => {
     it('returns a random activity by default', () => {
       expect.assertions(4)

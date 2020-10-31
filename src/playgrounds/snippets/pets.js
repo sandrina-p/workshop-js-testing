@@ -1,4 +1,4 @@
-import { sendTrack } from './metrics'
+import { sendTrack, getMetricsSettings } from './metrics'
 
 /**
  * Calls an API with the given values. When values is an array
@@ -62,21 +62,21 @@ export function searchPet(type, age) {
     return
   }
 
-  // ... code to adopt the pet ...
+  // ... code to search for a pet ...
 
   return 'not found!'
 }
 
 /**
- * Function to get a pet
- * @param {String} type
+ * Save given pet as favorite
+ * @param {String} id - Pet id (eg 221)
  */
-export function saveAsFavorite(id, type) {
-  if (type === 'snake') {
-    sendTrack('favorite', { especial: true })
+export function saveAsFavorite(petId) {
+  const { markting } = getMetricsSettings()
+
+  if (markting) {
+    sendTrack('favorite', petId)
   }
 
-  // .... pseudo-code ....
-
-  return `pet-${id}-saved`
+  return `pet-${petId}-saved`
 }

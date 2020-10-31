@@ -1,20 +1,30 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
-import { sendTrack } from '../../playgrounds/snippets/metrics'
-// 🍀 Mock the entire catcher module
+import {
+  sendTrack,
+  getMetricsSettings,
+} from '../../playgrounds/snippets/metrics'
+// 🍀 Mock the entire metrics module
 
-describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
+describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
   describe('saveAsFavorite()', () => {
-    it('calls sendTrack special given a type of snake', () => {
+    it('calls sendTrack if markting metric is enabled', () => {
+      const id = 102
+
       expect.assertions(3)
 
+      // Arrange
+      // Mock getMetricsSettings
+
       // Act
-      const result = saveAsFavorite(678, 'snake')
+      const result = saveAsFavorite(102)
 
       // Assert
-      expect(result).toBe('pet-678-saved')
-
       // 🍀 Verify sendTrack was called correctly
+      // ...
+
+      // Verify the returned result
+      expect(result).toBe(`pet-${id}-saved`)
     })
   })
 })
