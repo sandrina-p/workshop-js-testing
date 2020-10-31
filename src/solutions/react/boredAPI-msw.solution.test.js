@@ -9,7 +9,7 @@ import {
   // getNewActivity,
 } from '../../playgrounds/snippets/boredAPI'
 
-import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 // ----
 // 💡 Configure msw for this file. It can be done globally at jest.setup.js
@@ -21,7 +21,7 @@ const server = setupServer(
   // - boredapi.com/api/activity?type=diy
   // - www.boredapi.com/api/activity?type=diy
   rest.get(/boredapi.com\/api\/activity/, (req, res, ctx) => {
-    return res(ctx.status(200, 'Mocked status'), ctx.json(activityStub.basic))
+    return res(ctx.status(200, 'Mocked status'), ctx.json(activityStubs.basic))
   })
 )
 
@@ -36,7 +36,7 @@ afterAll(() => server.close())
 describe('boredAPI (msw)', () => {
   describe('getActivity', () => {
     const consoleOriginal = global.console
-    const activityStubbed = activityStub.basic
+    const activityStubbed = activityStubs.basic
 
     beforeAll(() => {
       // This time we spy on fetch, because it wasn't mocked.

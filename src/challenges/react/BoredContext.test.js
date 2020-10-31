@@ -8,9 +8,21 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
+// 💡 Here's the activityStubs for you
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
-jest.mock('../../playgrounds/snippets/boredAPI')
+// 💡 Option A: Mocking boredAPI:
+// import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
+// jest.mock('../../playgrounds/snippets/boredAPI')
+
+// 💡 Option B: Mocking fetch
+// import fetchMock from 'jest-fetch-mock'
+// beforeAll(() => {
+//   fetchMock.enableMocks()
+// })
+// afterAll(() => {
+//   fetchMock.mockRestore()
+// })
 
 describe('BoredContext', () => {
   describe('<BoredProvider />', () => {
@@ -22,7 +34,6 @@ describe('BoredContext', () => {
         <>
           {/* State checkup: */}
           {state.latest === null && <p>Latest is null</p>}
-          {/* 🍀 ... what if there's a latest activity? */}
 
           {state.skipped.length === 0 ? (
             <p>List skipped is empty</p>
@@ -41,7 +52,8 @@ describe('BoredContext', () => {
       )
     }
 
-    it('renders the latest and lists, empty by default', () => {
+    it('there is no latest or skipped/done lists by default', () => {
+      // 💡 This test is already done for you!
       render(
         <BoredProvider>
           <ConsumerCheckup />
@@ -53,85 +65,80 @@ describe('BoredContext', () => {
       expect(screen.getByText('List done is empty')).toBeInTheDocument()
     })
 
+    it('renders { latest, skipped, done } given a custom state', () => {
+      expect.assertions(1)
+      // 🍀 render the provider with a value
+
+      // 🍀 Verify the latest, skipped and done match the given state
+    })
+
     describe('dispatch.getNew', () => {
       it('renders a new activity', async () => {
-        const { rerender } = render(
-          <BoredProvider>
-            <ConsumerCheckup />
-          </BoredProvider>
-        )
+        expect.assertions()
+        // Arrange
+        // 🍀 render the BoredProvider with ConsumerCheckup
 
         // Act & Assert that a new activity is returned
 
-        // 💡 Make sure to mock boredAPI value *before* being called
-        // 🍀 You need to add a button to the Checkup to click on it.
+        // 💡 Make sure to mock boredAPI value *before* it's called
+        // The mock might only return a simple { key: 001 }, or
+        // you can use the BoredAPIStubs
 
-        // 🍀 You need to add a button to the Checkup.
+        // 🍀 Add a button to the Checkup to click on it.
 
-        // 🍀 Assert the latest exist
+        // 🍀 Assert the latest key exist
         // (eg assert one of its keys (key, activity, etc...))
 
         // 🍀 Assert both lists are still empty
-
-        // ================================== //
-        // Getting one more activiy, skips the latest one
-
-        // Act & Assert getting another activity
-        // and saving the latest one to "skipped"
-
-        //  🍀 You need to mock the boredAPI again to return a different key
-
-        const latestKey2 = await screen.findByText('Latest has key 0002')
-        expect(latestKey2).toBeInTheDocument()
-
-        // Act & assert getting one more activity, skipping the latest one (0002)
-        getNewActivity.mockResolvedValueOnce({
-          key: '0003',
-        })
-
-        rerender(
-          <BoredProvider>
-            <ConsumerCheckup getNewArgs={[null, { saveLatestTo: 'skipped' }]} />
-          </BoredProvider>
-        )
-
-        fireEvent.click(screen.getByText('Get new activity'))
-
-        const latestKey3 = await screen.findByText('Latest has key 0003')
-        const skippedList = screen.getByText('List skipped is 0002')
-
-        expect(latestKey3).toBeInTheDocument()
-        expect(skippedList).toBeInTheDocument()
-
-        // 💡 Sometimes, asserting the DOM isn't enough. In this case,
-        // let's ensure the API was called with the "exclude" list correctly.
-        expect(getNewActivity).toHaveBeenLastCalledWith(null, ['0002'])
-
-        // Act & assert getting one more activity, skipping again the latest one (0003)
-        getNewActivity.mockResolvedValueOnce({
-          key: '0004',
-        })
-
-        rerender(
-          <BoredProvider>
-            <ConsumerCheckup getNewArgs={[null, { saveLatestTo: 'skipped' }]} />
-          </BoredProvider>
-        )
-
-        fireEvent.click(screen.getByText('Get new activity'))
-
-        const latestKey4 = await screen.findByText('Latest has key 0003')
-        const skippedList4 = screen.getByText('List skipped is 0002, 0003')
-
-        expect(latestKey4).toBeInTheDocument()
-        expect(skippedList4).toBeInTheDocument()
-
-        expect(getNewActivity).toHaveBeenLastCalledWith(null, ['0002', '0003'])
       })
 
-      it.todo('renders a new activity with specific params')
+      it('adds latest activity to skipped, when getting a new one', async () => {
+        expect.assertions(3)
 
-      it.todo('renders an error when getting a new activity fails')
+        // 🍀 Pass an initial value to the provider
+        // with a latest activity
+
+        // Act & Assert that a new activity is returned
+
+        // 🍀 Repeat the sames steps as the previous test to get a new activity.
+
+        // 🍀 Verity the latest key is updated
+        // 🍀 Verity the skipped list includes the initial latest.
+
+        // 💡 Sometimes, asserting the DOM isn't enough. In this case,
+        // let's ensure the getNewActivity was called with the "exclude" list correctly.
+
+        // Act & assert getting one more activity, skipping again the last latest one.
+        // 🍀 This would be a sanity check. For time constraints, you can
+        // jump to the next test!
+      })
+
+      it.skip('renders an error given a failure from getting a new activity', async () => {
+        // ...
+      })
+    })
+
+    describe('dispatch.doneClear', () => {
+      it('clears the done list', async () => {
+        expect.assertions(4)
+
+        // 🍀 Render the provider. You might want to pass
+        // a custom done list by default to cut some steps.
+        // 💡 There are multiple correct ways to approach this.
+        // I'll leave it up to you!
+
+        // Act
+        // 🍀 Click "Clear done"
+        fireEvent.click(screen.getByText('Clear done'))
+
+        // Assert
+        // 🍀 Verify the list "done" is empty again
+        // 💡 Some sanity checks are okay too. Eg. Check the skipped list is the same
+      })
+
+      it.skip('clears the skipped list', async () => {
+        // ...
+      })
     })
   })
 })

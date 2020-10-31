@@ -7,7 +7,7 @@ const BoredStateContext = React.createContext()
 const BoredDispatchContext = React.createContext()
 
 function updateList(name, prevValue, newKey) {
-  if (!name) return {}
+  if (!newKey) return {}
 
   // ex: { 'skipped': [...[001, 123], 543] }
   return {
@@ -15,53 +15,49 @@ function updateList(name, prevValue, newKey) {
   }
 }
 
-function BoredProvider({ children }) {
+function BoredProvider({ children, value }) {
   const [state, setState] = React.useState(() => ({
     // latest suggested activity
     latest: null, // : @Activity
-    // List with skipped activities, by key id
-    skipped: [],
-    // List with activities already done, by key id
+    // List with activities already done, by keyId
     done: [],
+    // List with skipped activities, by keyId
+    skipped: [],
+    ...value,
   }))
 
-  // TODO - convert this to a reducer.
-  // TODO - Add a saveLatestTo by default
   const dispatch = {
-    async getNew(params, { saveLatestTo } = {}) {
+    async getNew(query, opts = {}) {
       const latestKey = state.latest?.key
-
+      const saveLatestTo = opts.saveLatestTo || 'skipped'
       const exclude = [...state.skipped, ...state.done]
       if (latestKey) exclude.push(latestKey)
 
+      let latest
       try {
-        const activity = await getNewActivity(params, exclude)
-
-        setState(state => ({
-          ...state,
-          latest: activity,
-          ...updateList(saveLatestTo, state[saveLatestTo], latestKey),
-        }))
+        latest = await getNewActivity(query, exclude)
       } catch (e) {
-        setState(state => ({
-          ...state,
-          latest: {
-            error: `Ups! ${e.message}`,
-          },
-          ...updateList(saveLatestTo, state[saveLatestTo], latestKey),
-        }))
+        latest = {
+          error: `Ups! ${e.message}`,
+        }
       }
-    },
-    skippedClear() {
+
       setState(state => ({
         ...state,
-        skipped: [],
+        latest,
+        ...updateList(saveLatestTo, state[saveLatestTo], latestKey),
       }))
     },
     doneClear() {
       setState(state => ({
         ...state,
         done: [],
+      }))
+    },
+    skippedClear() {
+      setState(state => ({
+        ...state,
+        skipped: [],
       }))
     },
   }
@@ -77,6 +73,11 @@ function BoredProvider({ children }) {
 
 BoredProvider.propTypes = {
   children: PropTypes.node,
+  value: PropTypes.shape({
+    latest: PropTypes.object,
+    skipped: PropTypes.arrayOf(PropTypes.string),
+    done: PropTypes.arrayOf(PropTypes.string),
+  }),
 }
 
 function useBoredState() {

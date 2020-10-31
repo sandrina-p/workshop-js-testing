@@ -11,26 +11,26 @@ const listFnMap = {
 /**
  * Hook that returns a countLabel and clear method to control
  * a given list type
- * @typedef {"skipped" | "done" } ListType
+ * @typedef { "skipped" | "done" } ListType
  * @param {ListType} listType
  *
  * @example
- * Supossing the "skipped" list context has 7 items
+ * Assuming the "skipped" list has 7 items
  * const state = useBoredList('skipped')
- * state.countLabel // '+5'
- * state.clear // Function to reset the list
+ * -> state.countLabel // '+5'
+ * -> state.clear // Function to reset the list
  */
 export default function useBoredList(listType) {
   const dispatch = useBoredDispatch()
   const state = useBoredState()
-  const count = state[listType].length
+  const count = state[listType]?.length
 
   React.useEffect(() => {
     // Every 5 <listType> counted, inform an external service
     if (count > 0 && count % 5 === 0) {
       sendTrack(listType, {
         meta: { count },
-        especial: true,
+        special: true,
       })
     }
   }, [count])

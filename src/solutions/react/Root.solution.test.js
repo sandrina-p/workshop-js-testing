@@ -11,7 +11,7 @@ import { BoredProvider } from '../../playgrounds/react/state/BoredContext'
 import Root from '../../playgrounds/react'
 
 import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
-import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 jest.mock('../../playgrounds/snippets/boredAPI')
 
@@ -41,10 +41,10 @@ describe('<Root />', () => {
   describe('when an activity is skipped or done', () => {
     it('updates the respective list links', async () => {
       getNewActivity
-        .mockResolvedValue(activityStub.basic)
-        .mockResolvedValueOnce(activityStub.withLink)
-        .mockResolvedValueOnce(activityStub.pricePaid)
-        .mockResolvedValueOnce(activityStub.with2people)
+        .mockResolvedValue(activityStubs.basic)
+        .mockResolvedValueOnce(activityStubs.withLink)
+        .mockResolvedValueOnce(activityStubs.pricePaid)
+        .mockResolvedValueOnce(activityStubs.with2people)
 
       render(
         <BoredProvider>

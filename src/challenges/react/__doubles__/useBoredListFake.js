@@ -13,7 +13,7 @@ export default function useBoredListFake(resultStub) {
     //   return
     // }
 
-    // 🍀 Validate the resultStub does not receive any key
+    // 🍀 Validate the resultStub does not contain any key
     // besides "countLabel" and "clear"
 
     // if (...) {

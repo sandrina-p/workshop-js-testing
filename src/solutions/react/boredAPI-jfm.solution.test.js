@@ -5,9 +5,9 @@ import {
   getNewActivity,
 } from '../../playgrounds/snippets/boredAPI'
 
-import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
-const activityStubbed = activityStub.basic
+const activityStubbed = activityStubs.basic
 
 beforeAll(() => {
   fetchMock.enableMocks()
@@ -120,27 +120,27 @@ describe('boredAPI (jest-fetch-mock)', () => {
     })
 
     it('returns an activity after a few attempts, given a partial match exclude', async () => {
-      const activityStub1 = activityStub.basic
-      const activityStub2 = activityStub.pricePaid
-      const activityStub3 = activityStub.withLink
+      const activityStubs1 = activityStubs.basic
+      const activityStubs2 = activityStubs.pricePaid
+      const activityStubs3 = activityStubs.withLink
 
-      const exclude = [activityStub1.key, activityStub2.key]
+      const exclude = [activityStubs1.key, activityStubs2.key]
 
       global.fetch
-        .mockResponseOnce(JSON.stringify(activityStub1))
-        .mockResponseOnce(JSON.stringify(activityStub2))
-        .mockResponseOnce(JSON.stringify(activityStub3))
+        .mockResponseOnce(JSON.stringify(activityStubs1))
+        .mockResponseOnce(JSON.stringify(activityStubs2))
+        .mockResponseOnce(JSON.stringify(activityStubs3))
 
       const result = await getNewActivity(undefined, exclude)
 
       // It was called 3x because the 1st and 2nd activities matched the exclude
       expect(global.fetch).toHaveBeenCalledTimes(3)
       // It returns the 2nd activity because it was not included in the match
-      expect(result).toEqual(activityStub3)
+      expect(result).toEqual(activityStubs3)
     })
 
     it('throwns an error, when it exceeds the maximum nr of attempts', async () => {
-      const activityStubbed = activityStub.basic
+      const activityStubbed = activityStubs.basic
       const exclude = [activityStubbed.key]
       const attemptsMax = 5
 

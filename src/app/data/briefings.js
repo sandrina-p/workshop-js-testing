@@ -1,4 +1,4 @@
-// IMPROVE - dynamically get .md files paths
+// RFE - dynamically get .md files paths
 import C1_1 from '../../challenges/1.1.md'
 import C1_2 from '../../challenges/1.2.md'
 import C1_3 from '../../challenges/1.3.md'
@@ -43,11 +43,11 @@ export default {
   },
   2.2: {
     briefing: C2_2,
-    name: 'React Hooks',
+    name: 'React Context',
   },
   2.3: {
     briefing: C2_3,
-    name: 'React Context',
+    name: 'React Hooks',
   },
   2.4: {
     briefing: C2_4,

@@ -12,6 +12,9 @@ import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 
 jest.mock('../../playgrounds/snippets/boredAPI')
 
+// RFE: Use activityStubs here
+// RFE: Mock fetch instead of boredAPI
+
 describe('BoredContext', () => {
   describe('<BoredProvider />', () => {
     function ConsumerCheckup({ getNewArgs = [] }) {
@@ -39,13 +42,13 @@ describe('BoredContext', () => {
           <button onClick={() => dispatch.getNew(...getNewArgs)}>
             Get new activity
           </button>
-          <button onClick={dispatch.skippedClear}>Clear skipped</button>
           <button onClick={dispatch.doneClear}>Clear done</button>
+          <button onClick={dispatch.skippedClear}>Clear skipped</button>
         </>
       )
     }
 
-    it('renders the latest and lists empty by default', () => {
+    it('there is no latest or skipped/done lists by default', () => {
       render(
         <BoredProvider>
           <ConsumerCheckup />
@@ -57,16 +60,36 @@ describe('BoredContext', () => {
       expect(screen.getByText('List done is empty')).toBeInTheDocument()
     })
 
+    it('renders { latest, skipped, done } given a custom state', () => {
+      const value = {
+        latest: {
+          activity: 'Learn testing',
+          key: '123',
+        },
+        skipped: ['001', '002'],
+        done: ['007'],
+      }
+
+      render(
+        <BoredProvider value={value}>
+          <ConsumerCheckup />
+        </BoredProvider>
+      )
+
+      expect(screen.getByText('Latest has key 123')).toBeInTheDocument()
+      expect(screen.getByText('List skipped is 001, 002')).toBeInTheDocument()
+      expect(screen.getByText('List done is 007')).toBeInTheDocument()
+    })
+
     describe('dispatch.getNew', () => {
       it('renders a new activity', async () => {
-        const { rerender } = render(
+        render(
           <BoredProvider>
             <ConsumerCheckup />
           </BoredProvider>
         )
 
         // Act & Assert that a new activity is returned
-
         getNewActivity.mockResolvedValueOnce({
           key: '0001',
         })
@@ -79,7 +102,6 @@ describe('BoredContext', () => {
 
         // Act & Assert gettings another activity
         // and saving the latest one to "skipped"
-
         getNewActivity.mockResolvedValueOnce({
           key: '0002',
         })
@@ -88,57 +110,61 @@ describe('BoredContext', () => {
 
         const latestKey2 = await screen.findByText('Latest has key 0002')
         expect(latestKey2).toBeInTheDocument()
+      })
 
-        // ================================== //
-        // Getting one more activiy, skips the latest one
+      it('adds latest activity to skipped, when getting a new one', async () => {
+        const value = {
+          latest: {
+            activity: 'Learn testing',
+            key: '001',
+          },
+        }
 
-        // Act & assert getting one more activity, skipping the latest one (0002)
-        getNewActivity.mockResolvedValueOnce({
-          key: '0003',
-        })
-
-        rerender(
-          <BoredProvider>
-            <ConsumerCheckup getNewArgs={[null, { saveLatestTo: 'skipped' }]} />
+        render(
+          <BoredProvider value={value}>
+            <ConsumerCheckup />
           </BoredProvider>
         )
 
+        // Act & Assert that a new activity is returned
+        getNewActivity.mockResolvedValueOnce({
+          key: '002',
+        })
+
         fireEvent.click(screen.getByText('Get new activity'))
 
-        const latestKey3 = await screen.findByText('Latest has key 0003')
-        const skippedList = screen.getByText('List skipped is 0002')
+        const latestKey = await screen.findByText('Latest has key 002')
+        const skippedList = screen.getByText('List skipped is 001')
 
-        expect(latestKey3).toBeInTheDocument()
+        expect(latestKey).toBeInTheDocument()
         expect(skippedList).toBeInTheDocument()
 
         // 💡 Sometimes, asserting the DOM isn't enough. In this case,
         // let's ensure the API was called with the "exclude" list correctly.
-        expect(getNewActivity).toHaveBeenLastCalledWith(null, ['0002'])
+        expect(getNewActivity).toHaveBeenLastCalledWith(undefined, ['001'])
 
         // Act & assert getting one more activity, skipping again the latest one (0003)
         getNewActivity.mockResolvedValueOnce({
-          key: '0004',
+          key: '003',
         })
-
-        rerender(
-          <BoredProvider>
-            <ConsumerCheckup getNewArgs={[null, { saveLatestTo: 'skipped' }]} />
-          </BoredProvider>
-        )
 
         fireEvent.click(screen.getByText('Get new activity'))
 
-        const latestKey4 = await screen.findByText('Latest has key 0003')
-        const skippedList4 = screen.getByText('List skipped is 0002, 0003')
+        const latestKeyAgain = await screen.findByText('Latest has key 003')
+        const skippedList4 = screen.getByText('List skipped is 001, 002')
 
-        expect(latestKey4).toBeInTheDocument()
+        expect(latestKeyAgain).toBeInTheDocument()
         expect(skippedList4).toBeInTheDocument()
 
-        expect(getNewActivity).toHaveBeenLastCalledWith(null, ['0002', '0003'])
+        expect(getNewActivity).toHaveBeenLastCalledWith(undefined, [
+          '001',
+          '002',
+        ])
       })
 
       it('renders a new activity with specific params', async () => {
         const getNewParams = { type: 'educational' }
+
         getNewActivity.mockResolvedValueOnce({
           key: '0005',
         })
@@ -174,6 +200,60 @@ describe('BoredContext', () => {
           'Latest has error: Ups! Activity failed'
         )
         expect(latestKey).toBeInTheDocument()
+      })
+    })
+
+    describe('dispatch.doneClear', () => {
+      it('clears the done list', async () => {
+        const value = {
+          latest: {
+            key: '009',
+          },
+          done: ['001', '005'],
+        }
+        render(
+          <BoredProvider value={value}>
+            <ConsumerCheckup />
+          </BoredProvider>
+        )
+
+        expect(screen.getByText('Latest has key 009')).toBeInTheDocument()
+        expect(screen.getByText('List done is 001, 005')).toBeInTheDocument()
+
+        fireEvent.click(screen.getByText('Clear done'))
+
+        const listDone = await screen.findByText('List done is empty')
+        expect(listDone).toBeInTheDocument()
+
+        // Sanity check that the clar did not clear the entire state
+        expect(screen.getByText('Latest has key 009')).toBeInTheDocument()
+      })
+
+      it('clears the skipped list', async () => {
+        const value = {
+          latest: {
+            key: '009',
+          },
+          done: ['001', '005'],
+          skipped: ['003'],
+        }
+        render(
+          <BoredProvider value={value}>
+            <ConsumerCheckup />
+          </BoredProvider>
+        )
+
+        expect(screen.getByText('Latest has key 009')).toBeInTheDocument()
+        expect(screen.getByText('List skipped is 003')).toBeInTheDocument()
+
+        fireEvent.click(screen.getByText('Clear skipped'))
+
+        const listSkipped = await screen.findByText('List skipped is empty')
+        expect(listSkipped).toBeInTheDocument()
+
+        // Sanity check that the clar did not clear the entire state
+        expect(screen.getByText('Latest has key 009')).toBeInTheDocument()
+        expect(screen.getByText('List done is 001, 005')).toBeInTheDocument()
       })
     })
   })

@@ -107,7 +107,7 @@ describe('<ActivityCard />', () => {
       expect(button).not.toBeInTheDocument()
     })
 
-    it('renders skip button, given onSkip prop', () => {
+    it('renders a functional skip button, given onSkip prop', () => {
       const onSkipMock = jest.fn()
       render(
         <ActivityCard
@@ -130,7 +130,7 @@ describe('<ActivityCard />', () => {
       expect(onSkipMock).toHaveBeenCalledTimes(1)
     })
 
-    it('renders done button, given onDone prop', () => {
+    it('renders a functional done button, given onDone prop', () => {
       const onSkipMock = jest.fn()
 
       render(

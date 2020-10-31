@@ -1,4 +1,4 @@
-export const activityStub = {
+export const activityStubs = {
   basic: {
     activity: 'Write a note of appreciation to someone',
     type: 'social',

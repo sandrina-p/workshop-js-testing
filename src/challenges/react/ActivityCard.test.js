@@ -5,37 +5,35 @@ import ActivityCard from '../../playgrounds/react/components/activity-card'
 
 describe('<ActivityCard />', () => {
   it('renders with minimum props', () => {
-    render(
-      <ActivityCard
-        title="Learn Testing Library"
-        participants={1}
-        category="educational"
-      />
-    )
+    expect.assertions(4) // it might be more than 4!
 
-    screen.getByRole('article')
+    // 🍀 render the component passing only the minimum props
 
-    expect(screen.getByRole('article')).toBeInTheDocument()
-    expect(screen.getByText('educational')).toBeInTheDocument()
-
-    expect(screen.getByText('Learn Testing Library')).toBeInTheDocument()
-    expect(screen.getByText('Learn Testing Library').tagName).toBe('P')
-
-    expect(screen.getByText('For 1 person.')).toBeInTheDocument()
+    // 🍀 Assert the critical parts of the card.
   })
 
-  it.todo('renders the title as a link, given an href')
+  it('renders the title as a link, given an href', () => {
+    expect.assertions(1) // it might be more than 1!
 
-  it.skip('renders "* people", given multiple participants')
+    // 🍀 Now, there's no need to assert all the DOM again.
+    // It's redudant. You may assert only the main difference
+  })
+
+  it.skip('renders "X people", given multiple participants')
 
   it.skip('tells when the activity is free', () => {})
 
   describe('Call To Action interactions', () => {
     it.skip('does not render any button by default', () => {})
 
-    it.todo('renders skip button, given onSkip prop')
+    it('renders a functional skip button, given onSkip prop', () => {
+      expect.assertions(4)
 
-    it.skip('renders done button, given onDone prop')
+      // 🍀 Asserting the skip button is only half of the job
+      // Don't forget to also assert the respective prop is called
+    })
+
+    it.skip('renders a functional done button, given onDone prop')
   })
 })
 

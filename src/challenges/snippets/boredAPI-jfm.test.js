@@ -6,7 +6,7 @@ import {
   getNewActivity,
 } from '../../playgrounds/snippets/boredAPI'
 
-import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 beforeAll(() => {
   // 💡 fetch Mocks enabled for you!

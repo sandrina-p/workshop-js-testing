@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import Footer from '../../playgrounds/react/components/footer'
 
 import useBoredList from '../../playgrounds/react/state/useBoredList'
-import useBoredListFake from './__doubles__/useBoredListFake'
+import useBoredListFake from './__doubles__/useBoredListFake.solution.js'
 
 jest.mock('../../playgrounds/react/state/useBoredList')
 

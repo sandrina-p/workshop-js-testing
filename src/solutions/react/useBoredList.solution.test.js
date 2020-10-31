@@ -60,9 +60,7 @@ describe('useBoredList', () => {
     })
   })
 
-  // 💡 This test only works after useBoredList hook is updated.
-  // Go there and change "especial" to "special"
-  it.skip('calls "sendTrack", given a type with a list length multiple of 5', () => {
+  it('calls "sendTrack", after list length updates to a amultiple of 5', () => {
     useBoredState.mockReturnValue({
       skipped: [],
     })
@@ -86,7 +84,7 @@ describe('useBoredList', () => {
     expect(result.current.countLabel).toEqual(5)
     expect(sendTrack).toHaveBeenCalledTimes(1)
     expect(sendTrack).toHaveBeenCalledWith('skipped', {
-      especial: true,
+      special: true,
       meta: {
         count: 5,
       },

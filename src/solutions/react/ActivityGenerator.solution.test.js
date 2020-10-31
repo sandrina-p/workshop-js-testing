@@ -12,8 +12,8 @@ import ActivityGenerator from '../../playgrounds/react/components/activity-gener
 
 import * as BoredContext from '../../playgrounds/react/state/BoredContext'
 import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
-import { activityStub } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
-import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredProviderFake.js'
+import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
+import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredContextFake.js'
 
 jest.mock('../../playgrounds/snippets/boredAPI')
 
@@ -39,7 +39,7 @@ describe('<ActivityCard />', () => {
 
   describe('clicking the main CTA', () => {
     it('renders a new random activity', async () => {
-      const activityStubbed = activityStub.withLink
+      const activityStubbed = activityStubs.withLink
       getNewActivity.mockResolvedValueOnce(activityStubbed)
       render(
         <BoredProvider>
@@ -70,7 +70,7 @@ describe('<ActivityCard />', () => {
 
       const title = card.getByText(activityStubbed.activity)
       expect(title).toBeInTheDocument()
-      expect(title).toHaveAttribute('href', activityStub.link)
+      expect(title).toHaveAttribute('href', activityStubs.link)
 
       // Sanity checks to ensure all was passed to the activity card.
       expect(card.getByText(activityStubbed.type)).toBeInTheDocument() // category
@@ -118,7 +118,7 @@ describe('<ActivityCard />', () => {
         // effects made by the main component.
         // Pros: Uses the real context, no mocks needed, extra confidence.
         // Cons: The "outsider" component can get a little verbose (not the case).
-        const activityStubbed = activityStub.basic
+        const activityStubbed = activityStubs.basic
 
         getNewActivity.mockResolvedValueOnce(activityStubbed)
 
@@ -169,7 +169,7 @@ describe('<ActivityCard />', () => {
         //       before doing the final act + assertions
         // Cons: With all mocked, the false sense of security is high too.
         //       The real context might change and this test would still pass.
-        const activityStubbed = activityStub.basic
+        const activityStubbed = activityStubs.basic
         const dispatchGetNewMocked = jest.fn()
 
         jest.spyOn(BoredContext, 'useBoredDispatch').mockImplementation(() => ({
@@ -199,11 +199,11 @@ describe('<ActivityCard />', () => {
       })
 
       it('Approach C: Using Fakes', async () => {
-        // 💡 Use a fake double of "BoredProviderFake".
+        // 💡 Use a fake double of "BoredProvider".
         // Pros: Higher confidence compared to direct mock, because it's a "fake".
         //       Might cut-off some "arrangement" steps before doing the act + assertions
         // Cons: Still doesn't get the full real behavior. E.g. No access to boredAPI.
-        const activityStubbed = activityStub.basic
+        const activityStubbed = activityStubs.basic
         const dispatch = { getNew: jest.fn() }
         const state = { latest: activityStubbed }
 
@@ -234,7 +234,7 @@ describe('<ActivityCard />', () => {
     })
 
     it('clinking "✅" button, gets another activity and adds the latest do done', async () => {
-      const activityStubbed = activityStub.basic
+      const activityStubbed = activityStubs.basic
 
       getNewActivity.mockResolvedValueOnce(activityStubbed)
 
@@ -279,7 +279,7 @@ describe('<ActivityCard />', () => {
 
   describe('setting filters', () => {
     it('renders an activity that match given specific filters', async () => {
-      const activityStubbed = activityStub.withLink
+      const activityStubbed = activityStubs.withLink
 
       getNewActivity.mockResolvedValue(activityStubbed)
 

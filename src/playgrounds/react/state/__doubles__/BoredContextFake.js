@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
 import { BoredStateContext, BoredDispatchContext } from '../BoredContext'
 
@@ -10,8 +9,8 @@ function validateKeys(obj, messageContext) {
 }
 
 export function BoredProviderFake({ state, dispatch, children }) {
-  const { latest, skipped, done, ...restState } = state
-  const { getNew, skippedClear, doneClear, ...restDispatch } = dispatch
+  const { latest, skipped, done, ...restState } = state || {}
+  const { getNew, skippedClear, doneClear, ...restDispatch } = dispatch | {}
 
   validateKeys(restState, 'BoredProviderFake state')
   validateKeys(restDispatch, 'BoredProviderFake dispatch')
@@ -34,3 +33,7 @@ export function BoredProviderFake({ state, dispatch, children }) {
     </BoredStateContext.Provider>
   )
 }
+
+/* eslint
+  react/prop-types: off
+*/
