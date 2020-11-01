@@ -74,5 +74,5 @@ Please take a couple of minutes to [give me your feedback](TODO-LINK), as it wil
 -->
 
 ## License
-
+ 
 This is only available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html).
