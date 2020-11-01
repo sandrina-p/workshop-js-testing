@@ -50,7 +50,11 @@ To ensure all is fine, please verify the three following things:
 
 ### Workshop Dynamic
 
-The workshop consists of a set of challenges. Each introduces a new topic, followed with a code exercise for you to apply the concepts learned.
+The workshop consists of a set of challenges.
+
+Each introduces a new topic, followed with a code exercise for you to apply the concepts learned.
+
+After each challenge, we'll go through the solution together and clarify questions.
 
 ```bash
 src/
@@ -61,11 +65,44 @@ src/
   solutions/   # The final solutions for each challenge
 ```
 
-In each exercise you'll find the lucky clover emoji 🍀 to guide you. I don't expect you to complete the entire code challenge on time. The goal is to introduce you to new things, **to make you think about them and ask me questions** as we go through the content.
+### Dynamic tips:
 
-Here's a learning tip: **Check the solutions only as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
+- **Setup is done:** All libraries/tools needed are already installed, ready to be used by you.
 
-After each exercise we'll go through the solution together and clarify any questions that might appear on the way.
+- **Check solutions as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
+
+- **Time expectations:** I don't expect you to complete the entire code challenge on time. The goal is to introduce you to new things, **to make you think about them and ask me questions** as we go through the content.
+
+- **Learning strategy:** You won't write all the tests for each module. Instead, I'll point you to _the tests with the biggest learning value_.
+
+```js
+// 🍀 Test to be done:
+it('must work', () => {
+  // This gives you an idea of how many assertions you should do
+  expect.assertions(3)
+
+  // 🍀 The clover emoji will guide you
+  // 💡 The ligh bulb will reveal tips & tricks
+})
+
+// 😴 Extra time? Go ahead and complete the missing tests
+it.skip('might work', () => {
+  // ...
+})
+```
+
+- **Test scripts:** Custom scripts to run challenge tests:
+
+```bash
+# Run exercise with file name "general.test.js"
+npm run test:challenge --at=general
+
+# Run the respective solution
+npm run test:solution --at=general
+
+# Run both the exercise and solution
+npm run test:both --at=general
+```
 
 <!--
 ## Workshop Feedback
