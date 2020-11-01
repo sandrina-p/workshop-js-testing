@@ -5,7 +5,7 @@ import Footer from '../../playgrounds/react/components/footer'
 
 import useBoredList from '../../playgrounds/react/state/useBoredList'
 
-// 🍀 Import the fake
+// 💡 Import the fake
 // import useBoredListFake from './__doubles__/useBoredListFake'
 
 jest.mock('../../playgrounds/react/state/useBoredList')
@@ -18,7 +18,7 @@ describe('<Footer />', () => {
     const skipClearMock = jest.fn()
     const doneClearMock = jest.fn()
 
-    // 🍀 Replace this dummy mocks with the fake.
+    // 💡 Replace this dummy mocks with the fake.
     // The test should still pass! There's no bugs this time.
     useBoredList
       .mockImplementationOnce(() => ({
@@ -30,7 +30,7 @@ describe('<Footer />', () => {
         clear: doneClearMock,
       }))
 
-    // 💡 How can you be sure the fake is working if you never saw
+    // 🍀 How can you be sure the fake is working if you never saw
     // the test failing in first place? We must purposely break a test
     // to see it working. How ironic is that? Suggestions:
     // - In the component change the listType (ex skipped -> favorites)

@@ -7,15 +7,15 @@ describe('<ActivityCard /> - (2.1 components)', () => {
   it('renders with minimum props', () => {
     expect.assertions(4) // it might be more than 4!
 
-    // 🍀 render the component passing only the minimum props
+    // 💡 render the component passing only the minimum props
 
-    // 🍀 Assert the critical parts of the card.
+    // 💡 Assert the critical parts of the card.
   })
 
   it('renders the title as a link, given an href', () => {
     expect.assertions(1) // it might be more than 1!
 
-    // 🍀 Now, there's no need to assert all the DOM again.
+    // 💡 Now, there's no need to assert all the DOM again.
     // It's redudant. You may assert only the main difference
   })
 
@@ -29,7 +29,7 @@ describe('<ActivityCard /> - (2.1 components)', () => {
     it('renders a functional skip button, given onSkip prop', () => {
       expect.assertions(4)
 
-      // 🍀 Asserting the skip button is only half of the job
+      // 💡 Asserting the skip button is only half of the job
       // Don't forget to also assert the respective prop is called
     })
 

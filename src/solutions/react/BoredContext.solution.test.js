@@ -139,7 +139,7 @@ describe('BoredContext - (2.2 context)', () => {
         expect(latestKey).toBeInTheDocument()
         expect(skippedList).toBeInTheDocument()
 
-        // 💡 Sometimes, asserting the DOM isn't enough. In this case,
+        // 🍀 Sometimes, asserting the DOM isn't enough. In this case,
         // let's ensure the API was called with the "exclude" list correctly.
         expect(getNewActivity).toHaveBeenLastCalledWith(undefined, ['001'])
 

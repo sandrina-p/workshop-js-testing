@@ -140,7 +140,7 @@ describe('pets - (1.3 spy)', () => {
       it('logs the search', () => {
         const consoleLogSpy = jest
           .spyOn(global.console, 'log')
-          .mockImplementation() // 💡 This keeps the logs clean
+          .mockImplementation() // 🍀 This keeps the logs clean
         const result = searchPet('john', 5)
 
         expect(consoleLogSpy).toHaveBeenCalledWith(
@@ -153,7 +153,7 @@ describe('pets - (1.3 spy)', () => {
       it('warns when the age is not a number', () => {
         const consoleWarnSpy = jest
           .spyOn(global.console, 'warn')
-          .mockImplementation() // 💡 This keeps the logs clean
+          .mockImplementation() // 🍀 This keeps the logs clean
         const result = searchPet('john', 'five')
 
         expect(consoleWarnSpy).toHaveBeenCalledWith(

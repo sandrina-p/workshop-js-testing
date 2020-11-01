@@ -76,7 +76,7 @@ describe('useBoredList - (2.3 hooks)', () => {
     // First render does not call the track because the count is 0
     expect(sendTrack).toHaveBeenCalledTimes(0)
 
-    // 💡 Re-renders the hook, this time with a length multiple of 5
+    // 🍀 Re-renders the hook, this time with a length multiple of 5
     useBoredState.mockReturnValue({
       skipped: [1, 2, 3, 4, 5],
     })

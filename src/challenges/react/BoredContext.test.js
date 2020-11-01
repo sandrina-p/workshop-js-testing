@@ -8,14 +8,14 @@ import {
   useBoredDispatch,
 } from '../../playgrounds/react/state/BoredContext'
 
-// 💡 Here's the activityStubs for you
+// 🍀 Here's the activityStubs for you
 import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
-// 💡 Option A: Mocking boredAPI:
+// 🍀 Option A: Mocking boredAPI:
 // import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 // jest.mock('../../playgrounds/snippets/boredAPI')
 
-// 💡 Option B: Mocking fetch
+// 🍀 Option B: Mocking fetch
 // import fetchMock from 'jest-fetch-mock'
 // beforeAll(() => {
 //   fetchMock.enableMocks()
@@ -47,13 +47,13 @@ describe('BoredContext - (2.2 context)', () => {
           )}
 
           {/* Dispatch checkup... */}
-          {/* 🍀 ... */}
+          {/* 💡 ... */}
         </>
       )
     }
 
     it('there is no latest or skipped/done lists by default', () => {
-      // 💡 This test is already done for you!
+      // 🍀 This test is already done for you!
       render(
         <BoredProvider>
           <ConsumerCheckup />
@@ -67,49 +67,49 @@ describe('BoredContext - (2.2 context)', () => {
 
     it('renders { latest, skipped, done } given a custom state', () => {
       expect.assertions(1)
-      // 🍀 render the provider with a value
+      // 💡 render the provider with a value
 
-      // 🍀 Verify the latest, skipped and done match the given state
+      // 💡 Verify the latest, skipped and done match the given state
     })
 
     describe('dispatch.getNew', () => {
       it('renders a new activity', async () => {
         expect.assertions()
         // Arrange
-        // 🍀 render the BoredProvider with ConsumerCheckup
+        // 💡 render the BoredProvider with ConsumerCheckup
 
         // Act & Assert that a new activity is returned
 
-        // 💡 Make sure to mock boredAPI value *before* it's called
+        // 🍀 Make sure to mock boredAPI value *before* it's called
         // The mock might only return a simple { key: 001 }, or
         // you can use the BoredAPIStubs
 
-        // 🍀 Add a button to the Checkup to click on it.
+        // 💡 Add a button to the Checkup to click on it.
 
-        // 🍀 Assert the latest key exist
+        // 💡 Assert the latest key exist
         // (eg assert one of its keys (key, activity, etc...))
 
-        // 🍀 Assert both lists are still empty
+        // 💡 Assert both lists are still empty
       })
 
       it('adds latest activity to skipped, when getting a new one', async () => {
         expect.assertions(3)
 
-        // 🍀 Pass an initial value to the provider
+        // 💡 Pass an initial value to the provider
         // with a latest activity
 
         // Act & Assert that a new activity is returned
 
-        // 🍀 Repeat the sames steps as the previous test to get a new activity.
+        // 💡 Repeat the sames steps as the previous test to get a new activity.
 
-        // 🍀 Verity the latest key is updated
-        // 🍀 Verity the skipped list includes the initial latest.
+        // 💡 Verity the latest key is updated
+        // 💡 Verity the skipped list includes the initial latest.
 
-        // 💡 Sometimes, asserting the DOM isn't enough. In this case,
+        // 🍀 Sometimes, asserting the DOM isn't enough. In this case,
         // let's ensure the getNewActivity was called with the "exclude" list correctly.
 
         // Act & assert getting one more activity, skipping again the last latest one.
-        // 🍀 This would be a sanity check. For time constraints, you can
+        // 💡 This would be a sanity check. For time constraints, you can
         // jump to the next test!
       })
 
@@ -122,18 +122,18 @@ describe('BoredContext - (2.2 context)', () => {
       it('clears the done list', async () => {
         expect.assertions(4)
 
-        // 🍀 Render the provider. You might want to pass
+        // 💡 Render the provider. You might want to pass
         // a custom done list by default to cut some steps.
-        // 💡 There are multiple correct ways to approach this.
+        // 🍀 There are multiple correct ways to approach this.
         // I'll leave it up to you!
 
         // Act
-        // 🍀 Click "Clear done"
+        // 💡 Click "Clear done"
         fireEvent.click(screen.getByText('Clear done'))
 
         // Assert
-        // 🍀 Verify the list "done" is empty again
-        // 💡 Some sanity checks are okay too. Eg. Check the skipped list is the same
+        // 💡 Verify the list "done" is empty again
+        // 🍀 Some sanity checks are okay too. Eg. Check the skipped list is the same
       })
 
       it.skip('clears the skipped list', async () => {

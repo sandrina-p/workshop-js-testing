@@ -21,24 +21,24 @@ describe('general - (1.1 Initial)', () => {
     })
   })
 
-  // 🍀 Group each method into a describe()
-  // 🍀 Write the necessary tests for each method.
-  // 💡 Use it.only() to run one test at the time
+  // 💡 Group each method into a describe()
+  // 💡 Write the necessary tests for each method.
+  // 🍀 Use it.only() to run one test at the time
 
-  // 🍀 getSinguralOrPlural
+  // 💡 getSinguralOrPlural
 
-  // 🍀 filterBiggestNumbers
+  // 💡 filterBiggestNumbers
 
-  // 💡 When asserting arrays, toBe() won't work. Try .toEqual()
+  // 🍀 When asserting arrays, toBe() won't work. Try .toEqual()
   // describe(...)
 
   // ...
 
-  // 🍀 Done? Go to Bonus #1!
+  // 💡 Done? Go to Bonus #1!
 
   // ...
 
-  // 🍀 Bonus #2
+  // 💡 Bonus #2
   describe('removeNullish', () => {
     const profile = {
       name: 'Sandrina',
@@ -65,10 +65,10 @@ describe('general - (1.1 Initial)', () => {
         siblings: undefined, // uh?!
       }
 
-      // 🍀 doesn't work
+      // 💡 doesn't work
       // expect(result).toBe(expected)
 
-      // 💡 Ups! It passes, but is a false positive. "siblings"
+      // 🍀 Ups! It passes, but is a false positive. "siblings"
       // was removed but it's on expected object.
       // expect(result).toEqual(expected)
     })

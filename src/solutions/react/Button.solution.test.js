@@ -41,12 +41,12 @@ describe('<button> - briefing example', () => {
 })
 
 describe('<Button />', () => {
-  // 💡 Start the tests with the simplest/minimum usage
+  // 🍀 Start the tests with the simplest/minimum usage
 
   it('renders with minimum usage - manual assertions', () => {
     render(<Button>Sign up</Button>)
 
-    // 💡 Manual assertions are easy to read, but verbose and limited.
+    // 🍀 Manual assertions are easy to read, but verbose and limited.
     // If something new is added it can be easily missed.
     const button = screen.getByRole('button')
     expect(button.type).toBe('button')
@@ -57,7 +57,7 @@ describe('<Button />', () => {
   it('renders with minimum props - inlineSnapshots', () => {
     render(<Button>Sign up</Button>)
 
-    // 💡 Snapshots is a powerful weapon that can be totally missused
+    // 🍀 Snapshots is a powerful weapon that can be totally missused
     // Prefer SHORT (max 5-10 lines) and inline snapshots.
     // It saves you from manual assertions while checking for the "whole DOM"
     expect(screen.getByRole('button')).toMatchInlineSnapshot(`
@@ -84,13 +84,13 @@ describe('<Button />', () => {
     expect(button.getAttribute('data-super')).toBe('123')
 
     expect(clickMock).toHaveBeenCalledTimes(1)
-    // 💡 Verify the clickMock was called with anything to give
+    // 🍀 Verify the clickMock was called with anything to give
     // a minimum safety that the event listener is passed
     expect(clickMock).toHaveBeenCalledWith(expect.anything())
   })
 
   it('renders attr aria-pressed correctly based on isActive', () => {
-    // 💡 It's okay to have a test with a A-AA-AA cycle, (multiple acts/assertions)
+    // 🍀 It's okay to have a test with a A-AA-AA cycle, (multiple acts/assertions)
     // when they are related and make sense together.
 
     // Act + Assert without isActive
@@ -100,7 +100,7 @@ describe('<Button />', () => {
 
     // Act + Assert isActive=false
     rerender(<Button isActive={false}>Sign up</Button>)
-    // 💡 Using *ByRole query it's possible to look for certain attributes directly
+    // 🍀 Using *ByRole query it's possible to look for certain attributes directly
     expect(screen.getByRole('button', { pressed: false })).toBeInTheDocument()
 
     // Act + Assert isActive=true
@@ -116,7 +116,7 @@ describe('<Button />', () => {
       const button = screen.getByRole('button')
 
       expect(button.className).toContain('super')
-      // 💡 Or more robust, ensure it contains both, to prevent overrides
+      // 🍀 Or more robust, ensure it contains both, to prevent overrides
       // expect(button.className).toBe('button super')
     })
 
@@ -155,7 +155,7 @@ describe('<Button />', () => {
         'Button with icon ✅ must have "aria-label" for accessibility'
       )
 
-      // 💡  Remember to restore the console so that it works in other tests
+      // 🍀  Remember to restore the console so that it works in other tests
       global.console = consoleOriginal
     })
   })

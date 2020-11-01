@@ -4,7 +4,7 @@ import * as metrics from '../../playgrounds/snippets/metrics'
 
 describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
   describe('saveAsFavorite()', () => {
-    // 💡 The sendTrack is still the original, so the warn
+    // 🍀 The sendTrack is still the original, so the warn
     // message will show in the logs. Let's keep them clean...
     beforeEach(() => {
       jest.spyOn(global.console, 'log').mockImplementation()
@@ -31,7 +31,7 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
 
       expect(result).toBe(`pet-${id}-saved`)
 
-      // 🍀 We might be tempted to verify the log was called too.
+      // 💡 We might be tempted to verify the log was called too.
       // Some may say this are implementation details...
       expect(global.console.log).toHaveBeenCalledTimes(1)
     })

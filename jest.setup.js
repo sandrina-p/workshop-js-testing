@@ -14,12 +14,12 @@ global.console = {
   log: jest.fn(),
   degub: jest.fn(),
 
-  // 💡 DO NOT mock error and warn. This might hide
+  // 🍀 DO NOT mock error and warn. This might hide
   // potential issues with the code being tests.
   error: consoleOriginal.error,
   warn: consoleOriginal.warn,
 
-  // 💡💡 Extra TIP: Allows you to see logs during debugging
+  // 🍀🍀 Extra TIP: Allows you to see logs during debugging
   // eg: console.dev('Hello!')
   dev: consoleOriginal.log,
 }

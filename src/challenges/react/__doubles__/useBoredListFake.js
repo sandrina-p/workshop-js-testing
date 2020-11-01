@@ -1,4 +1,4 @@
-// 💡 In React, Errors thrown inside a React Hook are automatically catched
+// 🍀 In React, Errors thrown inside a React Hook are automatically catched
 // by React itself. So, using them in a hook fake is useless (the
 // test would still pass).
 // One solution is to log an error and return immediately
@@ -7,14 +7,14 @@
 // And the mocked result (returnMock)
 export default function useBoredListFake(returnMock) {
   return listType => {
-    // 🍀 Validate the listType passsed is "skipped" or "done"
+    // 💡 Validate the listType passsed is "skipped" or "done"
 
     // if (...) {
     //   console.error(`useBoredList (stub) - Argument "${listType}" is invalid`)
     //   return
     // }
 
-    // 🍀 Validate the returnMock does not contain any key
+    // 💡 Validate the returnMock does not contain any key
     // besides "countLabel" and "clear"
 
     // if (...) {

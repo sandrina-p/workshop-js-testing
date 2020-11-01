@@ -78,7 +78,7 @@ describe('<ActivityCard /> - (2.1 components)', () => {
       />
     )
 
-    // 💡 When a sentence is split into different nodes, Testing Library
+    // 🍀 When a sentence is split into different nodes, Testing Library
     // can't find the sentece. A solution is using regex to look for a part,
     // and then check the parent element' text content.
     // Example using rgxexample: screen.getByText(/it's free/i)
@@ -86,7 +86,7 @@ describe('<ActivityCard /> - (2.1 components)', () => {
       "For 3 people and it's free!"
     )
 
-    // 💡 Bonus #1 Use a custom method hasTextNode
+    // 🍀 Bonus #1 Use a custom method hasTextNode
     expect(
       screen.getByText(hasTextNode("For 3 people and it's free!"))
     ).toBeInTheDocument()
@@ -118,7 +118,7 @@ describe('<ActivityCard /> - (2.1 components)', () => {
         />
       )
 
-      // 💡 getByRole name gets the accessible name. When using aria-label
+      // 🍀 getByRole name gets the accessible name. When using aria-label
       // the textContent is ignored.
       const button = screen.getByRole('button', { name: "Nah, that's boring" })
 

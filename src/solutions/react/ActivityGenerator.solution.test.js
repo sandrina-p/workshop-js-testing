@@ -77,7 +77,7 @@ describe('<ActivityGenerator />', () => {
       // Cool note: This will fail if, on the first assertion, the element doesnt exist.
       await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
-      // 💡 "within()"" allow us to assert element inside a given element
+      // 🍀 "within()"" allow us to assert element inside a given element
       const card = within(screen.getByRole('article'))
 
       const title = card.getByText(activityStubbed.activity)
@@ -122,7 +122,7 @@ describe('<ActivityGenerator />', () => {
   describe('within the Activity card', () => {
     describe('clinking "😴" button, adds the current to "skipped" and gets another activity', () => {
       it('Approach A: "Checkup pattern"', async () => {
-        // 💡 Render a "Checkup" components to help asserting the side
+        // 🍀 Render a "Checkup" components to help asserting the side
         // effects made by the main component.
         // Pros: Uses the real context, no mocks needed, extra confidence.
         // Cons: The "Checkup" component can get a little verbose (not the case).
@@ -151,7 +151,7 @@ describe('<ActivityGenerator />', () => {
         await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
 
         // The activity is in the document.
-        // 💡 To keep it simple, we assert the activity title only.
+        // 🍀 To keep it simple, we assert the activity title only.
         // If we feel our confidence in the code is low, we could assert other things too.
         const title = screen.getByText(activityStubbed1.activity)
         expect(title).toBeInTheDocument()
@@ -170,14 +170,14 @@ describe('<ActivityGenerator />', () => {
         // Verify the 2nd activity is rendered
         expect(screen.getByText(activityStubbed2.activity)).toBeInTheDocument()
 
-        // 💡 Use the Checkup to verify the side-effect  💡
+        // 🍀 Use the Checkup to verify the side-effect  🍀
         expect(screen.getByText(/Skipped list/i).textContent).toBe(
           `Skipped list: ${activityStubbed1.key}`
         )
       })
 
       it('Approach B: Mocking the hooks', async () => {
-        // 💡 Mock directly the useContext hooks
+        // 🍀 Mock directly the useContext hooks
         // Pros: The easiest way to test. Might cut-off some "arrangement" steps
         //       before doing the final act + assertions
         // Cons: With all mocked, the false sense of security is high too.
@@ -217,7 +217,7 @@ describe('<ActivityGenerator />', () => {
       })
 
       it('Approach C: Using Fakes', async () => {
-        // 💡 Use a fake double of "BoredProvider".
+        // 🍀 Use a fake double of "BoredProvider".
         // Pros: Higher confidence compared to direct mock, because it's a "fake".
         //       Might cut-off some "arrangement" steps before doing the act + assertions
         // Cons: Still doesn't get the full real behavior. E.g. No access to boredAPI.
@@ -321,7 +321,7 @@ describe('<ActivityGenerator />', () => {
 
       // 2/3 fill number of participants
       const participantsField = filtersForm.getByLabelText('People nr')
-      // 💡 Sanity asserts may also be done
+      // 🍀 Sanity asserts may also be done
       expect(participantsField.value).toBe('')
       fireEvent.change(participantsField, { target: { value: '2' } })
       expect(participantsField.value).toBe('2')
@@ -339,7 +339,7 @@ describe('<ActivityGenerator />', () => {
 
       expect(screen.getByText(activityStubbed1.activity)).toBeInTheDocument()
 
-      // 💡 This is an example where asserting the DOM isn't enough
+      // 🍀 This is an example where asserting the DOM isn't enough
       //    because the fetch response is mocked. So we must assert the request query.
       expect(global.fetch).toHaveBeenCalledTimes(1)
       expect(global.fetch).toHaveBeenCalledWith(
@@ -350,7 +350,7 @@ describe('<ActivityGenerator />', () => {
       // ============================
       // Reseting filters
       // it clears the fields and the fetch request query
-      // 💡 _Write fewer, longer tests._
+      // 🍀 _Write fewer, longer tests._
 
       // Arrange
 

@@ -6,15 +6,15 @@ describe('pets - (1.2 Mock)', () => {
       expect.assertions(3)
 
       // Arrange
-      // 🍀 Create the mock where it returns something
+      // 💡 Create the mock where it returns something
       // const APIMock = jest.fn().....
 
       // Act
-      // 🍀 Pass the mock as 2nd paratemer to APISheel
+      // 💡 Pass the mock as 2nd paratemer to APISheel
       // const result = petsGuard('category')
 
       // Assert
-      // 💡 Remember to assert both arguments and how many times a
+      // 🍀 Remember to assert both arguments and how many times a
       //    mocked fn was called. We don't want memory leaks in our code!
     })
 
@@ -24,7 +24,7 @@ describe('pets - (1.2 Mock)', () => {
       })
 
       it('when the API fails it returns the error with API index', () => {
-        // 🍀 For this one you'll need .mockReturnValueOnce
+        // 💡 For this one you'll need .mockReturnValueOnce
         // or to create a custom .mockImplementation
         expect.assertions(2)
       })

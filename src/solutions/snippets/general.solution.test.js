@@ -118,6 +118,7 @@ describe('general - (1.1 Initial)', () => {
 
       // Better: Now the test assertion is self-explanatory,
       // and when it changes the diffs can be spotted inline.
+      // 🍀 This only works with Prettier configured
       expect(result).toMatchInlineSnapshot(`
         Object {
           "age": 25,

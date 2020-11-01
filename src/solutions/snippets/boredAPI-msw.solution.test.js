@@ -12,7 +12,7 @@ import {
 import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 // ----
-// 💡 Configure msw for this file. It can be done globally at jest.setup.js
+// 🍀 Configure msw for this file. It can be done globally at jest.setup.js
 // Setup a mocked server with an "happy path" URL
 const server = setupServer(
   // regex can be used to cover similar paths.

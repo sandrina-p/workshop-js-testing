@@ -1,7 +1,7 @@
 import { saveAsFavorite } from '../../playgrounds/snippets/pets'
 
 import { sendTrack, getPreferences } from '../../playgrounds/snippets/metrics'
-// 🍀 Mock the entire metrics module
+// 💡 Mock the entire metrics module
 
 describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
   describe('saveAsFavorite()', () => {
@@ -17,7 +17,7 @@ describe('pets - (1.4 - Mock / Spy modules: Mock)', () => {
       const result = saveAsFavorite(102)
 
       // Assert
-      // 🍀 Verify sendTrack was called correctly
+      // 💡 Verify sendTrack was called correctly
       // ...
 
       // Verify the returned result

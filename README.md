@@ -43,7 +43,7 @@ To ensure all is fine, please verify the three following things:
 
 1. **App running:** Run `npm start`. The workshop app should start at http://localhost:1234
 2. **Testing tool:** Run `npm run checkup` and verify the [output matches this example](src/_checkup/checkup_output.png?raw=true).
-3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Then, restart your editor, open `src/_checkup/index.test.js` and follow the notes given with the ligh bulb emoji 💡 .
+3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Then, restart your editor, open `src/_checkup/index.test.js` and follow the notes given with the ligh bulb emoji 🍀 .
 
 - Did everything work? _Ah-wesome!_ That's all, see you soon! 🤓
 - Having troubles? [Open an issue](https://github.com/sandrina-p/workshop-js-testing/issues/new) or reach me at a.sandrina.p@gmail.com.
@@ -78,13 +78,13 @@ src/
 - **Learning strategy:** You won't write all the tests for each module. Instead, I'll point you to _the tests with the biggest learning value_.
 
 ```js
-// 🍀 Test to be done:
+// 💡 Test to be done:
 it('must work', () => {
   // This gives you an idea of how many assertions you should do
   expect.assertions(3)
 
-  // 🍀 The clover emoji will guide you
-  // 💡 The ligh bulb will reveal tips & tricks
+  // 💡 The light bulb emoji will guide you
+  // 🍀 The lucky clover emoji will reveal tips & tricks
 })
 
 // 😴 Extra time? Go ahead and complete the missing tests
