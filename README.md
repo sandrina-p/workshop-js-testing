@@ -65,7 +65,9 @@ src/
   solutions/   # The final solutions for each challenge
 ```
 
-### Dynamic tips:
+#### Dynamic tips:
+
+<!-- Need a better sub-title. ideas? @copy -->
 
 - **Setup is done:** All libraries/tools needed are already installed, ready to be used by you.
 
@@ -89,19 +91,6 @@ it('must work', () => {
 it.skip('might work', () => {
   // ...
 })
-```
-
-- **Test scripts:** Custom scripts to run challenge tests:
-
-```bash
-# Run exercise with file name "general.test.js"
-npm run test:challenge --at=general
-
-# Run the respective solution
-npm run test:solution --at=general
-
-# Run both the exercise and solution
-npm run test:both --at=general
 ```
 
 <!--

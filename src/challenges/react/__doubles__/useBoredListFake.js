@@ -1,5 +1,4 @@
-// 💡💡💡
-// In React, Errors thrown inside a React Hook are automatically catched
+// 💡 In React, Errors thrown inside a React Hook are automatically catched
 // by React itself. So, using them in a hook fake is useless (the
 // test would still pass).
 // One solution is to log an error and return immediately
