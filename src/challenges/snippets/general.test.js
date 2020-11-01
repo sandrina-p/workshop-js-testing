@@ -21,13 +21,14 @@ describe('general - (1.1 Initial)', () => {
     })
   })
 
-  // 🍀 Suggestion: Group each method into a describe().
+  // 🍀 Group each method into a describe()
+  // 🍀 Write the necessary tests for each method.
+  // 💡 Use it.only() to run one test at the time
 
   // 🍀 getSinguralOrPlural
-  expect.assertions(2)
 
   // 🍀 filterBiggestNumbers
-  expect.assertions(3)
+
   // 💡 When asserting arrays, toBe() won't work. Try .toEqual()
   // describe(...)
 
@@ -41,9 +42,11 @@ describe('general - (1.1 Initial)', () => {
   describe('removeNullish', () => {
     const profile = {
       name: 'Sandrina',
-      age: 25,
+      website: '//www.sandrina-p.net/',
+      job: 'Frontend Engineer',
       country: 'Portugal',
       hobbie: 'piano',
+      age: 25,
       pet: null,
       siblings: undefined,
     }
@@ -54,9 +57,11 @@ describe('general - (1.1 Initial)', () => {
 
       const expected = {
         name: 'Sandrina',
+        website: '//www.sandrina-p.net/',
+        job: 'Frontend Engineer',
         country: 'Portugal',
-        age: 25,
         hobbie: 'piano',
+        age: 25,
         siblings: undefined, // uh?!
       }
 

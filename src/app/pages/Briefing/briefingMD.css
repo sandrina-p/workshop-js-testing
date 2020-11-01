@@ -1,8 +1,51 @@
+.briefingBtnTgle {
+  position: fixed;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: transparent;
+  border: 1px solid var(--text-light);
+  border-radius: 3px;
+
+  &:hover {
+    background: var(--blank);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--blank) 0 0 0 2px, var(--secondary) 0 0 0 4px;
+  }
+}
 :global {
   .briefingMD {
     &.home {
       h1 {
         color: var(--text);
+      }
+    }
+
+    &.hiddenIntro {
+      h1 ~ * {
+        opacity: 0.1;
+      }
+
+      h2:nth-of-type(2) ~ * {
+        opacity: 1;
+      }
+
+      h1,
+      h2,
+      pre {
+        opacity: 1;
+
+        * {
+          opacity: inherit;
+        }
       }
     }
 
@@ -90,7 +133,7 @@
 
     blockquote {
       margin: 0;
-      font-weight: 600;
+      /* font-weight: 600; */
 
       p {
         font-style: italic;

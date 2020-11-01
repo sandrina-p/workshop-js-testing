@@ -52,7 +52,7 @@ To ensure all is fine, please verify the three following things:
 
 The workshop consists of a set of challenges.
 
-Each introduces a new topic, followed with a code exercise for you to apply the concepts learned.
+Each one introduces a new topic, followed with a code exercise for you to apply the concepts learned.
 
 After each challenge, we'll go through the solution together and clarify questions.
 
@@ -60,9 +60,9 @@ After each challenge, we'll go through the solution together and clarify questio
 src/
   challenges/  # Challenges
      *.md         # Exercise instructions
-     *.test.js    # Where you'll be writing the tests!
+     *.test.js    # Where you'll be writing tests
   playgrounds/ # Code to be tested
-  solutions/   # The final solutions for each challenge
+  solutions/   # The final test solutions
 ```
 
 #### Dynamic tips:
@@ -73,7 +73,7 @@ src/
 
 - **Check solutions as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
 
-- **Time expectations:** I don't expect you to complete the entire code challenge on time. The goal is to introduce you to new things, **to make you think about them and ask me questions** as we go through the content.
+- **Time expectations:** I don't expect you to complete the entire exercises on time. The goal is to introduce you to new things, to _make you think about them and ask me questions_ as we go through the content.
 
 - **Learning strategy:** You won't write all the tests for each module. Instead, I'll point you to _the tests with the biggest learning value_.
 

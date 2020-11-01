@@ -5,6 +5,8 @@ Object {
   "age": 25,
   "country": "Portugal",
   "hobbie": "piano",
+  "job": "Frontend Engineer",
   "name": "Sandrina",
+  "website": "//www.sandrina-p.net/",
 }
 `;

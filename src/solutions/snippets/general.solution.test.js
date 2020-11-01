@@ -82,8 +82,10 @@ describe('general - (1.1 Initial)', () => {
   describe('asserting data objects', () => {
     const profile = {
       name: 'Sandrina',
-      age: 25,
+      website: '//www.sandrina-p.net/',
+      job: 'Frontend Engineer',
       country: 'Portugal',
+      age: 25,
       hobbie: 'piano',
       pet: null,
       siblings: undefined,
@@ -93,10 +95,12 @@ describe('general - (1.1 Initial)', () => {
     it('toBe vs toEqual', () => {
       const expected = {
         name: 'Sandrina',
+        website: '//www.sandrina-p.net/',
+        job: 'Frontend Engineer',
         country: 'Portugal',
         age: 25,
         hobbie: 'piano',
-        siblings: undefined, // uh!
+        siblings: undefined, // uh?!
       }
 
       // - doesn't work
@@ -119,7 +123,9 @@ describe('general - (1.1 Initial)', () => {
           "age": 25,
           "country": "Portugal",
           "hobbie": "piano",
+          "job": "Frontend Engineer",
           "name": "Sandrina",
+          "website": "//www.sandrina-p.net/",
         }
       `)
     })
