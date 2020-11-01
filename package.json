@@ -58,8 +58,5 @@
     "react-test-renderer": "^16.14.0",
     "standard": "^14.3.4",
     "whatwg-fetch": "^3.4.1"
-  },
-  "browserslist": [
-    "last 2 Chrome versions"
-  ]
+  }
 }
