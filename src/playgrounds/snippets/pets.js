@@ -72,10 +72,14 @@ export function searchPet(type, age) {
  * @param {String} id - Pet id (eg 221)
  */
 export function saveAsFavorite(petId) {
-  const { markting } = getPreferences()
+  const { marketing } = getPreferences()
 
-  if (markting) {
-    sendTrack('favorite', petId)
+  if (marketing) {
+    sendTrack('favorite', {
+      data: {
+        id: petId,
+      },
+    })
   }
 
   return `pet-${petId}-saved`

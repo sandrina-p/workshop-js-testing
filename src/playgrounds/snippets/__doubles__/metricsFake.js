@@ -10,7 +10,7 @@ export function sendTrackFake(id, opts = {}) {
 
   // Extract all the expected keys from arg opts
   // and thrown an error if some unexpected key was received
-  const { name, meta, special, ...rest } = opts
+  const { data, special, ...rest } = opts
   const unexpectedKeys = Object.keys(rest)
 
   if (unexpectedKeys.length > 0) {
@@ -24,7 +24,14 @@ export function sendTrackFake(id, opts = {}) {
 export function getPreferencesFakeReturn(mockedResult) {
   // Extract all the expected keys from arg opts
   // and thrown an error if some unexpected key was received
-  const { performance, marketing, functional, ...rest } = mockedResult
+  const {
+    performance,
+    marketing,
+    functional,
+    device,
+    geographic,
+    ...rest
+  } = mockedResult
   const unexpectedKeys = Object.keys(rest)
 
   if (unexpectedKeys.length > 0) {

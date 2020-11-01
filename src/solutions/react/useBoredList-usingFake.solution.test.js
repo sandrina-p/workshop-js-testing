@@ -34,7 +34,7 @@ describe('useBoredList - (2.3 hooks - usingFake)', () => {
     expect(sendTrack).toHaveBeenCalledTimes(1)
     expect(sendTrack).toHaveBeenCalledWith('skipped', {
       special: true,
-      meta: { count: 5 },
+      count: 5,
     })
   })
 })

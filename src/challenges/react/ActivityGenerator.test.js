@@ -154,7 +154,7 @@ describe('<ActivityGenerator />', () => {
         // Cons: With all mocked, the false sense of security is high too.
         //       The real context might change and this test would still pass.
         //       Also, we cannot assert the fetch call anymore
-        const activityStubbed = activityStubs.basic
+        const activityStubbed = activityStubs.sample
         const dispatchGetNewMocked = jest.fn()
 
         jest.spyOn(BoredContext, 'useBoredDispatch').mockImplementation(() => ({
@@ -184,7 +184,7 @@ describe('<ActivityGenerator />', () => {
         //       Might cut-off some "arrangement" steps before doing the act + assertions
         // Cons: Still, IT doesn't get the full real behavior,
         //       and it cuts off the access to the boredAPI assertions.
-        const activityStubbed = activityStubs.basic
+        const activityStubbed = activityStubs.sample
         const dispatch = { getNew: jest.fn() }
         const state = { latest: activityStubbed }
 
@@ -217,7 +217,7 @@ describe('<ActivityGenerator />', () => {
     it('renders an activity that matches given specific filters', async () => {
       expect.assertions(8)
 
-      const activityStubbed1 = activityStubs.basic
+      const activityStubbed1 = activityStubs.sample
       const activityStubbed2 = activityStubs.pricePaid
 
       global.fetch

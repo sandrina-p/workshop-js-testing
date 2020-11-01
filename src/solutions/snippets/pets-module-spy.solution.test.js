@@ -14,18 +14,20 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
       jest.spyOn(global.console, 'log').mockRestore()
     })
 
-    it('calls sendTrack if markting metric is enabled', () => {
+    it('calls sendTrack when marketing metric is enabled', () => {
       const id = 678
 
       jest.spyOn(metrics, 'sendTrack')
       jest.spyOn(metrics, 'getPreferences').mockReturnValue({
-        markting: true,
+        marketing: true,
       })
 
       const result = saveAsFavorite(678)
 
       expect(metrics.sendTrack).toHaveBeenCalledTimes(1)
-      expect(metrics.sendTrack).toHaveBeenCalledWith('favorite', id)
+      expect(metrics.sendTrack).toHaveBeenCalledWith('favorite', {
+        data: { id },
+      })
 
       expect(result).toBe(`pet-${id}-saved`)
 

@@ -21,7 +21,7 @@ const server = setupServer(
   // - boredapi.com/api/activity?type=diy
   // - www.boredapi.com/api/activity?type=diy
   rest.get(/boredapi.com\/api\/activity/, (req, res, ctx) => {
-    return res(ctx.status(200, 'Mocked status'), ctx.json(activityStubs.basic))
+    return res(ctx.status(200, 'Mocked status'), ctx.json(activityStubs.sample))
   })
 )
 
@@ -33,10 +33,10 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 // ----
 
-describe('boredAPI - (1.6 - msw)', () => {
+describe('boredAPI - (1.7 - msw)', () => {
   describe('getActivity', () => {
     const consoleOriginal = global.console
-    const activityStubbed = activityStubs.basic
+    const activityStubbed = activityStubs.sample
 
     beforeAll(() => {
       // This time we spy on fetch, because it wasn't mocked.

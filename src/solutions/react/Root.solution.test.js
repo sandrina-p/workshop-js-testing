@@ -41,10 +41,13 @@ describe('<Root />', () => {
   describe('when an activity is skipped or done', () => {
     it('updates the respective list links', async () => {
       getNewActivity
-        .mockResolvedValue(activityStubs.basic)
+        .mockResolvedValue(activityStubs.sample)
         .mockResolvedValueOnce(activityStubs.withLink)
         .mockResolvedValueOnce(activityStubs.pricePaid)
-        .mockResolvedValueOnce(activityStubs.with2people)
+        .mockResolvedValueOnce({
+          ...activityStubs.sample,
+          key: '1234567',
+        })
 
       render(
         <BoredProvider>

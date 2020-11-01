@@ -5,7 +5,7 @@ import { sendTrack, getPreferences } from '../../playgrounds/snippets/metrics'
 
 describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
   describe('saveAsFavorite()', () => {
-    it('calls sendTrack if markting metric is enabled', () => {
+    it('calls sendTrack when marketing metric is enabled', () => {
       const id = 101
       expect.assertions(3)
 

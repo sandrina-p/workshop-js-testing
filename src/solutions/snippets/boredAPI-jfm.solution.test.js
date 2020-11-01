@@ -7,7 +7,7 @@ import {
 
 import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
-const activityStubbed = activityStubs.basic
+const activityStubbed = activityStubs.sample
 
 beforeAll(() => {
   fetchMock.enableMocks()
@@ -25,7 +25,7 @@ afterAll(() => {
   jest.spyOn(global.console, 'debug').mockRestore()
 })
 
-describe('boredAPI - (1.6 - jest-fetch-mock)', () => {
+describe('boredAPI - (1.7 - jest-fetch-mock)', () => {
   describe('getActivity()', () => {
     it('returns a random activity by default', async () => {
       // Act
@@ -120,7 +120,7 @@ describe('boredAPI - (1.6 - jest-fetch-mock)', () => {
     })
 
     it('returns an activity after a few attempts, given a partial match exclude', async () => {
-      const activityStubs1 = activityStubs.basic
+      const activityStubs1 = activityStubs.sample
       const activityStubs2 = activityStubs.pricePaid
       const activityStubs3 = activityStubs.withLink
 
@@ -140,7 +140,7 @@ describe('boredAPI - (1.6 - jest-fetch-mock)', () => {
     })
 
     it('throwns an error, when it exceeds the maximum nr of attempts', async () => {
-      const activityStubbed = activityStubs.basic
+      const activityStubbed = activityStubs.sample
       const exclude = [activityStubbed.key]
       const attemptsMax = 5
 

@@ -29,7 +29,9 @@ export default function useBoredList(listType) {
     // Every 5 <listType> counted, inform an external service
     if (count > 0 && count % 5 === 0) {
       sendTrack(listType, {
-        meta: { count },
+        data: {
+          count,
+        },
         especial: true,
       })
     }

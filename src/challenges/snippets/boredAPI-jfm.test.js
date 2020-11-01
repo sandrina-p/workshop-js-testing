@@ -6,6 +6,7 @@ import {
   getNewActivity,
 } from '../../playgrounds/snippets/boredAPI'
 
+// 💡 Here's some stubs ready for you to use!
 import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
 beforeAll(() => {
@@ -28,7 +29,7 @@ afterAll(() => {
   // jest.spyOn(global.console, 'debug').mockRestore()
 })
 
-describe('boredAPI - (1.6 - jest-fetch-mock)', () => {
+describe('boredAPI - (1.7 - jest-fetch-mock)', () => {
   describe('getActivity()', () => {
     it('returns a random activity by default', () => {
       expect.assertions(4)

@@ -126,7 +126,7 @@ describe('<ActivityGenerator />', () => {
         // effects made by the main component.
         // Pros: Uses the real context, no mocks needed, extra confidence.
         // Cons: The "Checkup" component can get a little verbose (not the case).
-        const activityStubbed1 = activityStubs.basic
+        const activityStubbed1 = activityStubs.sample
         const activityStubbed2 = activityStubs.pricePaid
 
         global.fetch
@@ -183,7 +183,7 @@ describe('<ActivityGenerator />', () => {
         // Cons: With all mocked, the false sense of security is high too.
         //       The real context might change and this test would still pass.
         //       Also, we cannot assert the fetch call anymore
-        const activityStubbed = activityStubs.basic
+        const activityStubbed = activityStubs.sample
         const dispatchGetNewMocked = jest.fn()
 
         jest.spyOn(BoredContext, 'useBoredDispatch').mockImplementation(() => ({
@@ -222,7 +222,7 @@ describe('<ActivityGenerator />', () => {
         //       Might cut-off some "arrangement" steps before doing the act + assertions
         // Cons: Still doesn't get the full real behavior. E.g. No access to boredAPI.
         const getNewMocked = jest.fn()
-        const activityStubbed = activityStubs.basic
+        const activityStubbed = activityStubs.sample
         const dispatch = { getNew: getNewMocked }
         const state = { latest: activityStubbed }
 
@@ -253,7 +253,7 @@ describe('<ActivityGenerator />', () => {
     })
 
     it('clinking "✅" button, adds the current to "done" and gets a new activity', async () => {
-      const activityStubbed1 = activityStubs.basic
+      const activityStubbed1 = activityStubs.sample
       const activityStubbed2 = activityStubs.pricePaid
 
       global.fetch
@@ -299,7 +299,7 @@ describe('<ActivityGenerator />', () => {
 
   describe('setting filters', () => {
     it('renders an activity that matches given specific filters', async () => {
-      const activityStubbed1 = activityStubs.basic
+      const activityStubbed1 = activityStubs.sample
       const activityStubbed2 = activityStubs.pricePaid
 
       global.fetch

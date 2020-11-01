@@ -4,7 +4,7 @@ Learn testing principles and how to apply them to React applications using **Jes
 
 ---
 
-Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence of not breaking the app. <!-- copyreview please. make it short. make it sweet -->
+Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence of not breaking the app.
 
 These are the material resources for my **JS Testing Workshop**. <!-- TODO LINK -->
 
@@ -74,5 +74,5 @@ Please take a couple of minutes to [give me your feedback](TODO-LINK), as it wil
 -->
 
 ## License
- 
+
 This is only available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html).

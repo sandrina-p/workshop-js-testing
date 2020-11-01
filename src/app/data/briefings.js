@@ -4,6 +4,7 @@ import C1_3 from '../../challenges/1.3.md'
 import C1_4 from '../../challenges/1.4.md'
 import C1_5 from '../../challenges/1.5.md'
 import C1_6 from '../../challenges/1.6.md'
+import C1_7 from '../../challenges/1.7.md'
 
 import C2_1 from '../../challenges/2.1.md'
 import C2_2 from '../../challenges/2.2.md'
@@ -17,7 +18,7 @@ export default {
   },
   1.2: {
     briefing: C1_2,
-    name: 'Test doubles: Mocks',
+    name: 'Test doubles: Mock',
   },
   1.3: {
     briefing: C1_3,
@@ -29,10 +30,14 @@ export default {
   },
   1.5: {
     briefing: C1_5,
-    name: 'Test doubles: Fake',
+    name: 'Test doubles: Stub',
   },
   1.6: {
     briefing: C1_6,
+    name: 'Test doubles: Fake',
+  },
+  1.7: {
+    briefing: C1_7,
     name: 'Async code',
   },
 

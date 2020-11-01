@@ -1,17 +1,16 @@
-export function sendTrack(name, opts = {}) {
-  console.log('TrackIt sendTrack()', name, opts.meta)
+export function sendTrack(name, data) {
+  // Just a dummy possible integrated tracker
+  console.log('TrackIt sendTrack()', name, data)
 
-  if (opts.special) {
+  const opts = { data }
+
+  if (data.special) {
     console.warn('This one is special!')
     // ... Do special stuff ...
-    opts.meta = {
-      ...opts.meta,
-      secret: 'token',
-    }
+    opts.secret = true
   }
 
-  // Just a dummy possible integrated tracker
-  window.trackIt?.sendEvent(name, opts.meta)
+  window.trackIt?.sendEvent(name, opts)
 }
 
 /**
