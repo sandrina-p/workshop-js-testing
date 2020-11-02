@@ -13,7 +13,7 @@ jest.mock('../../playgrounds/react/state/useBoredList')
 describe('<Footer />', () => {
   // ... other tests ...
 
-  it('Clicking "Clear" btn, calls the respective clear hook', () => {
+  it('Renders a function "Clear" btn', () => {
     // Arrange
     const skipClearMock = jest.fn()
     const doneClearMock = jest.fn()

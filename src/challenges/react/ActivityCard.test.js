@@ -10,6 +10,8 @@ describe('<ActivityCard /> - (2.1 components)', () => {
     // 💡 render the component passing only the minimum props
 
     // 💡 Assert the critical parts of the card.
+
+    // 🍀 Use screen.debug() to debug the DOM
   })
 
   it('renders the title as a link, given an href', () => {

@@ -41,7 +41,7 @@ describe('useBoredList - (2.3 hooks)', () => {
     // ...
   })
 
-  it('calls "sendTrack", after list length updates to a multiple of 5', () => {
+  it('calls "sendTrack", when list length updates to a multiple of 5', () => {
     expect.assertions(5)
     // Arrange
     // 💡 Mock an initial empty list for "skipped"

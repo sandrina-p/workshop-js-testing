@@ -10,28 +10,36 @@ import { removeNullish } from './general'
 const toQueryString = params =>
   '?' + new URLSearchParams(removeNullish(params)).toString()
 
+function remodelParams(params) {
+  // Transform params where needed to match API
+  const result = {
+    type: params.type,
+    participants: params.participants,
+  }
+
+  if (params.price === 'free') {
+    result.price = 0
+  }
+
+  if (params.price === 'paid') {
+    result.minprice = 0.1
+    result.maxprice = 999
+  }
+
+  return result
+}
+
 /**
  * Get a random activity from Bored API
  * @arg {Object} params - interface ActivityParams
  * @return {Object} ActivityResponse
  */
 export async function getActivity(params = {}) {
-  // Transform params where need
-  const query = {
-    type: params.type,
-    participants: params.participants,
-  }
+  const finalParams = remodelParams(params)
 
-  if (params.price === 'free') {
-    query.price = 0
-  }
-
-  if (params.price === 'paid') {
-    query.minprice = 0.1
-    query.maxprice = 999
-  }
-
-  const url = `https://www.boredapi.com/api/activity/${toQueryString(query)}`
+  const url = `https://www.boredapi.com/api/activity/${toQueryString(
+    finalParams
+  )}`
   console.debug(`ActivityAPI . fetching ${url}`)
 
   const response = await window.fetch(url, {
