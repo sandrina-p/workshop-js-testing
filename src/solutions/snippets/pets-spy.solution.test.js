@@ -80,6 +80,7 @@ describe('pets - (1.3 spy)', () => {
         'superPet',
         '{"id":101,"timestamp":"time_123456"}'
       )
+
       // Option B: Using inline snapshot
       expect(spyStorageSetItem.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -87,6 +88,10 @@ describe('pets - (1.3 spy)', () => {
           "{\\"id\\":101,\\"timestamp\\":\\"time_123456\\"}",
         ]
       `)
+
+      // 🍀 Option C: Assert directly the item goth indeed stored
+      const superPet = global.localStorage.getItem('superPet')
+      expect(superPet).toBe('{"id":101,"timestamp":"time_123456"}')
 
       // Assert window usage
       expect(spyWindowLocationAssign).toHaveBeenCalledTimes(1)
@@ -164,7 +169,6 @@ describe('pets - (1.3 spy)', () => {
       })
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests
     describe.skip('Option C: Globally mocking the console', () => {
       // Go to jest.setup.js and uncomment the global.console
 

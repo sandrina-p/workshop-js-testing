@@ -21,6 +21,7 @@
     box-shadow: var(--blank) 0 0 0 2px, var(--secondary) 0 0 0 4px;
   }
 }
+
 :global {
   .briefingMD {
     &.home {
@@ -131,9 +132,12 @@
       border-bottom: 0.1rem solid var(--brand);
     }
 
+    details {
+      margin: 1.6rem 0;
+    }
+
     blockquote {
       margin: 0;
-      /* font-weight: 600; */
 
       p {
         font-style: italic;

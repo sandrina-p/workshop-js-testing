@@ -6,7 +6,7 @@
   "description": "Learn testing principles and how to apply them to React applications using Jest and Testing Library",
   "scripts": {
     "checkup": "jest src/_checkup && eslint src/_checkup",
-    "start": "parcel src/app/index.html",
+    "start": "parcel src/app/index.html --no-cache",
     "build": "parcel build src/app/index.html",
     "test": "jest",
     "test:challenge": "jest --watch ${npm_config_at}.test.js",
