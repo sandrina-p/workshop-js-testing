@@ -10,7 +10,8 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
       expect.assertions(3)
 
       // Arrange
-      // 💡 Spy the captureError to assert it after
+      // 💡 Spy the sendTrack to assert it after
+      // 💡 Mock getPreferences to return metric
 
       // Act
       // 💡 Call saveAsFavorite
@@ -20,7 +21,7 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
 
       // 💡 Verify sendTrack was called correctly
 
-      // 🍀 The captureError is still the original, so the warn
+      // 🍀 The sendTrack is still the original, so the warn
       // message is shown in the logs. You can mock them too
       // to keep the logs clean!
       // 🍀 When mocking just one of the console methods, you can

@@ -22,7 +22,7 @@ describe('1.4 - (1.4 - Mock / Spy modules: Spy)', () => {
         marketing: true,
       })
 
-      const result = saveAsFavorite(678)
+      const result = saveAsFavorite(id)
 
       expect(metrics.sendTrack).toHaveBeenCalledTimes(1)
       expect(metrics.sendTrack).toHaveBeenCalledWith('favorite', {

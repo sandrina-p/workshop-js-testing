@@ -20,6 +20,7 @@ describe('general - (1.1 Initial)', () => {
       expect(result).toBe(6)
     })
   })
+
   describe('getSinguralOrPlural()', () => {
     it('returns first word, given Number 1', () => {
       const nr = 1
@@ -42,29 +43,16 @@ describe('general - (1.1 Initial)', () => {
     })
   })
 
-  describe('getSinguralOrPlural() - each', () => {
-    it.each([
-      [1, 'wolf', 'wolves', 'wolf'],
-      [2, 'wolf', 'wolves', 'wolves'],
-    ])(
-      'given the number %i, it returns %s',
-      (nr, singular, plural, expected) => {
-        const result = getSinguralOrPlural(nr, singular, plural)
-        expect(result).toBe(expected)
-      }
-    )
-  })
-
   describe('filterBiggestNumbers()', () => {
     const numbers = [-5, -2, 0, 2, 5, 10]
 
-    it('by default, it returns all numbers bigger than 0', () => {
+    it('returns all numbers bigger than default minimum (0)', () => {
       const result = filterBiggestNumbers(numbers)
 
       expect(result).toEqual([2, 5, 10])
     })
 
-    it('returns all numbers bigger than a given minimum', () => {
+    it('returns all numbers bigger than a given customminimum', () => {
       const minimum = 2
       const result = filterBiggestNumbers(numbers, minimum)
 
@@ -148,5 +136,18 @@ describe('general - (1.1 Initial)', () => {
         })
       }
     })
+  })
+
+  describe('getSinguralOrPlural() - each', () => {
+    it.skip.each([
+      [1, 'wolf', 'wolves', 'wolf'],
+      [2, 'wolf', 'wolves', 'wolves'],
+    ])(
+      'given the number %i, it returns %s',
+      (nr, singular, plural, expected) => {
+        const result = getSinguralOrPlural(nr, singular, plural)
+        expect(result).toBe(expected)
+      }
+    )
   })
 })

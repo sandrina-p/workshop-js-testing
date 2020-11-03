@@ -3,21 +3,21 @@ import { petsGuard } from '../../playgrounds/snippets/pets'
 describe('pets - (1.2 mocks)', () => {
   describe('petsGuard()', () => {
     it('calls the API with given arg, and returns its value', () => {
-      const APIMock = jest.fn().mockReturnValue('OK!')
+      const APIMock = jest.fn().mockReturnValue('Ok!')
 
       const result = petsGuard('category', APIMock)
 
       expect(APIMock).toHaveBeenCalledTimes(1)
       expect(APIMock).toHaveBeenCalledWith('category')
-      expect(result).toBe('OK!')
+      expect(result).toBe('Ok!')
     })
 
     describe('given an array', () => {
       it('calls the API multiple times with param type: family', () => {
         const APIMock = jest
           .fn()
-          .mockImplementationOnce(() => 'okay 1')
-          .mockImplementationOnce(() => 'okay 2')
+          .mockReturnValueOnce('okay 1')
+          .mockReturnValueOnce('okay 2')
 
         const result = petsGuard(['color', 'size'], APIMock)
 
@@ -29,16 +29,18 @@ describe('pets - (1.2 mocks)', () => {
 
       it('when the API fails it returns the error with API index', () => {
         // A: Mock using mockReturnValueOnce
-        // const APIMock = jest
-        //   .fn()
-        //   .mockReturnValueOnce('okay 1')
-        //   .mockReturnValueOnce(false)
-        //   .mockReturnValueOnce('okay 3')
-
-        // B: Mock using mockImplementation
+        // 🍀 More verbose, but easily understood
         const APIMock = jest
           .fn()
-          .mockImplementation(item => (item === 'category' ? false : 'Okay!'))
+          .mockReturnValueOnce('okay 1')
+          .mockReturnValueOnce(false)
+          .mockReturnValueOnce('okay 3')
+
+        // B: Mock using mockImplementation
+        // 💡 More dynamic but might be harder to understand
+        // const APIMock = jest
+        //   .fn()
+        //   .mockImplementation(item => (item === 'category' ? false : 'Okay!'))
 
         const result = petsGuard(['color', 'category', 'size'], APIMock)
 

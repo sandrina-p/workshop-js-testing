@@ -3,7 +3,5 @@ export const preferencesStubs = {
     performance: false,
     marketing: false,
     functional: false,
-    device: false,
-    geographic: false,
   },
 }

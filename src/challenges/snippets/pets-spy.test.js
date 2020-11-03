@@ -25,7 +25,7 @@ describe('pets - (1.3 spy)', () => {
 
     // 🍀 Some hints:
     // - You need a test double for Date.now(). It can be a mock jest.fn() or a spy
-    it('given a id smaller than 100, it prevents the default event and goes to movies page', () => {
+    it('given a id smaller than 100, it prevents the default event and goes to pets page', () => {
       expect.assertions(4)
 
       // Arrange
@@ -55,7 +55,7 @@ describe('pets - (1.3 spy)', () => {
       // Arrange
       // 💡 Similar mocks as the previous test
 
-      // 💡 This time we need to mock Date too. A spy can also mock!
+      // 🍀 This time we need to mock Date too. A spy can also mock!
       // jest.spyOn(/*...*/).mockReturnValueOnce('123')
       // 🍀 Don't forget to restore the mock at afterAll()
 

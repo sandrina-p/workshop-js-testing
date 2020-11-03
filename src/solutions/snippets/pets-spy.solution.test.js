@@ -24,7 +24,7 @@ describe('pets - (1.3 spy)', () => {
       jest.spyOn(global.Date, 'now').mockRestore()
     })
 
-    it('given a id smaller than 100, it prevents the default event and goes to movies page', () => {
+    it('given a id smaller than 100, it prevents the default event and goes to pets page', () => {
       // Arrange
       const mockEvent = {
         preventDefault: jest.fn(),
@@ -42,7 +42,7 @@ describe('pets - (1.3 spy)', () => {
       // Assert preventDefault was called
       expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1)
 
-      // Assert localStorage usage
+      // Assert localStorage usage #sanity-test
       expect(spyStorageSetItem).toHaveBeenCalledTimes(0)
 
       // Assert window usage
@@ -52,7 +52,7 @@ describe('pets - (1.3 spy)', () => {
       )
     })
 
-    it('given an id bigger than 100, it also stores the movie as "super-movie"', () => {
+    it('given an id bigger than 100, it also stores the pet as "superPet"', () => {
       // Arrange
       const mockEvent = {
         preventDefault: jest.fn(),
@@ -75,6 +75,7 @@ describe('pets - (1.3 spy)', () => {
 
       // Assert localStorage usage
       expect(spyStorageSetItem).toHaveBeenCalledTimes(1)
+
       // Option A: With direct string:
       expect(spyStorageSetItem).toHaveBeenCalledWith(
         'superPet',
@@ -169,9 +170,8 @@ describe('pets - (1.3 spy)', () => {
       })
     })
 
-    describe.skip('Option C: Globally mocking the console', () => {
-      // Go to jest.setup.js and uncomment the global.console
-
+    // Go to jest.setup.js and uncomment the global.console
+    describe('Option C: Globally mocking the console', () => {
       it('logs the search', () => {
         const result = searchPet('john', 5)
 
@@ -179,7 +179,7 @@ describe('pets - (1.3 spy)', () => {
           ':: searchPet - Searching john...'
         )
 
-        console.dev('debuggin result:', result)
+        // console.dev('debugging result:', result)
 
         expect(result).toBe('not found!')
       })

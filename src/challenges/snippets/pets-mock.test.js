@@ -14,7 +14,7 @@ describe('pets - (1.2 Mock)', () => {
       // const result = petsGuard('category')
 
       // Assert
-      // 🍀 Remember to assert both arguments and how many times a
+      // 🍀 Remember to assert the argument and how many times a
       //    mocked fn was called. We don't want memory leaks in our code!
     })
 
@@ -23,7 +23,7 @@ describe('pets - (1.2 Mock)', () => {
         expect.assertions(3)
       })
 
-      it('when the API fails it returns the error with API index', () => {
+      it('returns the error with API index, when the API fails', () => {
         // 💡 For this one you'll need .mockReturnValueOnce
         // or to create a custom .mockImplementation
         expect.assertions(2)
@@ -36,8 +36,3 @@ describe('pets - (1.2 Mock)', () => {
     // ...
   })
 })
-
-/*
-eslint
-  jest/expect-expect: "off"
-*/

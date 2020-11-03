@@ -27,7 +27,7 @@ afterAll(() => {
 
 describe('boredAPI - (1.7 - jest-fetch-mock)', () => {
   describe('getActivity()', () => {
-    it('returns a random activity by default', async () => {
+    it.only('returns a random activity by default', async () => {
       // Act
       const result = await getActivity()
 
@@ -119,26 +119,6 @@ describe('boredAPI - (1.7 - jest-fetch-mock)', () => {
       expect(result).toEqual(activityStubbed)
     })
 
-    it('returns an activity after a few attempts, given a partial match exclude', async () => {
-      const activityStubs1 = activityStubs.sample
-      const activityStubs2 = activityStubs.pricePaid
-      const activityStubs3 = activityStubs.withLink
-
-      const exclude = [activityStubs1.key, activityStubs2.key]
-
-      global.fetch
-        .mockResponseOnce(JSON.stringify(activityStubs1))
-        .mockResponseOnce(JSON.stringify(activityStubs2))
-        .mockResponseOnce(JSON.stringify(activityStubs3))
-
-      const result = await getNewActivity(undefined, exclude)
-
-      // It was called 3x because the 1st and 2nd activities matched the exclude
-      expect(global.fetch).toHaveBeenCalledTimes(3)
-      // It returns the 2nd activity because it was not included in the match
-      expect(result).toEqual(activityStubs3)
-    })
-
     it('throwns an error, when it exceeds the maximum nr of attempts', async () => {
       const activityStubbed = activityStubs.sample
       const exclude = [activityStubbed.key]
@@ -146,9 +126,9 @@ describe('boredAPI - (1.7 - jest-fetch-mock)', () => {
 
       global.fetch.mockResponse(JSON.stringify(activityStubbed))
 
-      const result = getNewActivity(undefined, exclude)
+      const promise = getNewActivity(undefined, exclude)
 
-      await expect(result).rejects.toThrow('There are no new activities')
+      await expect(promise).rejects.toThrow('There are no new activities')
 
       // Assert the nr of calls to prevent possible memory leaks
       expect(global.fetch).toHaveBeenCalledTimes(attemptsMax)

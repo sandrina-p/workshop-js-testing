@@ -20,7 +20,11 @@ export function sumAll(...numbers) {
  * (2, 'person', 'people') -> people
  */
 export function getSinguralOrPlural(count, singular, plural) {
-  return count > 1 ? plural : singular
+  if (count > 1) {
+    return plural
+  }
+  return singular
+  // return count > 1 ? plural : singular
 }
 
 /**
