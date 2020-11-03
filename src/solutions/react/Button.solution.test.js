@@ -43,7 +43,7 @@ describe('<button> - briefing example', () => {
 describe('<Button />', () => {
   // 🍀 Start the tests with the simplest/minimum usage
 
-  it('renders with minimum usage - manual assertions', () => {
+  it('renders with minimum props - manual assertions', () => {
     render(<Button>Sign up</Button>)
 
     // 🍀 Manual assertions are easy to read, but verbose and limited.
@@ -120,7 +120,7 @@ describe('<Button />', () => {
       // expect(button.className).toBe('button super')
     })
 
-    it('given size and variant, it rendes the right classes', () => {
+    it('renders the right classes given prop size and variant', () => {
       render(
         <Button size="sm" variant="outline">
           Sign up
@@ -129,10 +129,10 @@ describe('<Button />', () => {
 
       const button = screen.getByRole('button')
 
-      expect(button.className).toContain('size-sm variant-outline')
+      expect(button).toHaveClass('size-sm', 'variant-outline')
     })
 
-    it('given an icon, it replaces the children', () => {
+    it('replaces the children, given an icon', () => {
       render(<Button icon="✅" aria-label="Done!"></Button>)
 
       const button = screen.getByRole('button')
@@ -142,11 +142,7 @@ describe('<Button />', () => {
     })
 
     it('throws a console warning, given an icon without aria-label', () => {
-      const consoleOriginal = global.console
-
-      global.console = {
-        warn: jest.fn(),
-      }
+      jest.spyOn(global.console, 'warn').mockImplementation()
 
       render(<Button icon="✅"></Button>)
 
@@ -155,8 +151,7 @@ describe('<Button />', () => {
         'Button with icon ✅ must have "aria-label" for accessibility'
       )
 
-      // 🍀  Remember to restore the console so that it works in other tests
-      global.console = consoleOriginal
+      jest.spyOn(global.console, 'warn').mockRestore()
     })
   })
 })

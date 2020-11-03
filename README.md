@@ -4,7 +4,7 @@ Learn testing principles and how to apply them to React applications using **Jes
 
 ---
 
-Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence of not breaking the app.
+Hi there! I'm [Sandrina Pereira](https://www.sandrina-p.net/) and I love refactoring code with the confidence of not breaking an app.
 
 These are the material resources for my **JS Testing Workshop**. <!-- TODO LINK -->
 
@@ -43,7 +43,7 @@ To ensure all is fine, please verify the three following things:
 
 1. **App running:** Run `npm start`. The workshop app should start at http://localhost:1234
 2. **Testing tool:** Run `npm run checkup` and verify the [output matches this example](src/_checkup/checkup_output.png?raw=true).
-3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Then, restart your editor, open `src/_checkup/index.test.js` and follow the notes given with the ligh bulb emoji 💡.
+3. **Linters integrations:** Integrate [ESLint](https://eslint.org/docs/user-guide/integrations) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor. Then, restart your editor, open `src/_checkup/index.test.js` and follow the notes given with the light bulb emoji 💡.
 
 - Did everything work? _Ah-wesome!_ That's all, see you soon! 🤓
 - Having troubles? [Open an issue](https://github.com/sandrina-p/workshop-js-testing/issues/new) or reach me at a.sandrina.p@gmail.com.
@@ -66,7 +66,7 @@ src/
 #### Notes:
 
 - **Setup is done:** All libraries/tools needed are already installed, ready to be used by you.
-- **Check solutions as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
+- **Check solutions as a last resource.** If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you try to solve the exercise, it's part of the learning process. :)
 - **Time expectations:** I don't expect you to complete the entire exercises on time. The goal is to introduce you to new things, to _make you think about them and ask me questions_ as we go through the content.
 - **Learning strategy:** You won't write all the tests for each module. Instead, I'll point you to _the tests with the biggest learning value_.
 

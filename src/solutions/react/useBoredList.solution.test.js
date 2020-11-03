@@ -44,12 +44,11 @@ describe('useBoredList - (2.3 hooks)', () => {
   })
 
   it('does not return "clear", given a type with empty list', () => {
-    const skippedClearMock = jest.fn()
     useBoredState.mockReturnValue({
       skipped: [],
     })
     useBoredDispatch.mockReturnValue({
-      skippedClear: skippedClearMock,
+      skippedClear: jest.fn(),
     })
 
     const { result } = renderHook(() => useBoredList('skipped'))
@@ -62,7 +61,7 @@ describe('useBoredList - (2.3 hooks)', () => {
 
   // This test only passes if "useBoredList" passes "special"
   // instead of "especial" to sendTrack()
-  it.skip('calls "sendTrack", after list length updates to a multiple of 5', () => {
+  it.skip('calls "sendTrack", when list length updates to a multiple of 5', () => {
     useBoredState.mockReturnValue({
       skipped: [],
     })

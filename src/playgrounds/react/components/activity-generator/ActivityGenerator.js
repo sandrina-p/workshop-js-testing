@@ -8,7 +8,7 @@ import ActivityCard from '../activity-card'
 
 import Styles from './ActivityGenerator.css'
 
-export default function ActivityGenerator() {
+export default function ActivityGenerator(props) {
   const activityDispatch = useBoredDispatch()
   const activityState = useBoredState()
   const filters = React.useRef({})
@@ -40,7 +40,7 @@ export default function ActivityGenerator() {
 
   return (
     <>
-      <div className={Styles.wrapper}>
+      <div className={Styles.wrapper} {...props}>
         {formStatus === 'loading' ? (
           <p>Looking...</p>
         ) : activityLatest ? (

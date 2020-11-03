@@ -64,7 +64,7 @@ describe('general - (1.1 Initial)', () => {
       expect(result).toEqual([2, 5, 10])
     })
 
-    it('given a minimum, it returns all numbers bigger than it', () => {
+    it('returns all numbers bigger than a given minimum', () => {
       const minimum = 2
       const result = filterBiggestNumbers(numbers, minimum)
 
@@ -72,7 +72,7 @@ describe('general - (1.1 Initial)', () => {
       expect(result).toHaveLength(2)
     })
 
-    it('given a invalid list of numbers, it throws an error', () => {
+    it('throws an error given a invalid list of numbers', () => {
       expect(() => {
         filterBiggestNumbers('one')
       }).toThrow('The first argument must be an array')

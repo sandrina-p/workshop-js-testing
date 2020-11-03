@@ -8,6 +8,12 @@ import useBoredList from '../../state/useBoredList'
 
 import Styles from './Footer.css'
 
+function BoredLink(props) {
+  return (
+    <a target="_blank" rel="noreferrer" className={Styles.option} {...props} />
+  )
+}
+
 export default function Footer({ className }) {
   const skipList = useBoredList('skipped')
   const doneList = useBoredList('done')
@@ -63,24 +69,10 @@ export default function Footer({ className }) {
       </ul>
       <ul>
         <li>
-          <a
-            href="https://www.boredapi.com/"
-            target="_blank"
-            rel="noreferrer"
-            className={Styles.option}
-          >
-            Bored API
-          </a>
+          <BoredLink href="https://www.boredapi.com/">Bored API</BoredLink>
         </li>
         <li>
-          <a
-            href="https://github.com/drewthoennes/Bored-API/blob/master/db/activities.json"
-            target="_blank"
-            rel="noreferrer"
-            className={Styles.option}
-          >
-            Bored DB
-          </a>
+          <BoredLink href="https://www.boredapi.com/">Bored DB</BoredLink>
         </li>
       </ul>
     </footer>
