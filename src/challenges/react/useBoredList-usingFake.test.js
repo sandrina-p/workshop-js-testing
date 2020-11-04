@@ -19,13 +19,13 @@ describe('useBoredList - (2.3 hooks - BoredProviderFake)', () => {
     const { result } = renderHook(() => useBoredList('skipped'), {
       wrapper: props => {
         // 💡 Replace "return null" with <BoredProviderFake>, passing
-        // a mocked state. You might want to review 2.2 (Context)
-        // Bonus #1 to know how to use wrapper option
+        // a default value. You can review the challenge 2.2 (Context) - Bonus #1
+        // to know how the wrapper option is used
         return null
       },
     })
 
-    // 💡 Once done, these assertions should all pass
+    // 💡 Once done, one of the tests will fail
     expect(result.current.countLabel).toEqual(5)
     expect(sendTrack).toHaveBeenCalledTimes(1)
     expect(sendTrack).toHaveBeenCalledWith('skipped', {

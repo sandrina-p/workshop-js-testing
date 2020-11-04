@@ -6,41 +6,58 @@ import { getNewActivity } from '../../snippets/boredAPI'
 const BoredStateContext = React.createContext()
 const BoredDispatchContext = React.createContext()
 
-function updateList(name, prevValue, newKey) {
+function updateList(name, currentKeys, newKey) {
   if (!newKey) return {}
-
-  // ex: { 'skipped': [...[001, 123], 543] }
   return {
-    [name]: [...prevValue, newKey],
+    [name]: [...currentKeys, newKey],
   }
 }
 
 function BoredProvider({ children, value }) {
+  const isMounted = React.useRef(false)
+
   const [state, setState] = React.useState(() => ({
     // latest suggested activity
-    // rename latest to activity
-    latest: null, // : @Activity
+    latest: null, // @Activity
     // List with activities already done, by keyId
     done: [],
     // List with skipped activities, by keyId
     skipped: [],
+    // A custom initial state
     ...value,
   }))
+  React.useEffect(() => {
+    isMounted.current = true
+    return () => {
+      isMounted.current = false
+    }
+  }, [])
 
   const dispatch = {
-    async getNew(query, opts = {}) {
+    async getNew(
+      params,
+      opts = {
+        saveLatestTo: 'skipped',
+      }
+    ) {
+      const saveLatestTo = opts.saveLatestTo
       const latestKey = state.latest?.key
-      const saveLatestTo = opts.saveLatestTo || 'skipped'
       const exclude = [...state.skipped, ...state.done]
+
       if (latestKey) exclude.push(latestKey)
 
       let latest
+
       try {
-        latest = await getNewActivity(query, exclude)
+        latest = await getNewActivity(params, exclude)
       } catch (e) {
         latest = {
           error: `Ups! ${e.message}`,
         }
+      }
+
+      if (!isMounted.current) {
+        return
       }
 
       setState(state => ({
@@ -48,6 +65,10 @@ function BoredProvider({ children, value }) {
         latest,
         ...updateList(saveLatestTo, state[saveLatestTo], latestKey),
       }))
+    },
+    getNewAbort() {
+      console.log('getNewActivity() request aborted!')
+      // TODO - I ran out of time. But you get the idea ;)
     },
     doneClear() {
       setState(state => ({

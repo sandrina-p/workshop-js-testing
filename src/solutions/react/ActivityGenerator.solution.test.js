@@ -1,5 +1,3 @@
-import fetchMock from 'jest-fetch-mock'
-
 import React from 'react'
 import {
   fireEvent,
@@ -9,6 +7,7 @@ import {
   waitFor,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
+import fetchMock from 'jest-fetch-mock'
 
 import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
@@ -117,6 +116,66 @@ describe('<ActivityGenerator />', () => {
         screen.getByRole('button', { name: 'Try again' })
       ).toBeInTheDocument()
     })
+
+    it('aborts the loading getNew request on unmount', async () => {
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      const { unmount } = render(
+        <BoredProvider>
+          <ActivityGenerator />
+        </BoredProvider>
+      )
+
+      const CTA = screen.getByRole('button', { name: 'Get random activity' })
+
+      // Act
+      fireEvent.click(CTA)
+
+      // Assert
+      // Wait until Looking is the DOM. It means, is loading...
+      expect(screen.getByText('Looking...')).toBeInTheDocument()
+
+      // Act + Assert #2
+      unmount()
+
+      // TODO - if this was really implemented, we would assert that
+      // boredAPI request abort was called
+      expect(global.console.log).toHaveBeenCalledWith(
+        'getNewActivity() request aborted!'
+      )
+    })
+
+    it('dos not abort a finished request on unmount', async () => {
+      const activityStubbed = activityStubs.withLink
+
+      global.fetch.mockResponseOnce(JSON.stringify(activityStubbed))
+
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      const { unmount } = render(
+        <BoredProvider>
+          <ActivityGenerator />
+        </BoredProvider>
+      )
+
+      const CTA = screen.getByRole('button', { name: 'Get random activity' })
+
+      // Act
+      fireEvent.click(CTA)
+
+      // Wait until Looking is the DOM. It means, is loading...
+      await waitForElementToBeRemoved(() => screen.queryByText('Looking...'))
+
+      // So, let's unmount now!
+      // Act + Assert the actual unmount
+      unmount()
+
+      // Assert
+      // TODO - IRL we would verify boredAPI request abort was called
+      expect(global.console.log).toHaveBeenCalledTimes(0)
+
+      jest.spyOn(global.console, 'log').mockRestore()
+    })
   })
 
   describe('within the Activity card', () => {
@@ -178,8 +237,8 @@ describe('<ActivityGenerator />', () => {
 
       it('Approach B: Mocking the hooks', async () => {
         // 🍀 Mock directly the useContext hooks
-        // Pros: The easiest way to test. Might cut-off some "arrangement" steps
-        //       before doing the final act + assertions
+        // Pros: The easiest way to test. Might cut-off some "Arrange" steps
+        //       before doing the final Act + Asserts
         // Cons: With all mocked, the false sense of security is high too.
         //       The real context might change and this test would still pass.
         //       Also, we cannot assert the fetch call anymore

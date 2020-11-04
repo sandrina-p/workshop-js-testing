@@ -6,14 +6,24 @@ import {
   within,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
+import fetchMock from 'jest-fetch-mock'
 
 import { BoredProvider } from '../../playgrounds/react/state/BoredContext'
 import Root from '../../playgrounds/react'
 
-import { getNewActivity } from '../../playgrounds/snippets/boredAPI'
 import { activityStubs } from '../../playgrounds/snippets/__doubles__/boredAPIStubs'
 
-jest.mock('../../playgrounds/snippets/boredAPI')
+beforeAll(() => {
+  fetchMock.enableMocks()
+
+  jest.spyOn(global.console, 'debug').mockImplementation()
+})
+
+afterAll(() => {
+  fetchMock.mockRestore()
+
+  jest.spyOn(global.console, 'debug').mockRestore()
+})
 
 async function doGetAnotherActivity({ btnName }) {
   const btnDone = screen.getByRole('button', {
@@ -40,14 +50,16 @@ describe('<Root />', () => {
 
   describe('when an activity is skipped or done', () => {
     it('updates the respective list links', async () => {
-      getNewActivity
-        .mockResolvedValue(activityStubs.sample)
-        .mockResolvedValueOnce(activityStubs.withLink)
-        .mockResolvedValueOnce(activityStubs.pricePaid)
-        .mockResolvedValueOnce({
-          ...activityStubs.sample,
-          key: '1234567',
-        })
+      global.fetch
+        .mockResponse(JSON.stringify(activityStubs.sample))
+        .mockResponseOnce(JSON.stringify(activityStubs.withLink))
+        .mockResponseOnce(JSON.stringify(activityStubs.pricePaid))
+        .mockResponseOnce(
+          JSON.stringify({
+            ...activityStubs.sample,
+            key: '1234567',
+          })
+        )
 
       render(
         <BoredProvider>

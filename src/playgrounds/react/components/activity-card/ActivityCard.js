@@ -7,6 +7,27 @@ import Button from '../form/button'
 
 import Styles from './ActivityCard.css'
 
+function Description({ participants, isFree }) {
+  return (
+    <p className={Styles.description}>
+      For {participants} {getSinguralOrPlural(participants, 'person', 'people')}
+      {isFree ? (
+        <>
+          {' '}
+          and <strong>{"it's free!"}</strong>
+        </>
+      ) : (
+        '.'
+      )}
+    </p>
+  )
+}
+
+Description.propTypes = {
+  participants: PropTypes.number,
+  isFree: PropTypes.bool,
+}
+
 export default function ActivityCard({
   className,
   title,
@@ -27,18 +48,7 @@ export default function ActivityCard({
     <article className={cx(Styles.wrapper, className)} {...props}>
       <div className={Styles.kicker}>
         <p className={Styles.category}>{category}</p>
-        <p className={Styles.description}>
-          For {participants}{' '}
-          {getSinguralOrPlural(participants, 'person', 'people')}
-          {isFree ? (
-            <>
-              {' '}
-              and <strong>{"it's free!"}</strong>
-            </>
-          ) : (
-            '.'
-          )}
-        </p>
+        <Description participants={participants} isFree={isFree} />
       </div>
       <TitleTag className={Styles.title} {...titleAttrs}>
         {title}

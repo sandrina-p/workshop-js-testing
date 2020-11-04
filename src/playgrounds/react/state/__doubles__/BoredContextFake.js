@@ -10,7 +10,8 @@ function validateKeys(obj, messageContext) {
 
 export function BoredProviderFake({ state, dispatch, children }) {
   const { latest, skipped, done, ...restState } = state || {}
-  const { getNew, skippedClear, doneClear, ...restDispatch } = dispatch | {}
+  const { getNew, getNewAbort, skippedClear, doneClear, ...restDispatch } =
+    dispatch | {}
 
   validateKeys(restState, 'BoredProviderFake state')
   validateKeys(restDispatch, 'BoredProviderFake dispatch')

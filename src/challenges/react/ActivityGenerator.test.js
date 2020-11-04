@@ -121,7 +121,7 @@ describe('<ActivityGenerator />', () => {
         // Pros: Uses the real context, no mocks needed, extra confidence.
         // Cons: The "Checkup" component might get a little verbose.
 
-        // 💡 Mock the fetch here, twice (one different for each card)
+        // 💡 Mock the fetch here, twice (one different for each activity)
         // ...
 
         render(

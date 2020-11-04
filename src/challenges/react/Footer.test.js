@@ -5,21 +5,26 @@ import Footer from '../../playgrounds/react/components/footer'
 
 import useBoredList from '../../playgrounds/react/state/useBoredList'
 
-// 💡 Import the fake
+// 💡 The fakers you might need
+
 // import useBoredListFake from './__doubles__/useBoredListFake'
+// import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredContextFake.js'
 
 jest.mock('../../playgrounds/react/state/useBoredList')
 
 describe('<Footer />', () => {
   // ... other tests ...
 
-  it('Renders a function "Clear" btn', () => {
+  describe('given a "done" and "skipped" lists', () => {
+    it.only('renders a functional "Clear Done" btn', () => {
+
     // Arrange
     const skipClearMock = jest.fn()
     const doneClearMock = jest.fn()
 
-    // 💡 Replace this dummy mocks with the fake.
+    // 💡 Replace this dummy mocks with something better.
     // The test should still pass! There's no bugs this time.
+    // Will you use a useBoredListFake or BoredProviderFake?
     useBoredList
       .mockImplementationOnce(() => ({
         countLabel: 1,
@@ -30,11 +35,6 @@ describe('<Footer />', () => {
         clear: doneClearMock,
       }))
 
-    // 🍀 How can you be sure the fake is working if you never saw
-    // the test failing in first place? We must purposely break a test
-    // to see it working. How ironic is that? Suggestions:
-    // - In the component change the listType (ex skipped -> favorites)
-    // - Pass a (unexpected) key to the hook result
 
     // Act
     render(<Footer />)
@@ -52,7 +52,7 @@ describe('<Footer />', () => {
     fireEvent.click(btnDone)
 
     expect(doneClearMock).toHaveBeenCalledTimes(1)
-    // sanity check that the skipped clear wasn't called
+    // sanity check that the skipped clear wasn't called my mistake
     expect(skipClearMock).toHaveBeenCalledTimes(0)
   })
 })

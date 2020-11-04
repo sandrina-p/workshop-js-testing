@@ -22,7 +22,6 @@ describe('useBoredList - (2.3 hooks)', () => {
     // 💡 Mock useBoredDispatch to return skippedClear
 
     // Act
-
     const { result } = renderHook(() => useBoredList(listType))
 
     // Assert

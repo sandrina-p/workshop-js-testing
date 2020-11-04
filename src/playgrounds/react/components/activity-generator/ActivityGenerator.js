@@ -12,8 +12,24 @@ export default function ActivityGenerator(props) {
   const activityDispatch = useBoredDispatch()
   const activityState = useBoredState()
   const filters = React.useRef({})
-  const [formStatus, setFormStatus] = React.useState('') // success | loading | failed
+  const [formStatus, setFormStatus] = React.useState('') // success | loading
+  const formStatusRef = React.useRef('')
   const activityLatest = activityState.latest
+
+  // TLDR for these 2 hooks:
+  // On unmount, aborts getNew request in case is still loading (pending)
+  React.useEffect(() => {
+    formStatusRef.current = formStatus
+  }, [formStatus])
+
+  React.useEffect(() => {
+    return () => {
+      if (formStatusRef.current === 'loading') {
+        activityDispatch.getNewAbort()
+        formStatusRef.current = 'aborted'
+      }
+    }
+  }, [])
 
   function handleFiltersChange(values) {
     filters.current = values
@@ -23,6 +39,11 @@ export default function ActivityGenerator(props) {
     const { type, participants, price } = filters.current
     setFormStatus('loading')
     await activityDispatch.getNew({ type, participants, price }, opts)
+
+    if (formStatusRef.current === 'aborted') {
+      return
+    }
+
     setFormStatus('success')
   }
 

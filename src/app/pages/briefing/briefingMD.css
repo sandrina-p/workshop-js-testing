@@ -28,6 +28,13 @@
       h1 {
         color: var(--text);
       }
+
+      .date {
+        color: var(--text-light);
+        font-size: 1.4rem;
+        margin-top: 3.2rem;
+        font-style: italic;
+      }
     }
 
     &.hiddenIntro {
