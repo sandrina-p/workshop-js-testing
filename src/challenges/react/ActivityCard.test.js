@@ -25,7 +25,8 @@ describe('<ActivityCard /> - (2.1 components)', () => {
 
   it.skip('tells when the activity is free', () => {})
 
-  describe('Call To Action interactions', () => {
+  // 🍀 CTA = call to action / the main element to interact with
+  describe('CTA interactions', () => {
     it.skip('does not render any button by default', () => {})
 
     it('renders a functional skip button, given onSkip prop', () => {

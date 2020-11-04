@@ -155,10 +155,10 @@ describe('BoredContext - (2.2 context)', () => {
         fireEvent.click(screen.getByText('Get new activity'))
 
         const latestKeyAgain = await screen.findByText('Latest has key 003')
-        const skippedList4 = screen.getByText('List skipped is 001, 002')
+        const skippedList2 = screen.getByText('List skipped is 001, 002')
 
         expect(latestKeyAgain).toBeInTheDocument()
-        expect(skippedList4).toBeInTheDocument()
+        expect(skippedList2).toBeInTheDocument()
 
         expect(getNewActivity).toHaveBeenLastCalledWith(undefined, [
           '001',
@@ -166,7 +166,7 @@ describe('BoredContext - (2.2 context)', () => {
         ])
       })
 
-      it.skip('renders a new activity with given params', async () => {
+      it('renders a new activity with given params', async () => {
         const getNewParams = { type: 'educational' }
 
         getNewActivity.mockResolvedValueOnce({
@@ -189,7 +189,7 @@ describe('BoredContext - (2.2 context)', () => {
         expect(getNewActivity).toHaveBeenCalledWith(getNewParams, [])
       })
 
-      it.skip('render an error given a failure in the API', async () => {
+      it('render an error given a failure in the API', async () => {
         const getNewParams = { type: 'educational' }
         getNewActivity.mockRejectedValueOnce(new Error('Activity failed'))
 

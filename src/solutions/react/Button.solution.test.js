@@ -79,6 +79,7 @@ describe('<Button />', () => {
     )
 
     const button = screen.getByRole('button')
+
     fireEvent.click(button)
 
     expect(button.getAttribute('data-super')).toBe('123')

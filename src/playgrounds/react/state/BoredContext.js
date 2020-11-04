@@ -26,6 +26,7 @@ function BoredProvider({ children, value }) {
     // A custom initial state
     ...value,
   }))
+
   React.useEffect(() => {
     isMounted.current = true
     return () => {

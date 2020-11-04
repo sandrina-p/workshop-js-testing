@@ -2,12 +2,11 @@ import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 
 import useBoredList from '../../playgrounds/react/state/useBoredList'
+
 import { BoredProvider } from '../../playgrounds/react/state/BoredContext'
-// 💡 Import BoredProviderFake from BoredContextFake
 import { BoredProviderFake } from '../../playgrounds/react/state/__doubles__/BoredContextFake'
 
 import { sendTrack } from '../../playgrounds/snippets/metrics'
-// 💡 Import sendTrackFake from metricsFake
 import { sendTrackFake } from '../../playgrounds/snippets/__doubles__/metricsFake'
 
 jest.mock('../../playgrounds/snippets/metrics')
@@ -34,8 +33,10 @@ describe.skip('useBoredList - (2.3 hooks - BoredProviderFake)', () => {
     expect(result.current.countLabel).toEqual(5)
     expect(sendTrack).toHaveBeenCalledTimes(1)
     expect(sendTrack).toHaveBeenCalledWith('skipped', {
+      data: {
+        count: 5,
+      },
       special: true,
-      count: 5,
     })
   })
 })

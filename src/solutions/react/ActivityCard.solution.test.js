@@ -79,7 +79,12 @@ describe('<ActivityCard /> - (2.1 components)', () => {
     )
 
     // 🍀 When a sentence is split into different nodes, Testing Library
-    // can't find the sentece. A solution is using regex to look for a part,
+    // can't find the sentece.
+    // expect(
+    //   screen.getByText("For 3 people and it's free").parentElement.textContent
+    // ).toBe("For 3 people and it's free!")
+
+    // A solution is using regex to look for a part,
     // and then check the parent element' text content.
     // Example using rgxexample: screen.getByText(/it's free/i)
     expect(screen.getByText(/it's free/i).parentElement.textContent).toBe(
@@ -92,6 +97,7 @@ describe('<ActivityCard /> - (2.1 components)', () => {
     ).toBeInTheDocument()
   })
 
+  // 🍀 CTA = call to action
   describe('CTA interaction', () => {
     it('does not render any button by default', () => {
       render(

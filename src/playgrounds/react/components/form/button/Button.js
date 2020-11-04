@@ -11,7 +11,6 @@ export default function Button({
   size,
   variant,
   isActive,
-  isLoading,
   ...props
 }) {
   const attrs = {}
